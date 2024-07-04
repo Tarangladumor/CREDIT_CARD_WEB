@@ -2,6 +2,9 @@ import React from 'react'
 import Section1 from '../components/core/HomePage/Section1'
 import Choose_your_preference from '../components/core/HomePage/Choose_your_preference'
 import Check_Offers from '../components/core/HomePage/Check_Offers'
+import Explore_our_latest_articals from '../components/core/HomePage/Explore_our_latest_articals'
+import ContactUs from '../components/core/HomePage/ContactUs'
+import Footer from '../components/common/Footer'
 
 const Home = () => {
   return (
@@ -12,6 +15,12 @@ const Home = () => {
         <Choose_your_preference/>
 
         <Check_Offers/>
+
+        <Explore_our_latest_articals/>
+
+        <ContactUs/>
+
+        <Footer/>
 
     </div>
   )
