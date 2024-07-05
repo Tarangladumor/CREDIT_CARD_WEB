@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { cloudinaryConnect } from "./config/cloudinary.js";
 import { authMiddleware } from "./middleware/auth.js";
+import cardRouter from './routes/Card.js'
 // import cors from "cors"
 
 const app = express();
@@ -33,6 +34,8 @@ app.use(fileUpload({
 cloudinaryConnect();
 
 app.use('/admin',authMiddleware)
+
+app.use("/api/v1/card",cardRouter);
 
 app.get('/admin', (req, res) => {
     res.send('Welcome to the admin area');
