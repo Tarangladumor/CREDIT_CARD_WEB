@@ -5,6 +5,7 @@ import { respond } from "./utils/response.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { cloudinaryConnect } from "./config/cloudinary.js";
+import { authMiddleware } from "./middleware/auth.js";
 // import cors from "cors"
 
 const app = express();
@@ -30,6 +31,12 @@ app.use(fileUpload({
 // )
 
 cloudinaryConnect();
+
+app.use('/admin',authMiddleware)
+
+app.get('/admin', (req, res) => {
+    res.send('Welcome to the admin area');
+});
 
 app.get("/" , (req,res) => {
     return respond(res,"Your Server is up and running",200,true)
