@@ -4,7 +4,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
+    <div className=' mt-14'>
 
     
     <div className='w-full bg-[#f7f5fd]'>
