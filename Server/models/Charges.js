@@ -57,7 +57,13 @@ const chargesSchema = new mongoose.Schema({
     },
     balanceMoreThan50000: {
         type: Number
-    }
+    },
+    // card: [
+    //     {
+    //         type:mongoose.Schema.Types.ObjectId,
+    //         ref: "Card"
+    //     }
+    // ]
 })
 
 export const Charges = mongoose.model("Charges",chargesSchema)

@@ -4,6 +4,8 @@ import { createComment, deleteComment, editComment, getAllComments } from '../co
 
 const router = express.Router()
 
+//charges
+
 
 //  Rating And Review Routes
 router.post("/create-rating",createRating);
@@ -15,14 +17,6 @@ router.post("/create-comment",createComment);
 router.put("/edit-comment",editComment);
 router.delete("/delete-comment",deleteComment);
 router.get('/comments', getAllComments);
-
-
-
-
-
-
-
-
 
 
 export default router;
