@@ -6,8 +6,8 @@ import Page_2 from './Pages/Page_2';
 function App() {
   return (
    <div>
-    {/* <Home/> */}
-    <Page_2/>
+    <Home/>
+    {/* <Page_2/> */}
    </div>
   );
 }

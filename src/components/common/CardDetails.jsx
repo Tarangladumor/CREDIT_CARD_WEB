@@ -1,6 +1,5 @@
 import React from 'react'
 import LIMITED from '../../assets/limited_offer_img.png'
-import { Link } from 'react-router-dom';
 
 const CardDetails = ({Data}) => {
 
