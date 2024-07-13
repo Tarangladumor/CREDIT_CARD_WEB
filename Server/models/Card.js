@@ -14,18 +14,20 @@ const cardSchema = new mongoose.Schema({
         required: true
     },
     type: {
-        type: String,
+        type: [String],
     },
-    provider: [
+    provider: 
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref: "provider"
+            ref: "Provider"
+        },
+    
+    network: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Network"
         }
     ],
-    network: {
-        type: String,
-        required: true
-    },
     ratingAndReviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
@@ -39,7 +41,7 @@ const cardSchema = new mongoose.Schema({
         }
     ],
     benefits: {
-        type: String,
+        type: [String],
         required:true
     },
     additionalBenefits: [
@@ -59,7 +61,11 @@ const cardSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref: "Charges"
         }
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default:Date.now,
+    },
 })
 
 export const Card = mongoose.model("Card",cardSchema)
