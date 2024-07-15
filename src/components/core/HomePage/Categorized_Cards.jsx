@@ -72,7 +72,7 @@ const Categorized_Cards = () => {
               slidesPerView={1}
               spaceBetween={10}
               autoplay={{
-                delay: 100,
+                delay: 2000,
               }}
               loop={true}
               breakpoints={{

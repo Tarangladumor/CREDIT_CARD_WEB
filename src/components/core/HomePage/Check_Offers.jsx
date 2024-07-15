@@ -2,6 +2,7 @@ import React from 'react'
 import IMG from "../../../assets/check_offers_img.png"
 import Image from "../../../assets/Card_img.png"
 import CardDetails from '../../common/CardDetails'
+import { useNavigate } from 'react-router-dom'
 
 const cardData = [
     {
@@ -10,7 +11,11 @@ const cardData = [
         APR: 15.99,
         title: "Rupay Credit card",
         annualFees: 0,
-        rewards: "Earn 2% cashback onll purchases."
+        rewards: "Earn 2% cashback onll purchases.",
+        reviews: [
+            "Great rewards, low fees, excellent customer service. Highly recommend!",
+            "Great rewards, low fees, excellent customer service. Highly recommend!",
+        ]
     },
     {
         bank: "ICICI bank",
@@ -18,11 +23,17 @@ const cardData = [
         APR: 15.99,
         title: "Rupay Credit card",
         annualFees: 0,
-        rewards: "Earn 2% cashback onll purchases."
+        rewards: "Earn 2% cashback onll purchases.",
+        reviews: [
+            "Great rewards, low fees, excellent customer service. Highly recommend!",
+            "Great rewards, low fees, excellent customer service. Highly recommend!",
+        ]
     }
 ]
 
 const Check_Offers = () => {
+
+    const navigate = useNavigate()
     return (
         <div>
             <div className=' w-3/4 mx-auto mt-16'>
@@ -52,16 +63,18 @@ const Check_Offers = () => {
                 </div>
             </div>
 
-            <div className='flex justify-evenly w-10/12 mx-auto mt-16'>
-                {
-                    cardData.map((Data, i) => (
-                        <CardDetails key={i} Data={Data} />
-                    ))
-                }
+            <div className='w-3/4 mx-auto mt-14'>
+                <div className='grid grid-cols-2 gap-y-16 gap-x-24'>
+                    {
+                        cardData.map((Data, i) => (
+                            <CardDetails key={i} Data={Data} />
+                        ))
+                    }
+                </div>
             </div>
 
             <div className='flex justify-center items-center mt-14 mb-14'>
-                <button className=' border-[8px] border-[#159A9C] rounded-full px-10 py-3 shadow-[0px_20px_50px_10px_#00000040]'>
+                <button onClick={() => navigate('/more-cards')} className=' border-[8px] border-[#159A9C] rounded-full px-10 py-3 shadow-[0px_20px_50px_10px_#00000040]'>
                     <p className=' font-medium text-xl'>Discover More</p>
                 </button>
             </div>

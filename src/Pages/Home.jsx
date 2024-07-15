@@ -6,12 +6,10 @@ import Explore_our_latest_articals from '../components/core/HomePage/Explore_our
 import ContactUs from '../components/core/HomePage/ContactUs'
 import Footer from '../components/common/Footer'
 import Categorized_Cards from '../components/core/HomePage/Categorized_Cards'
-import HomeNavbar from '../components/common/HomeNavbar'
 
 const Home = () => {
   return (
     <div>
-      {/* <HomeNavbar /> */}
 
       <Section1 />
 

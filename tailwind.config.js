@@ -24,8 +24,8 @@ module.exports = {
         }
       },
       animation: {
-        scrollleft: 'scrollleft 5s linear infinite',
-        scrollright: 'scrollright 3s linear infinite'
+        scrollleft: 'scrollleft 9s linear infinite',
+        scrollright: 'scrollright 8s linear infinite'
       },
     },
   },
