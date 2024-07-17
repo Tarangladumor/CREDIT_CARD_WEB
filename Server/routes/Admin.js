@@ -5,6 +5,7 @@ import { addNetwork, showAllNetwork } from "../controllers/Network.js"
 import { addCard, deleteCard, updateCard } from "../controllers/Card.js"
 import { addAdditionalBenefits, editAdditionalBenefits,getAllAdditionalBenefits ,deleteAdditionalBenefits} from '../controllers/AdditionalBenefit.js';
 import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"
+import { createBlog, deleteBlog, getAllBlog, getBlogById, updateBlog } from "../controllers/Blog.js"
 
 const router = express.Router()
 
@@ -29,5 +30,13 @@ router.delete('/delete-additional-benefit', deleteAdditionalBenefits);
 router.post("/addCard",addCard)
 router.put("/editCard",updateCard)
 router.delete("/deleteCard",deleteCard)
+
+
+//Blogs
+router.post("/create-blog",createBlog);
+router.get("/get-all-blogs",getAllBlog);
+router.put("/edit-blog",updateBlog);
+router.delete("/delete-blog",deleteBlog);
+router.get('/get-single-blog/:id',getBlogById);
 
 export default router;
