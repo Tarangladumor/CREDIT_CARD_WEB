@@ -3,5 +3,5 @@ export const respond = (res, message, statuscode, success, data = null) => {
     if (data !== null) {
         response.data = data;
     }
-    res.status(response.status).jsosn(response);
+    res.status(response.status).json(response);
 };

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const providerSchema = new mongoose.Schema({
+const networkSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -14,6 +14,7 @@ const providerSchema = new mongoose.Schema({
         ref: "Card"
     }
     ]
+
 })
 
-export const Provider = mongoose.model("Provider",providerSchema)
+export const Network = mongoose.model("Network",networkSchema)
