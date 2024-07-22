@@ -5,7 +5,7 @@ import TermsCondition from './TermsCondition';
 
 const Footer = () => {
   return (
-    <div className=' mt-14'>
+    <div className=' '>
 
     
     <div className='w-full bg-[#f7f5fd]'>
