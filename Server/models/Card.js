@@ -40,7 +40,11 @@ const cardSchema = new mongoose.Schema({
             ref: "Comments"
         }
     ],
-    benefits: {
+    includedBnefits: {
+        type: [String],
+        required:true
+    },
+    notIncludedBnefits: {
         type: [String],
         required:true
     },
@@ -60,6 +64,24 @@ const cardSchema = new mongoose.Schema({
         {
             type:mongoose.Schema.Types.ObjectId,
             ref: "Charges"
+        }
+    ],
+    rewards : [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Reward"
+        }
+    ],
+    howToApply : [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Apply"
+        }
+    ],
+    eligibility : [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Eligibility"
         }
     ],
     createdAt: {
