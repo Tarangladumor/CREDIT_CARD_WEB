@@ -174,3 +174,21 @@ export const deleteCard = async(req,res) => {
     return respond(res,"something went wrong while deleting the card",500,false)
   }
 }
+
+export const getAllCard = async(req,res) => {
+  try{
+    const AllCard = await Card.find({}).populate("provider")
+    .populate("network")
+    .populate("additionalBenefits")
+    .populate("charges")
+    .populate("faq")
+    .exec();
+
+    return respond(res,"all card fetched successfully",200,true,AllCard)
+  }catch(error) {
+    console.log(error)
+    return respond(res,"soemthing went wrong while getting all the card",500,false)
+  }
+}
+
+

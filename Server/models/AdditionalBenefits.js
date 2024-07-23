@@ -1,39 +1,39 @@
 import mongoose from "mongoose";
 
 const additionalBenefits = new mongoose.Schema({
-    welcomeBonus: {
+    welcomeBonus: [{
         type: String
-    },
-    emiBenefit: {
+    }],
+    emiBenefit: [{
         type: String
-    },
-    fuelSurcharge: {
+    }],
+    fuelSurcharge: [{
         type: String
-    },
-    rewardPoints: {
+    }],
+    rewardPoints: [{
         type: String
-    },
-    loungeAccess: {
+    }],
+    loungeAccess: [{
         type: String
-    },
-    zeroLostCardLiablity: {
+    }],
+    zeroLostCardLiablity: [{
         type: String
-    },
-    milestoneBenefit: {
+    }],
+    milestoneBenefit: [{
         type: String
-    },
-    otherBenefit: {
+    }],
+    otherBenefit: [{
         type: String
-    },
-    travelBenefit: {
+    }],
+    travelBenefit: [{
         type: String
-    },
-    diningBenefit: {
+    }],
+    diningBenefit: [{
         type: String
-    },
-    conciergeServices: {
+    }],
+    conciergeServices: [{
         type: String
-    }
+    }]
 })
 
 export const AdditionalBenefits = mongoose.model("AdditionalBenefits",additionalBenefits)

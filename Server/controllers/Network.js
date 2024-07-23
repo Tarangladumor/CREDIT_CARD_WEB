@@ -55,3 +55,24 @@ export const showAllNetwork = async (req, res) => {
     );
   }
 };
+
+export const getCardByNetwork = async(req,res) => {
+  try{
+    const {networkId} = req.body
+
+    if(!networkId) {
+      return respond(res,"network id is not found",400,false)
+    }
+
+    const cardByNetwork = await Network.findById(networkId).populate("card")
+
+    if(!cardByNetwork) {
+      return respond(res,"Network is not found",400,false)
+    }
+
+    return respond(res,"all card fetched by network successfully",200,true,cardByNetwork)
+  }catch(error) {
+    console.log(error)
+    return respond(res,"something went wrong while geting the card by network",500,false)
+  }
+}

@@ -56,4 +56,23 @@ export const showAllProvider = async (req, res) => {
   }
 };
 
+export const getCardByBank = async(req,res) => {
+  try{
+    const {providerId} = req.body
 
+    if(!providerId) {
+      return respond(res,"provider id is not found",400,false)
+    }
+
+    const cardByBank = await Provider.findById(providerId).populate("card")
+
+    if(!cardByBank) {
+      return respond(res,"provider is not found",400,false)
+    }
+
+    return respond(res,"all card fetched by bank successfully",200,true,cardByBank)
+  }catch(error) {
+    console.log(error)
+    return respond(res,"something went wrong while geting the card by bank",500,false)
+  }
+}
