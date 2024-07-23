@@ -107,10 +107,10 @@ export const getAllRating = async (req, res) => {
     try{
             const allReviews = await RatingAndReviews.find({})
                                     .sort({rating: "desc"})
-                                    // .populate({
-                                    //     path:"card",
-                                    //     select: "cardName",
-                                    // })
+                                    .populate({
+                                        path:"card",
+                                        select: "cardName",
+                                    })
                                     .exec();
             return res.status(200).json({
                 success:true,

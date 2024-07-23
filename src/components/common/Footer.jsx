@@ -1,10 +1,11 @@
 import React from 'react'
 import { FaLinkedinIn } from "react-icons/fa";
+import TermsCondition from './TermsCondition';
 
 
 const Footer = () => {
   return (
-    <div className=' mt-14'>
+    <div className=' '>
 
     
     <div className='w-full bg-[#f7f5fd]'>
@@ -56,9 +57,7 @@ const Footer = () => {
       </div>
     </div>
 
-    <div className='bg-[#056e67] h-16 flex justify-center items-center'>
-        <p className=' text-white'>Terms of Service | Privacy Policy | DisclaimersTerms of Service | Privacy Policy | Disclaimers</p>
-    </div>
+    <TermsCondition/>
 
     </div>
   )
