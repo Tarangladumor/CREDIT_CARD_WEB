@@ -115,7 +115,7 @@ const Categorized_Cards = () => {
               }
             </Swiper>
           </>
-        </div>
+        </div>  
       </div>
 
     </div>

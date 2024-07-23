@@ -19,9 +19,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-xl text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -38,9 +38,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -57,9 +57,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -76,9 +76,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -94,9 +94,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-xl text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -113,9 +113,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -132,9 +132,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
@@ -151,9 +151,9 @@ const Explore_our_latest_articals = () => {
                             <p className='font-extrabold text-4xl'>45K</p>
                             <p className='text-[17px] text-[#0000008a]'>people purchase cards everyday across the world and get benefits.</p>
                             <div className='flex items-center'>
-                                <div className='flex'>
-                                    <img src={IMG1} height={50} width={50} className='rounded-full aspect-square' alt="User 1" />
-                                    <img src={IMG2} height={50} width={50} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
+                                <div className='flex relative'>
+                                    <img src={IMG1} height={45} width={45} className='rounded-full aspect-square' alt="User 1" />
+                                    <img src={IMG2} height={45} width={45} className='rounded-full aspect-square relative z-10 -left-8' alt="User 2" />
                                 </div>
                                 <p className='text-sm'>+1.5k are benefited from the credit cards offers!</p>
                             </div>
