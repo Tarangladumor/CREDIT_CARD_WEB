@@ -15,7 +15,7 @@ const Section1 = () => {
 
                 <div className=' max-w-[45%] flex flex-col mt-10 gap-3 ml-10'>
 
-                    <p className=' font-extrabold text-8xl max-w-[80%]'>CREDIT CUES</p>
+                    <p className=' font-extrabold text-9xl max-w-[80%]'>CREDIT CUES</p>
 
                     <div className=' flex gap-x-3 max-w-[75%] justify-center items-center mt-8'>
 
@@ -30,13 +30,13 @@ const Section1 = () => {
 
                     <div className=' flex items-center gap-x-5 mt-8'>
 
-                        <button className=' bg-[#DEEFE7] px-8 py-3 rounded-full shadow-[0px_30px_30px_0px_#00000060]'>
+                        <button className=' bg-[#DEEFE7] px-10 py-5 rounded-full shadow-[0px_30px_30px_0px_#00000060]'>
                             <p className=' font-semibold text-xl text-black'>Get Started</p>
                         </button>
 
                         <button className=' border-[4px] rounded-full shadow-[0px_30px_35px_10px_#00000060,inset_0px_7px_30px_0px_#00000060]'>
-                            <div className=' p-[1px]'>
-                                <MdArrowOutward size={40} />
+                            <div className=' p-[10px]'>
+                                <MdArrowOutward size={30} />
                             </div>
                         </button>
                     </div>

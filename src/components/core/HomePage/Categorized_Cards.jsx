@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -72,7 +72,7 @@ const Categorized_Cards = () => {
               slidesPerView={1}
               spaceBetween={10}
               autoplay={{
-                delay: 100,
+                delay: 2000,
               }}
               loop={true}
               breakpoints={{
@@ -115,7 +115,7 @@ const Categorized_Cards = () => {
               }
             </Swiper>
           </>
-        </div>
+        </div>  
       </div>
 
     </div>
