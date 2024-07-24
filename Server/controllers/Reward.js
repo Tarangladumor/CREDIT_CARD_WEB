@@ -3,9 +3,49 @@ import { respond } from "../utils/response.js"
 import { Card } from "../models/Card.js";
 import mongoose from "mongoose";
 
+// export const addRewards = async (req, res) => {
+//     try {
+//         const { instruction, points, listData, note,cardId } = req.body;
+
+//         // Validate input
+//         // if (points && !Array.isArray(points)) {
+//         //     return respond(res, "Points should be an array", 400, false);
+//         // }
+//         // if (listData && !Array.isArray(listData)) {
+//         //     return respond(res, "List data should be an array", 400, false);
+//         // }
+
+//         // Create a new Reward document
+//         const reward = new Reward({
+//             instruction,
+//             points: points.length > 0 ? points.map(point => ({
+//                 _id: new mongoose.Types.ObjectId(),
+//                 key: point.key,
+//                 value: point.value
+//             })) : [],
+//             listData,
+//             note
+//         });
+
+//         // Save the Reward document
+//         const savedReward = await reward.save();
+
+//         const updatedCard = await Card.findByIdAndUpdate(
+//             cardId,
+//             { $push: {rewards : savedReward._id } },
+//             { new: true }
+//         ).populate("rewards");
+
+//         return respond(res, "Rewards added successfully", 200, true, savedReward);
+//     } catch (error) {
+//         console.log(error);
+//         return respond(res, "Something went wrong while adding the rewards", 500, false);
+//     }
+// };
+
 export const addRewards = async (req, res) => {
     try {
-        const { instruction, points, listData, note,cardId } = req.body;
+        const { instruction, points, listData, note, cardId } = req.body;
 
         // Validate input
         if (points && !Array.isArray(points)) {
@@ -18,11 +58,11 @@ export const addRewards = async (req, res) => {
         // Create a new Reward document
         const reward = new Reward({
             instruction,
-            points: points.map(point => ({
+            points: points && points.length > 0 ? points.map(point => ({
                 _id: new mongoose.Types.ObjectId(),
                 key: point.key,
                 value: point.value
-            })),
+            })) : [],
             listData,
             note
         });
@@ -32,7 +72,7 @@ export const addRewards = async (req, res) => {
 
         const updatedCard = await Card.findByIdAndUpdate(
             cardId,
-            { $push: {rewards : savedReward._id } },
+            { $push: { rewards: savedReward._id } },
             { new: true }
         ).populate("rewards");
 
@@ -42,6 +82,7 @@ export const addRewards = async (req, res) => {
         return respond(res, "Something went wrong while adding the rewards", 500, false);
     }
 };
+
 
 export const updateRewards = async (req, res) => {
     try {

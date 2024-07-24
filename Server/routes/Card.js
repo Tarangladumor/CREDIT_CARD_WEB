@@ -5,6 +5,7 @@ import { getAllCard, getOneCardDetails } from '../controllers/Card.js';
 import { getCardByBank } from '../controllers/Provider.js';
 import { getCardByNetwork } from '../controllers/Network.js';
 import { signupNewsletter } from '../controllers/Sunscriber.js';
+import { addNetwork, showAllNetwork } from "../controllers/Network.js"
 
 
 const router = express.Router()
@@ -29,5 +30,7 @@ router.get("/getCardByPrivilege",)
 
 router.post("/newsletter/subscriber",signupNewsletter)
 
+router.post("/addNetwork",addNetwork)
+router.get("/showAllNetwork",showAllNetwork)
 
 export default router;

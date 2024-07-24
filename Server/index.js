@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload({
     useTempFiles:true,
-    tempFileDir:"/tmp"
+    tempFileDir:"/tmp",
+    limits: { fileSize: 50 * 1024 * 1024 }
 }))
 
 app.use(
@@ -34,7 +35,7 @@ app.use(
 
 cloudinaryConnect();
 
-app.use('/api/v1//admin',authMiddleware,adminRouter)
+app.use('/api/v1/admin',authMiddleware,adminRouter)
 
 app.use("/api/v1/card",cardRouter);
 
