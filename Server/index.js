@@ -8,7 +8,7 @@ import { cloudinaryConnect } from "./config/cloudinary.js";
 import { authMiddleware } from "./middleware/auth.js";
 import cardRouter from "./routes/Card.js";
 import adminRouter from "./routes/Admin.js";
-// import cors from "cors"
+import cors from "cors"
 
 const app = express();
 
@@ -25,16 +25,16 @@ app.use(fileUpload({
     tempFileDir:"/tmp"
 }))
 
-// app.use(
-//     cors({
-//         origin:"http://localhost:3000",
-//         credentials:true,
-//     })
-// )
+app.use(
+    cors({
+        origin:"http://localhost:3000",
+        credentials:true,
+    })
+)
 
 cloudinaryConnect();
 
-app.use('/admin',authMiddleware,adminRouter)
+app.use('/api/v1//admin',authMiddleware,adminRouter)
 
 app.use("/api/v1/card",cardRouter);
 

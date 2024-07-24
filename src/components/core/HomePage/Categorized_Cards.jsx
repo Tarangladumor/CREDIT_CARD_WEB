@@ -5,6 +5,7 @@ import 'swiper/css/pagination';
 
 import { Pagination, Autoplay } from 'swiper/modules';
 import CARD_IMAGES from '../../../assets/card group.png'
+import AXIS_BANK_CARD from "../../../assets/axis card image.jpg"
 
 const CardData = [
   {

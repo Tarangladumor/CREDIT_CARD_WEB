@@ -8,6 +8,8 @@ import Overview from './Overview'
 import QuestionsSection from './QuestionsSection'
 import SimmilarCards from './SimmilarCards'
 
+
+
 const FullDetails = () => {
   return (
     <div>

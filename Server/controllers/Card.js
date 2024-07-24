@@ -191,4 +191,39 @@ export const getAllCard = async(req,res) => {
   }
 }
 
+export const getCardByIncome = async(req,res) => {
+  try{
+    return respond(res,"all card fetched successfully by income",200,true)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting all the card by income",500,false)
+  }
+}
+
+export const getCardByPrivilege = async(req,res) => {
+  try{
+    return respond(res,"all card fetched successfully by privilege",200,true)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting all the card by privilege",500,false)
+  }
+}
+
+export const getOneCardDetails = async (req,res) => {
+  try{
+    const {cardId} = req.body
+
+    if(!cardId) {
+      return respond(res,"card id is not found",400,false)
+    }
+
+    const cardData = await Card.findById(cardId).populate("provider").populate("network").populate("charges").populate("faq").populate("rewards").populate("eligibility").populate("howToApply").populate("additionalBenefits").populate("comments").populate("ratingAndReviews").exec()
+
+    return respond(res,"card details fetched successfully",200,true,cardData)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting card Details",500,false)
+  }
+}
+
 
