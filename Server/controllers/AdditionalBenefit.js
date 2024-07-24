@@ -4,48 +4,69 @@ import { respond } from '../utils/response.js';
 
 
 
-export const addAdditionalBenefits = async(req,res)=>{
+export const addAdditionalBenefits = async (req, res) => {
+    try {
+        const {
+            welcomeBonus,
+            emiBenefit,
+            fuelSurcharge,
+            rewardPoints,
+            loungeAccess,
+            zeroLostCardLiability,
+            milestoneBenefit,
+            otherBenefit,
+            travelBenefit,
+            diningBenefit,
+            conciergeServices,
+            shoppingBenefit,
+            cardId
+        } = req.body;
 
-    try{
-        
-        const {welcomeBonus, emiBenefit, fuelSurcharge, rewardPoints, loungeAccess,  zeroLostCardLiablity, milestoneBenefit, otherBenefit, travelBenefit, diningBenefit, conciergeServices, cardId} = req.body; 
-
+        // Validate cardId
         if (!cardId) {
             return respond(res, "Card ID is required", 400, false);
         }
-      
-        const validCard = await Card.findOne({ _id:cardId})
 
-         if(!validCard){
-
-            return respond(res,"Card is not found",403,false);
-            
+        // Check if the card exists
+        const validCard = await Card.findOne({ _id: cardId });
+        if (!validCard) {
+            return respond(res, "Card not found", 403, false);
         }
 
+        // Create new AdditionalBenefits document
         const additionalBenefits = await AdditionalBenefits.create({
-            welcomeBonus, emiBenefit, fuelSurcharge, rewardPoints, loungeAccess,  zeroLostCardLiablity, milestoneBenefit, otherBenefit, travelBenefit, diningBenefit, conciergeServices
+            welcomeBonus: Array.isArray(welcomeBonus) ? welcomeBonus : [],
+            emiBenefit: Array.isArray(emiBenefit) ? emiBenefit : [],
+            fuelSurcharge: Array.isArray(fuelSurcharge) ? fuelSurcharge : [],
+            rewardPoints: Array.isArray(rewardPoints) ? rewardPoints : [],
+            loungeAccess: Array.isArray(loungeAccess) ? loungeAccess : [],
+            zeroLostCardLiability: Array.isArray(zeroLostCardLiability) ? zeroLostCardLiability : [],
+            milestoneBenefit: Array.isArray(milestoneBenefit) ? milestoneBenefit : [],
+            otherBenefit: Array.isArray(otherBenefit) ? otherBenefit : [],
+            travelBenefit: Array.isArray(travelBenefit) ? travelBenefit : [],
+            diningBenefit: Array.isArray(diningBenefit) ? diningBenefit : [],
+            conciergeServices: Array.isArray(conciergeServices) ? conciergeServices : [],
+            shoppingBenefit: Array.isArray(shoppingBenefit) ? shoppingBenefit : []
         });
 
-        const updatedCardDetails = await Card.findByIdAndUpdate({_id:cardId },
+        // Update the card with the new additionalBenefits
+        const updatedCardDetails = await Card.findByIdAndUpdate(
+            cardId,
             {
-            $push:{
-                additionalBenefits:additionalBenefits._id,
-            }
-          },
-          {new:true}
+                $push: { additionalBenefits: additionalBenefits._id }
+            },
+            { new: true }
         );
 
-        console.log("Updated Card details ",updatedCardDetails);
-        
-        return respond(res,"Additional benefits are successfully added",200,true,additionalBenefits);
+        console.log("Updated Card details", updatedCardDetails);
 
-    }catch(error){
+        return respond(res, "Additional benefits successfully added", 200, true, additionalBenefits);
+    } catch (error) {
         console.log(error);
-        return respond(res,"Error in adding additionalBenefits",500,false);
-       
+        return respond(res, "Error in adding additional benefits", 500, false);
     }
+};
 
-}
 
 export const editAdditionalBenefits = async (req, res) => {
     try {

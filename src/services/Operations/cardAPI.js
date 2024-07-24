@@ -1,6 +1,6 @@
 import { apiConnector } from "../apiconnector"
 import toast from "react-hot-toast"
-import cardEndpoints from "../apis"
+import {cardEndpoints} from "../apis"
 
 const {GET_ALL_CARDS,GET_ALL_CARDS_BY_BANK,GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS,GET_ALL_CARD_BY_PRIVILEGE,GET_ALL_CARD_BY_INCOME} = cardEndpoints
 

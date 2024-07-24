@@ -7,5 +7,6 @@ export const cardEndpoints = {
     GET_ONE_CARD_DETAILS : BASE_URL + "/card/getOneCardDetail",
     GET_ALL_CARD_BY_PRIVILEGE : BASE_URL + "/card/getCardByPrivilege",
     GET_ALL_CARD_BY_INCOME : BASE_URL + "/card/getCardByIncome",
-    CARD_COMPARISON : BASE_URL + "/card/comparison"
+    CARD_COMPARISON : BASE_URL + "/card/comparison",
+    GET_ALL_NETWORK : BASE_URL + '/card/showAllNetwork',
 }

@@ -6,9 +6,9 @@ export const addEligibility = async (req, res) => {
     try {
         const { instruction, points, cardId } = req.body;
 
-        if (!Array.isArray(points) || points.some(p => !p.key || !p.value)) {
-            return respond(res, "Each point must have both key and value", 400, false);
-        }
+        // if (!Array.isArray(points) || points.some(p => !p.key || !p.value)) {
+        //     return respond(res, "Each point must have both key and value", 400, false);
+        // }
 
         const eligibility = new Eligibility({
             instruction,

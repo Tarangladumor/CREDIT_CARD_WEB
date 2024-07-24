@@ -14,7 +14,8 @@ export const addCard = async (req, res) => {
       cardName,
       description,
       type: _type,
-      benefits: _benefits,
+      includedBnefits: _includedBnefits,
+      notIncludedBnefits: _notIncludedBnefits,
       provider,
       network,
     } = req.body;
@@ -22,14 +23,16 @@ export const addCard = async (req, res) => {
     const image = req.files.cardImage;
 
     const type = JSON.parse(_type);
-    const benefits = JSON.parse(_benefits);
+    const includedBnefits = JSON.parse(_includedBnefits);
+    const notIncludedBnefits = JSON.parse(_notIncludedBnefits);
 
     if (
       !cardName ||
       !description ||
       !type.length ||
       !image ||
-      !benefits.length ||
+      !includedBnefits.length ||
+      !notIncludedBnefits.length ||
       !provider ||
       !network
     ) {
@@ -56,7 +59,8 @@ export const addCard = async (req, res) => {
       description,
       type,
       network: networkDetails.map((net) => net._id),
-      benefits,
+      includedBnefits,
+      notIncludedBnefits,
       provider: providerDetails._id,
       image: cardImage.secure_url,
     });
@@ -182,6 +186,10 @@ export const getAllCard = async(req,res) => {
     .populate("additionalBenefits")
     .populate("charges")
     .populate("faq")
+    .populate("rewards")
+    .populate("howToApply")
+    .populate("eligibility")
+    .populate("ratingAndReviews")
     .exec();
 
     return respond(res,"all card fetched successfully",200,true,AllCard)
