@@ -1,5 +1,5 @@
 import React from 'react'
-import Cardimg from '../../../assets/Card_img.png'
+import AXIS_CARD from '../../../assets/axis card image.jpg'
 import VISA from '../../../assets/Visa.png'
 
 const CardSummary = () => {
@@ -8,7 +8,7 @@ const CardSummary = () => {
 
             <div className='flex justify-center items-center gap-5'>
                 <div>
-                    <img src={Cardimg} className='rotate-15'/>
+                    <img src={AXIS_CARD} />
                 </div>
 
                 <div>
