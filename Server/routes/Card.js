@@ -9,6 +9,7 @@ import {showAllNetwork } from "../controllers/Network.js"
 import { getCardByIncome, showAllIncome } from '../controllers/Income.js';
 import { getCardByPrivilege, showAllPrivilege } from '../controllers/Privilege.js';
 
+import { compareCards } from "../controllers/Comparison.js"
 
 const router = express.Router()
 
@@ -37,6 +38,8 @@ router.get("/showAllProvider",showAllProvider)
 router.get("/showAllNetwork",showAllNetwork)
 router.get("/showAllIncome",showAllIncome)
 router.get("/showAllPrivilege",showAllPrivilege)
+
+router.get('/compare/:cardId1/:cardId2', compareCards);
 
 
 router.post("/addProvider",addProvider)
