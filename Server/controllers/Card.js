@@ -7,6 +7,8 @@ import { AdditionalBenefits } from "../models/AdditionalBenefits.js";
 import { Comments } from "../models/Comments.js";
 import { RatingAndReviews } from "../models/RatingAndReviews.js";
 import { uploadImageCloudinary } from "../utils/imageUploader.js";
+import { Privilege } from "../models/Privilege.js";
+import { Income } from "../models/Income.js";
 
 export const addCard = async (req, res) => {
   try {
@@ -18,6 +20,8 @@ export const addCard = async (req, res) => {
       notIncludedBnefits: _notIncludedBnefits,
       provider,
       network,
+      bestFor,
+      income
     } = req.body;
 
     const image = req.files.cardImage;
@@ -34,7 +38,9 @@ export const addCard = async (req, res) => {
       !includedBnefits.length ||
       !notIncludedBnefits.length ||
       !provider ||
-      !network
+      !network || 
+      !bestFor ||
+      !income
     ) {
       return respond(res, "Allfields are required", 400, false);
     }
@@ -47,6 +53,16 @@ export const addCard = async (req, res) => {
     const networkDetails = await Network.find({ _id: { $in: network } });
     if (networkDetails.length !== network.length) {
       return respond(res, "some network details not found", 404, false);
+    }
+
+    const privilegeDetails = await Privilege.findById(bestFor);
+    if (!privilegeDetails) {
+      return respond(res, "privilege details not found", 404, false);
+    }
+
+    const incomeDetails = await Income.findById(income);
+    if (!incomeDetails) {
+      return respond(res, "income details not found", 404, false);
     }
 
     const cardImage = await uploadImageCloudinary(
@@ -63,6 +79,8 @@ export const addCard = async (req, res) => {
       notIncludedBnefits,
       provider: providerDetails._id,
       image: cardImage.secure_url,
+      bestFor: privilegeDetails._id,
+      income: incomeDetails._id,
     });
 
     const providerData = await Provider.findByIdAndUpdate(
@@ -76,6 +94,26 @@ export const addCard = async (req, res) => {
     );
 
     const networkData = await Network.updateMany(
+      { _id: network },
+      {
+        $push: {
+          card: newCard._id,
+        },
+      },
+      { new: true }
+    );
+
+    const privilegeData = await Privilege.updateMany(
+      { _id: network },
+      {
+        $push: {
+          card: newCard._id,
+        },
+      },
+      { new: true }
+    );
+
+    const incomeData = await Income.updateMany(
       { _id: network },
       {
         $push: {
