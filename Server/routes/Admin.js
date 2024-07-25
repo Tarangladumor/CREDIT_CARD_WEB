@@ -1,6 +1,5 @@
 import express from "express"
 import { addCharges, updateCharges } from "../controllers/Charges.js"
-import { addProvider, showAllProvider } from "../controllers/Provider.js"
 import { addCard, deleteCard,updateCard } from "../controllers/Card.js"
 import { addAdditionalBenefits, editAdditionalBenefits,getAllAdditionalBenefits ,deleteAdditionalBenefits} from '../controllers/AdditionalBenefit.js';
 import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"
@@ -12,10 +11,6 @@ const router = express.Router()
 
 router.post("/addCharges",addCharges)
 router.post("/updateCharges",updateCharges)
-
-router.post("/addProvider",addProvider)
-router.get("/showAllProvider",showAllProvider)
-
 
 router.post("/addFaq",createFaq)
 router.put("/editFaq",updateFaq)

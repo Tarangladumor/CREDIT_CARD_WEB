@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import upto from "../../../assets/upto.png"
 
 import CardIncomBox from './CardIncomBox'
+import { fetchAllCardByIncome } from '../../../services/Operations/cardAPI'
 
 
 const card = [
@@ -40,6 +41,14 @@ const card_1=[
 ]
 
 const Cardbox = () => {
+
+    const [cards,setCards] = useState([]);
+
+    useEffect(() => {
+        const fetchCard = async() => {
+            const data = await
+        }
+    })
   return (
     <div className='bg-[#f7f5fd] p-10'>
       <div className=''>

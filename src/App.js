@@ -7,6 +7,8 @@ import FullDetailsOfCard from './Pages/FullDetailsOfCard';
 import CompareCard from './Pages/CompareCard';
 import CardNetwork from './Pages/CardNetwork';
 import CardIncome from './Pages/CardIncom';
+import CardsByNetwork from './components/core/CardNetwork/CardsByNetwork';
+import CardsByBank from './components/core/CardsByBank/CardsByBank';
 
 function App() {
   return (
@@ -20,13 +22,17 @@ function App() {
 
         <Route path='/more-cards' element={<Page_2 />} />
 
-        <Route path='/fulldetailsofcard' element={<FullDetailsOfCard/>}/>
+        <Route path='/fulldetailsofcard/:id' element={<FullDetailsOfCard/>}/>
 
         <Route path='/cardComparison' element={<CompareCard/>}/> 
 
         <Route path='/cardByNetwork' element={<CardNetwork/>}/>
 
         <Route path='/cardByIncome' element={<CardIncome/>}/>
+
+        <Route path='/cardByNetwork/:name/:id' element={<CardsByNetwork/>}/>
+
+        <Route path='/cardByBank/:name/:id' element={<CardsByBank/>}/>
         
       </Routes>
 

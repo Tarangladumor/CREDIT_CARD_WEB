@@ -16,7 +16,7 @@ const notIncluted = [
     "Fueling Facilities"
 ]
 
-const IncludeSection = () => {
+const IncludeSection = ({Data}) => {
 
     return (
         <div className='w-10/12 mx-auto  mt-16 rounded-2xl py-10 px-14 shadow-[0px_20px_50px_10px_#00000040]'>
@@ -28,7 +28,7 @@ const IncludeSection = () => {
                     <h1 className=' text-3xl font-semibold mb-4'>What’s included?</h1>
 
                     {
-                        incluted.map((item, index) => (
+                        Data?.includedBnefits.map((item, index) => (
                             <div key={index} className='flex gap-x-1 items-center ml-10'>
                                 <img src={TRUEIMG} className=' h-12 w-12' />
                                 <p className=' font-medium text-2xl'>{item}</p>
@@ -43,7 +43,7 @@ const IncludeSection = () => {
                     <h1 className=' text-3xl font-semibold mb-4'>What’s not included?</h1>
 
                     {
-                        notIncluted.map((item, index) => (
+                        Data?.notIncludedBnefits.map((item, index) => (
                             <div key={index} className='flex gap-x-1 items-center ml-10'>
                                 <img src={FALSEIMG} className=' h-12 w-12' />
                                 <p className='font-medium text-2xl'>{item}</p>

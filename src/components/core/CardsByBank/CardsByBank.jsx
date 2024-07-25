@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Footer from "../components/common/Footer";
-import IMG from "../assets/check_offers_img.png";
-import Image from "../assets/Card_img.png";
-import CardDetails from "../components/common/CardDetails";
-import { fetchAllCard } from "../services/Operations/cardAPI";
+import React, { useEffect, useState } from 'react';
+import Footer from '../../common/Footer';
+import IMG from "../../../assets/check_offers_img.png";
+import { useLocation } from 'react-router-dom';
+import { fetchAllCardByBank } from '../../../services/Operations/cardAPI';
+import CardDetails from '../../common/CardDetails';
 
-const Page_2 = () => {
+const CardsByBank = () => {
+  let location = useLocation();
+
+  const pathParts = location.pathname.split('/');
+  const providerId = pathParts[pathParts.length - 1];
+  console.log("ID>>>>>>>>>>>>>>", providerId);
+
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const cardData = await fetchAllCard()
+      const cardData = await fetchAllCardByBank({ providerId });
       setCards(cardData);
     };
 
     fetchData();
-  }, []);
+  }, [providerId]);
+
+  console.log(cards);
 
   return (
     <div>
@@ -49,4 +57,4 @@ const Page_2 = () => {
   );
 };
 
-export default Page_2;
+export default CardsByBank;

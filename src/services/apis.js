@@ -9,4 +9,5 @@ export const cardEndpoints = {
     GET_ALL_CARD_BY_INCOME : BASE_URL + "/card/getCardByIncome",
     CARD_COMPARISON : BASE_URL + "/card/comparison",
     GET_ALL_NETWORK : BASE_URL + '/card/showAllNetwork',
+    GET_ALL_PROVIDER : BASE_URL + '/card/showAllProvider'
 }

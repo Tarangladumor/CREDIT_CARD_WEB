@@ -58,13 +58,19 @@ export const showAllNetwork = async (req, res) => {
 
 export const getCardByNetwork = async(req,res) => {
   try{
-    const {networkId} = req.body
+    const { networkId } = req.query;
+
+    console.log(req.query);
 
     if(!networkId) {
       return respond(res,"network id is not found",400,false)
     }
 
-    const cardByNetwork = await Network.findById(networkId).populate("card")
+    const cardByNetwork = await Network.findById(networkId).populate({
+      path: "card",
+      populate: "network",
+      populate: "charges"
+    }).exec();
 
     if(!cardByNetwork) {
       return respond(res,"Network is not found",400,false)

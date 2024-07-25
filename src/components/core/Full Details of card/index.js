@@ -7,32 +7,31 @@ import RewardPoints from './RewardPoints'
 import Overview from './Overview'
 import QuestionsSection from './QuestionsSection'
 import SimmilarCards from './SimmilarCards'
+import { useLocation } from 'react-router-dom'
+import { fetchOneCardDetails } from '../../../services/Operations/cardAPI'
 
-const FullDetails = () => {
+const FullDetails = ({Details}) => {
 
-  useEffect((
-    
-  ) => {},[])
   return (
     <div>
 
-        <CardSummary/>
+      <CardSummary Data={Details}/>
 
-        <IncludeSection/>
+      <IncludeSection Data={Details} />
 
-        <div className=' border-[#159A9C] border-b border-[4px] w-[90%] mx-auto my-20'></div>
+      <div className=' border-[#159A9C] border-b border-[4px] w-[90%] mx-auto my-20'></div>
 
-        <Benefits/>
+      <Benefits Data={Details}/>
 
-        <FeeCharges/>
+      <FeeCharges Data={Details}/>
 
-        <RewardPoints/>
+      <RewardPoints Data={Details}/>
 
-        <Overview/>
+      <Overview Data={Details}/>
 
-        <QuestionsSection/>
+      <QuestionsSection Data={Details}/>
 
-        <SimmilarCards/>
+      <SimmilarCards Data={Details}/>
     </div>
   )
 }

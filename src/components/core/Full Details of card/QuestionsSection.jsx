@@ -18,7 +18,7 @@ const Questions = [
     }
 ]
 
-const QuestionsSection = () => {
+const QuestionsSection = ({Data}) => {
     const [activeIndex, setActiveIndex] = useState(null);
 
     const toggleActiveIndex = (index) => {

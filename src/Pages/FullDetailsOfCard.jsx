@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import IMG from '../assets/two_cards.png'
 import FullDetails from '../components/core/Full Details of card'
+import { useLocation } from 'react-router-dom'
+import { fetchOneCardDetails } from '../services/Operations/cardAPI'
 
 const FullDetailsOfCard = () => {
+
+    let location = useLocation();
+
+    const pathParts = location.pathname.split('/');
+    const cardId = pathParts[pathParts.length - 1];
+    console.log("ID>>>>>>>>>>>>>>", cardId);
+
+    const [details, setDetails] = useState(null);
+
+    useEffect(() => {
+        const fetchDetails = async () => {
+            const cardDetails = await fetchOneCardDetails(cardId);
+            setDetails(cardDetails);
+        };
+
+        fetchDetails();
+    }, []);
+
+    console.log(details);
+
     return (
         <div>
 
@@ -30,7 +52,7 @@ const FullDetailsOfCard = () => {
             </div>
 
             <div>
-                <FullDetails />
+                <FullDetails Details={details}/>
             </div>
 
         </div>

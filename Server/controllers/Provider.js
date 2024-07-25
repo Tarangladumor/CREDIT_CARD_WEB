@@ -36,7 +36,7 @@ export const addProvider = async (req, res) => {
 
 export const showAllProvider = async (req, res) => {
   try {
-    const allProviders = await Provider.find({});
+    const allProviders = await Provider.find({}).populate("card").exec();
 
     return respond(
       res,
@@ -56,23 +56,27 @@ export const showAllProvider = async (req, res) => {
   }
 };
 
-export const getCardByBank = async(req,res) => {
-  try{
-    const {providerId} = req.body
+export const getCardByBank = async (req, res) => {
+  try {
+    const { providerId } = req.query;
 
-    if(!providerId) {
-      return respond(res,"provider id is not found",400,false)
+    if (!providerId) {
+      return respond(res, "Provider ID is not found", 400, false);
     }
 
-    const cardByBank = await Provider.findById(providerId).populate("card")
+    const cardByBank = await Provider.findById(providerId).populate({
+      path: "card",
+      populate: "network",
+      populate: "charges"
+    }).exec();
 
-    if(!cardByBank) {
-      return respond(res,"provider is not found",400,false)
+    if (!cardByBank) {
+      return respond(res, "Provider is not found", 400, false);
     }
 
-    return respond(res,"all card fetched by bank successfully",200,true,cardByBank)
-  }catch(error) {
-    console.log(error)
-    return respond(res,"something went wrong while geting the card by bank",500,false)
+    return respond(res, "All cards fetched by bank successfully", 200, true, cardByBank);
+  } catch (error) {
+    console.log(error);
+    return respond(res, "Something went wrong while getting the card by bank", 500, false);
   }
-}
+};

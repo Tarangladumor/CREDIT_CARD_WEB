@@ -26,7 +26,7 @@ const similarCards = [
     }
 ]
 
-const SimmilarCards = () => {
+const SimmilarCards = ({Data}) => {
     return (
         <div className='w-10/12 mx-auto mt-20'>
 

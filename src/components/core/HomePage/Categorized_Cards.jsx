@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -6,6 +6,8 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 import CARD_IMAGES from '../../../assets/card group.png'
 import AXIS_BANK_CARD from "../../../assets/axis card image.jpg"
+import { fetchAllProvider } from '../../../services/Operations/cardAPI';
+import { Link } from 'react-router-dom';
 
 const CardData = [
   {
@@ -53,6 +55,21 @@ const CardData = [
 ]
 
 const Categorized_Cards = () => {
+  const [banks, setBanks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetchAllProvider();
+      setBanks(res);
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(banks);
+
   return (
     <div>
 
@@ -94,20 +111,22 @@ const Categorized_Cards = () => {
               className="mySwiper"
             >
               {
-                CardData.map((card) => (
+                banks.map((card) => (
                   <SwiperSlide>
                     <div className='bg-[#DEEFE7] rounded-3xl '>
                       <div className=' w-[80%] mx-auto py-7 flex flex-col gap-y-1 '>
-                        <h2 className=' text-3xl text-[#002333] opacity-30 font-bold'>{card.title}</h2>
+                        <h2 className=' text-3xl text-[#002333] opacity-30 font-bold'>{card.name}</h2>
 
-                        <p className=' text-xs font-medium'>{card.offers}+ Cards includes Offers</p>
+                        <p className=' text-xs font-medium'>{card.card.length}+ Cards includes Offers</p>
 
-                        <p className=' text-xs font-medium'>{card.purchased}k has purchased in last 1 month</p>
+                        <p className=' text-xs font-medium'>{card.card.length}k has purchased in last 1 month</p>
 
-                        <img alt='card Image' src={card.image} height={200} width={200} className='flex justify-center items-center' />
+                        <img alt='card Image' src={card.image} className='flex justify-center items-center h-[200px] w-[200px] py-5' />
 
                         <div className='flex justify-center'>
-                          <button className=' bg-[#159A9C] py-2 px-8 text-white text-lg font-semibold rounded-full mb-3'>{card.button}</button>
+                          <Link to={`/cardByBank/${card.name}/${card._id}`}>
+                            <button className=' bg-[#159A9C] py-2 px-8 text-white text-lg font-semibold rounded-full mb-3'>Explore More</button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -116,7 +135,7 @@ const Categorized_Cards = () => {
               }
             </Swiper>
           </>
-        </div>  
+        </div>
       </div>
 
     </div>

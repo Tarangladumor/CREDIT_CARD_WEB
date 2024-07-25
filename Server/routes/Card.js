@@ -6,7 +6,7 @@ import { getCardByBank } from '../controllers/Provider.js';
 import { getCardByNetwork } from '../controllers/Network.js';
 import { signupNewsletter } from '../controllers/Sunscriber.js';
 import { addNetwork, showAllNetwork } from "../controllers/Network.js"
-
+import { addProvider, showAllProvider } from "../controllers/Provider.js"
 
 const router = express.Router()
 
@@ -32,5 +32,8 @@ router.post("/newsletter/subscriber",signupNewsletter)
 
 router.post("/addNetwork",addNetwork)
 router.get("/showAllNetwork",showAllNetwork)
+
+router.post("/addProvider",addProvider)
+router.get("/showAllProvider",showAllProvider)
 
 export default router;

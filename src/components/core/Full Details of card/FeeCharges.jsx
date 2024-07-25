@@ -3,7 +3,8 @@ import FEECHARGES from '../../../assets/FeeCharges_img.png'
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
-const FeeCharges = () => {
+const FeeCharges = ({Data}) => {
+
     return (
         <div>
             <header className='flex justify-start items-center gap-2 w-10/12 mx-auto mb-5'>
@@ -25,57 +26,57 @@ const FeeCharges = () => {
                                 <Tr>
                                     <Td className="py-5">
                                         <p className='font-medium text-sm opacity-60'>Joining Fee</p>
-                                        <p className='font-semibold text-base'>Free</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.joiningFee}</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Annual Fee</p>
-                                        <p className='font-semibold text-base'>Free</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.annualFee}</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Annual Percentage Rate</p>
-                                        <p className='font-semibold text-base'>42%</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.annualPercentageRate}%</p>
                                     </Td>
                                     <Td>
-                                        <p className='font-medium text-sm opacity-60'>Annual Percentage Rate</p>
-                                        <p className='font-semibold text-base'>42%</p>
+                                        <p className='font-medium text-sm opacity-60'>Add on CardFee</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.addOnCardFee}</p>
                                     </Td>
                                 </Tr>
 
                                 <Tr>
                                     <Td className='py-5'>
                                         <p className='font-medium text-sm opacity-60'>Minimum Repayment Amount</p>
-                                        <p className='font-semibold text-base'>5%</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.minimumRepaymentAmount}%</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Cash Withdrawal Fee</p>
-                                        <p className='font-semibold text-base'>10$</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.cashWithdrawalFee}</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Cash Advance Limit</p>
-                                        <p className='font-semibold text-base'>NA</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.cashAdvanceLimit}</p>
                                     </Td>
                                     <Td>
-                                        <p className='font-medium text-sm opacity-60'>Cash Advance Limit</p>
-                                        <p className='font-semibold text-base'>NA</p>
+                                        <p className='font-medium text-sm opacity-60'>Card Replacement Fee</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.cardReplacementFee}</p>
                                     </Td>
                                 </Tr>
 
                                 <Tr>
                                     <Td className='py-5'>
                                         <p className='font-medium text-sm opacity-60'>Foreign Transaction Fee</p>
-                                        <p className='font-semibold text-base'>1.99%</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.foreignTransactionFee}%</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Over Limit Penalty</p>
-                                        <p className='font-semibold text-base'>2.05%</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.overLimitPenalty}%</p>
                                     </Td>
                                     <Td>
                                         <p className='font-medium text-sm opacity-60'>Fuel Transaction Fee</p>
-                                        <p className='font-semibold text-base'>1%</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.fuelTransactionSurcharge}%</p>
                                     </Td>
                                     <Td>
-                                        <p className='font-medium text-sm opacity-60'>Fuel Transaction Fee</p>
-                                        <p className='font-semibold text-base'>1%</p>
+                                        <p className='font-medium text-sm opacity-60'>Reward Point Value</p>
+                                        <p className='font-semibold text-base'>{Data?.charges[0]?.rewardPointValue}%</p>
                                     </Td>
                                 </Tr>
                             </Tbody>

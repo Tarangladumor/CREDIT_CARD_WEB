@@ -1,37 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import IMG from "../../../assets/check_offers_img.png"
 import Image from "../../../assets/Card_img.png"
 import CardDetails from '../../common/CardDetails'
 import { useNavigate } from 'react-router-dom'
+import { fetchAllCard } from '../../../services/Operations/cardAPI'
 
-const cardData = [
-    {
-        bank: "Axis bank",
-        image: Image,
-        APR: 15.99,
-        title: "Rupay Credit card",
-        annualFees: 0,
-        rewards: "Earn 2% cashback onll purchases.",
-        reviews: [
-            "Great rewards, low fees, excellent customer service. Highly recommend!",
-            "Great rewards, low fees, excellent customer service. Highly recommend!",
-        ]
-    },
-    {
-        bank: "ICICI bank",
-        image: Image,
-        APR: 15.99,
-        title: "Rupay Credit card",
-        annualFees: 0,
-        rewards: "Earn 2% cashback onll purchases.",
-        reviews: [
-            "Great rewards, low fees, excellent customer service. Highly recommend!",
-            "Great rewards, low fees, excellent customer service. Highly recommend!",
-        ]
-    }
-]
 
 const Check_Offers = () => {
+
+    const [cards, setCards] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const cardData = await fetchAllCard()
+          setCards(cardData);
+        };
+    
+        fetchData();
+      }, []);
+
+      console.log(cards);
 
     const navigate = useNavigate()
     return (
@@ -66,7 +54,7 @@ const Check_Offers = () => {
             <div className='w-3/4 mx-auto mt-14'>
                 <div className='grid grid-cols-2 gap-y-16 gap-x-24'>
                     {
-                        cardData.map((Data, i) => (
+                        cards.slice(0,2).map((Data, i) => (
                             <CardDetails key={i} Data={Data} />
                         ))
                     }

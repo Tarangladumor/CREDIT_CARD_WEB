@@ -1,7 +1,7 @@
 import React from 'react'
 import FEECHARGES from '../../../assets/FeeCharges_img.png'
 
-const RewardPoints = () => {
+const RewardPoints = ({Data}) => {
     return (
         <div className='mt-10'>
 

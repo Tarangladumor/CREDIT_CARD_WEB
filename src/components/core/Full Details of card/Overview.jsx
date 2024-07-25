@@ -1,7 +1,9 @@
 import React from 'react'
 import FEECHARGES from '../../../assets/FeeCharges_img.png'
 
-const Overview = () => {
+const Overview = ({ Data }) => {
+
+    console.log("OverView......", Data);
     return (
         <div className='mt-20'>
             <header className='flex justify-start items-center gap-2 w-10/12 mx-auto mb-5'>
@@ -15,17 +17,17 @@ const Overview = () => {
 
                     <div className='flex gap-2'>
                         <p className='font-semibold text-xl'>Best for: </p>
-                        <p className='font-medium text-xl opacity-60'>Lifestyle</p>
+                        <p className='font-medium text-xl opacity-60'>{Data?.bestFor}</p>
                     </div>
 
                     <div className='flex gap-2'>
                         <p className='font-semibold text-xl'>Joining Fee: </p>
-                        <p className='font-medium text-xl opacity-60'>NIL</p>
+                        <p className='font-medium text-xl opacity-60'>{Data?.charges[0]?.joiningFee}</p>
                     </div>
 
                     <div className='flex gap-2'>
                         <p className='font-semibold text-xl'>Annual Fee:</p>
-                        <p className='font-medium text-xl opacity-60'>NIL</p>
+                        <p className='font-medium text-xl opacity-60'>{Data?.charges[0]?.annualFee}</p>
                     </div>
                 </div>
 
@@ -38,7 +40,11 @@ const Overview = () => {
 
                     <div className='flex gap-2'>
                         <p className='font-semibold text-xl'>Card Network: </p>
-                        <p className='font-medium text-xl opacity-60'>Rupay</p>
+                        {
+                            Data?.network.map((network, i) => (
+                                    <p className='font-medium text-xl opacity-60' key={i}>{network?.name}, </p>
+                            ))
+                        }
                     </div>
 
                 </div>
