@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CardSummary from './CardSummary'
 import IncludeSection from './IncludeSection'
 import Benefits from './Benefits'
@@ -9,6 +9,10 @@ import QuestionsSection from './QuestionsSection'
 import SimmilarCards from './SimmilarCards'
 
 const FullDetails = () => {
+
+  useEffect((
+    
+  ) => {},[])
   return (
     <div>
 

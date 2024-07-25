@@ -5,7 +5,7 @@ import { respond } from "../utils/response.js"
 export const addCharges = async(req,res) => {
     try{
 
-        const {joiningFee,annualFee,annualPercentageRate,addOnCardFee,minimumRepaymentAmount,cashWithdrawalFee,cashAdvanceLimit,cardReplacementFee,foreignTransactionFee,overLimitPenalty,fuelTransactionSurcharge, rewardPointValue,cardId} = req.body
+        const {joiningFee,annualFee,annualPercentageRate,addOnCardFee,minimumRepaymentAmount,cashWithdrawalFee,cashAdvanceLimit,cardReplacementFee,foreignTransactionFee,overLimitPenalty,fuelTransactionSurcharge, rewardPointValue,cardId,} = req.body
 
         if(!joiningFee||!annualFee||!annualPercentageRate||!addOnCardFee||!minimumRepaymentAmount||!cashWithdrawalFee||!cashAdvanceLimit||!cardReplacementFee||!foreignTransactionFee||!overLimitPenalty||!fuelTransactionSurcharge||! rewardPointValue || !cardId) {
             return respond(res,"all fields are required",500,false)

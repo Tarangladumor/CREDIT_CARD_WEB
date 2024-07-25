@@ -40,6 +40,9 @@ const chargesSchema = new mongoose.Schema({
     balanceBelow100: {
         type: Number
     },
+    balanceBelow500: {
+        type: Number
+    },
     balanceFrom0to500: {
         type: Number
     },
@@ -52,7 +55,7 @@ const chargesSchema = new mongoose.Schema({
     balanceFrom501to5000: {
         type: Number
     },
-    balanceFrom501to5000: {
+    balanceFrom5001to10000: {
         type: Number
     },
     balanceFrom5000to10000: {
@@ -65,6 +68,9 @@ const chargesSchema = new mongoose.Schema({
         type: Number
     },
     balanceMoreThan50000: {
+        type: Number
+    },
+    balanceMoreThan10000: {
         type: Number
     },
     anyAmountDue: {

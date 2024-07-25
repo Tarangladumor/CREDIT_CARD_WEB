@@ -1,10 +1,11 @@
 import express from 'express'
 import { createRating,getAllRating,getAverageRating } from '../controllers/RatingAndReview.js';
 import { createComment, deleteComment, editComment, getAllComments } from '../controllers/Comment.js';
-import { getAllCard } from '../controllers/Card.js';
+import { getAllCard, getOneCardDetails } from '../controllers/Card.js';
 import { getCardByBank } from '../controllers/Provider.js';
 import { getCardByNetwork } from '../controllers/Network.js';
 import { signupNewsletter } from '../controllers/Sunscriber.js';
+import { addNetwork, showAllNetwork } from "../controllers/Network.js"
 
 
 const router = express.Router()
@@ -23,8 +24,14 @@ router.get('/comments', getAllComments);
 router.get("/getAllCard",getAllCard)
 router.get("/getCardByBank",getCardByBank)
 router.get("/getCardByNetwork",getCardByNetwork)
+router.get("/getOneCardDetail",getOneCardDetails)
+router.get("/getCardByIncome",)
+router.get("/getCardByPrivilege",)
 
 router.post("/newsletter/subscriber",signupNewsletter)
+
+router.post("/addNetwork",addNetwork)
+router.get("/showAllNetwork",showAllNetwork)
 
 
 export default router;

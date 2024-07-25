@@ -14,7 +14,8 @@ export const addCard = async (req, res) => {
       cardName,
       description,
       type: _type,
-      benefits: _benefits,
+      includedBnefits: _includedBnefits,
+      notIncludedBnefits: _notIncludedBnefits,
       provider,
       network,
     } = req.body;
@@ -22,14 +23,16 @@ export const addCard = async (req, res) => {
     const image = req.files.cardImage;
 
     const type = JSON.parse(_type);
-    const benefits = JSON.parse(_benefits);
+    const includedBnefits = JSON.parse(_includedBnefits);
+    const notIncludedBnefits = JSON.parse(_notIncludedBnefits);
 
     if (
       !cardName ||
       !description ||
       !type.length ||
       !image ||
-      !benefits.length ||
+      !includedBnefits.length ||
+      !notIncludedBnefits.length ||
       !provider ||
       !network
     ) {
@@ -56,7 +59,8 @@ export const addCard = async (req, res) => {
       description,
       type,
       network: networkDetails.map((net) => net._id),
-      benefits,
+      includedBnefits,
+      notIncludedBnefits,
       provider: providerDetails._id,
       image: cardImage.secure_url,
     });
@@ -182,12 +186,51 @@ export const getAllCard = async(req,res) => {
     .populate("additionalBenefits")
     .populate("charges")
     .populate("faq")
+    .populate("rewards")
+    .populate("howToApply")
+    .populate("eligibility")
+    .populate("ratingAndReviews")
     .exec();
 
     return respond(res,"all card fetched successfully",200,true,AllCard)
   }catch(error) {
     console.log(error)
     return respond(res,"soemthing went wrong while getting all the card",500,false)
+  }
+}
+
+export const getCardByIncome = async(req,res) => {
+  try{
+    return respond(res,"all card fetched successfully by income",200,true)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting all the card by income",500,false)
+  }
+}
+
+export const getCardByPrivilege = async(req,res) => {
+  try{
+    return respond(res,"all card fetched successfully by privilege",200,true)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting all the card by privilege",500,false)
+  }
+}
+
+export const getOneCardDetails = async (req,res) => {
+  try{
+    const {cardId} = req.body
+
+    if(!cardId) {
+      return respond(res,"card id is not found",400,false)
+    }
+
+    const cardData = await Card.findById(cardId).populate("provider").populate("network").populate("charges").populate("faq").populate("rewards").populate("eligibility").populate("howToApply").populate("additionalBenefits").populate("comments").populate("ratingAndReviews").exec()
+
+    return respond(res,"card details fetched successfully",200,true,cardData)
+  }catch(error) {
+    console.log(error) 
+    return respond(res,"soemthing went wrong while getting card Details",500,false)
   }
 }
 
