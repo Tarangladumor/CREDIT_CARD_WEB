@@ -199,24 +199,6 @@ export const getAllCard = async(req,res) => {
   }
 }
 
-export const getCardByIncome = async(req,res) => {
-  try{
-    return respond(res,"all card fetched successfully by income",200,true)
-  }catch(error) {
-    console.log(error) 
-    return respond(res,"soemthing went wrong while getting all the card by income",500,false)
-  }
-}
-
-export const getCardByPrivilege = async(req,res) => {
-  try{
-    return respond(res,"all card fetched successfully by privilege",200,true)
-  }catch(error) {
-    console.log(error) 
-    return respond(res,"soemthing went wrong while getting all the card by privilege",500,false)
-  }
-}
-
 export const getOneCardDetails = async (req,res) => {
   try{
     const {cardId} = req.body

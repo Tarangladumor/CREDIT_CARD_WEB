@@ -193,6 +193,38 @@ const additionalBenefits = new mongoose.Schema({
       },
     },
   ],
+  entertainmentBenefit: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+      },
+      listData: [
+        {
+          type: String,
+        },
+      ],
+      note: {
+        type: String,
+      },
+    },
+  ],
+  insuranceBenefit: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+      },
+      listData: [
+        {
+          type: String,
+        },
+      ],
+      note: {
+        type: String,
+      },
+    },
+  ],
 });
 
 export const AdditionalBenefits = mongoose.model(

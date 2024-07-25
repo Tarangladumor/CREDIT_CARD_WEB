@@ -1,13 +1,12 @@
 import express from "express"
 import { addCharges, updateCharges } from "../controllers/Charges.js"
-import { addProvider, showAllProvider } from "../controllers/Provider.js"
+import { addProvider} from "../controllers/Provider.js"
 import { addCard, deleteCard,updateCard } from "../controllers/Card.js"
 import { addAdditionalBenefits, editAdditionalBenefits,getAllAdditionalBenefits ,deleteAdditionalBenefits} from '../controllers/AdditionalBenefit.js';
 import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"
 import { addEligibility, deleteEligibiity, updateEligibility } from "../controllers/Eligibility.js"
 import { addApply, deleteApply, updateApply } from "../controllers/Apply.js"
 import { addRewards, deleteRewards, updateRewards } from "../controllers/Reward.js"
-import { compareCards } from "../controllers/Comparison.js"
 
 
 const router = express.Router()
@@ -16,8 +15,9 @@ router.post("/addCharges",addCharges)
 router.post("/updateCharges",updateCharges)
 
 router.post("/addProvider",addProvider)
-router.get("/showAllProvider",showAllProvider)
-
+router.post("/addNetwork",addNetwork)
+router.post("/addIncome",addIncome)
+router.post("/addPrivilege",addPrivilege)
 
 router.post("/addFaq",createFaq)
 router.put("/editFaq",updateFaq)
