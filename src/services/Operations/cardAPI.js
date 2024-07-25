@@ -3,7 +3,7 @@ import toast from "react-hot-toast"
 import { cardEndpoints } from "../apis"
 
 const { GET_ALL_CARDS, GET_ALL_CARDS_BY_BANK, GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS, GET_ALL_CARD_BY_PRIVILEGE, GET_ALL_CARD_BY_INCOME,GET_ALL_INCOME,
-    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE
+    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE,CARD_COMPARISON
 } = cardEndpoints
 
 export const fetchAllCard = async () => {
@@ -156,5 +156,22 @@ export const fetchAllPrivilege = async () => {
     } catch (error) {
         console.log("GET_ALL_PRIVILEGE............", error)
         toast.error(error.message)
+    }
+}
+
+export const comparison = async(cardId1,cardId2)=>{
+    let res = [];
+    try{
+       const response = await apiConnector("POST",CARD_COMPARISON,{
+        cardId1,cardId2
+       });
+       console.log("CARD_COMPARISON_RESPONSE..........",response)
+       if(!response?.data?.success) {
+        throw new Error("Could Not Fetch All Privilege")
+       }
+       res = response?.data?.data;
+    }catch(error){
+        console.log("COMPARE_CARDS_ERROR ...........",error);
+        toast.error(error.message);
     }
 }

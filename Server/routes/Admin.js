@@ -46,7 +46,7 @@ router.post("/addReward",addRewards)
 router.delete("/deleteReward",deleteRewards)
 router.put("/updateReward",updateRewards)
 
-//compare cards
+
 
 
 

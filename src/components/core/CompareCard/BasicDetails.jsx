@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import img from "../../../assets/Visa.png"
 import img1 from "../../../assets/right.png"
 import img2 from "../../../assets/wrong.png"

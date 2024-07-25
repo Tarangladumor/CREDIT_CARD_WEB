@@ -3,7 +3,8 @@ import { respond } from '../utils/response.js';
 
 export const compareCards = async(req,res)=>{
     try{
-        const { cardId1, cardId2 } = req.params;
+
+        const { cardId1, cardId2 } = req.body;
 
         const card1 = await Card.findById(cardId1)
           .populate('charges')
