@@ -260,7 +260,7 @@ export const getOneCardDetails = async (req, res) => {
   try {
     const { cardId } = req.query;
 
-    console.log(req.query);
+    // console.log(req.query);
 
     if (!cardId) {
       return respond(res, "Card ID is not found", 400, false);
@@ -280,7 +280,28 @@ export const getOneCardDetails = async (req, res) => {
       .populate("bestFor")
       .exec();
 
-    return respond(res, "Card details fetched successfully", 200, true, cardData);
+      const bestForIds = cardData.bestFor.card.filter(id => id.toString() !== cardId);
+
+      const similarCards = await Card.find({
+        _id: { $in: bestForIds }
+      }).limit(2)
+      .populate("provider")
+      .populate("network")
+      .populate("charges")
+      .populate("faq")
+      .populate("rewards")
+      .populate("eligibility")
+      .populate("howToApply")
+      .populate("additionalBenefits")
+      .populate("comments")
+      .populate("ratingAndReviews")
+      .populate("bestFor")
+      .exec();
+  
+      // console.log("Similar Cards:", similarCards);
+      
+    return respond(res, "Card details fetched successfully", 200, true,{cardData,similarCards});
+    
   } catch (error) {
     console.log(error);
     return respond(res, "Something went wrong while getting card details", 500, false);
