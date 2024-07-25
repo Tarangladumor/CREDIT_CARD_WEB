@@ -9,6 +9,7 @@ import CardNetwork from './Pages/CardNetwork';
 import CardIncome from './Pages/CardIncom';
 import CardsByNetwork from './components/core/CardNetwork/CardsByNetwork';
 import CardsByBank from './components/core/CardsByBank/CardsByBank';
+import CardByPrivilege from './Pages/CardByPrivilege';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path='/cardByNetwork' element={<CardNetwork/>}/>
 
         <Route path='/cardByIncome' element={<CardIncome/>}/>
+
+        <Route path='/cardByPrivilege' element={<CardByPrivilege/>}/>
 
         <Route path='/cardByNetwork/:name/:id' element={<CardsByNetwork/>}/>
 

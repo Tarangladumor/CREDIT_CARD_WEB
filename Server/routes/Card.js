@@ -2,7 +2,7 @@ import express from 'express'
 import { createRating,getAllRating,getAverageRating } from '../controllers/RatingAndReview.js';
 import { createComment, deleteComment, editComment, getAllComments } from '../controllers/Comment.js';
 import { getAllCard,getOneCardDetails } from '../controllers/Card.js';
-import { getCardByBank, showAllProvider } from '../controllers/Provider.js';
+import { addProvider, getCardByBank, showAllProvider } from '../controllers/Provider.js';
 import { getCardByNetwork } from '../controllers/Network.js';
 import { signupNewsletter } from '../controllers/Sunscriber.js';
 import {showAllNetwork } from "../controllers/Network.js"

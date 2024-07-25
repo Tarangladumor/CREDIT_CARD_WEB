@@ -1,9 +1,6 @@
 import express from "express"
 import { addCharges, updateCharges } from "../controllers/Charges.js"
-<<<<<<< HEAD
-=======
 import { addProvider} from "../controllers/Provider.js"
->>>>>>> 70a87e6ec8a300f739a67a244e2567f1968fd8d9
 import { addCard, deleteCard,updateCard } from "../controllers/Card.js"
 import { addAdditionalBenefits, editAdditionalBenefits,getAllAdditionalBenefits ,deleteAdditionalBenefits} from '../controllers/AdditionalBenefit.js';
 import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"

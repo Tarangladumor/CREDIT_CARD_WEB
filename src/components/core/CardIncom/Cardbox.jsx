@@ -2,43 +2,8 @@ import React, { useEffect, useState } from 'react'
 import upto from "../../../assets/upto.png"
 
 import CardIncomBox from './CardIncomBox'
-import { fetchAllCardByIncome } from '../../../services/Operations/cardAPI'
+import { fetchAllIncome } from '../../../services/Operations/cardAPI'
 
-
-const card = [
-    {
-    img:upto,
-    text:"Up to 25k"
-    },
-    {
-        img:upto,
-        text:"25k to 50k"
-    }
-
-]
-
-const card_1=[
-    {
-        img:upto,
-        text:"Up to 25k"
-    },
-    {
-        img:upto,
-        text:"25k to 50k"
-    },
-    {
-        img:upto,
-        text:"50k to 1Lakh"
-    },
-    {
-        img:upto,
-        text:"50k to 1.5L"
-    },
-    {
-        img:upto,
-        text:"Above 1.5L"
-    },
-]
 
 const Cardbox = () => {
 
@@ -46,12 +11,23 @@ const Cardbox = () => {
 
     useEffect(() => {
         const fetchCard = async() => {
-            const data = await
+            const data = await fetchAllIncome();
+            setCards(data);
         }
-    })
+
+        fetchCard();
+    },[]);
+
+    console.log("CARDS",cards);
+
+    const card = [
+        cards[0],
+        cards[1]
+    ]
+
   return (
-    <div className='bg-[#f7f5fd] p-10'>
-      <div className=''>
+    <div className='bg-[#f7f5fd] p-10 '>
+      <div className='w-10/12 mx-auto'>
         <div className='text-[#159a9c] text-xl w-11/12 mx-auto '>
             <p>Most opted Card based on Income</p>
             <div className=' w-[20%] mt-[-35px] ' >
@@ -70,7 +46,7 @@ const Cardbox = () => {
         </div>
       </div>
 
-      <div className='mt-10'>
+      <div className='mt-10 w-10/12 mx-auto'>
         <div className='text-[#159a9c] text-xl w-11/12 mx-auto '>
                 <p>All Card networks</p>
                 <div className=' w-[10%] mt-[-35px] ' >
@@ -81,7 +57,7 @@ const Cardbox = () => {
             <div className='grid grid-cols-2 gap-x-24 gap-y-16'>
 
                 {
-                    card_1.map((data,i) =>(
+                    cards.map((data,i) =>(
                         <CardIncomBox  key={i} data={data}/>
                     ))
                 }

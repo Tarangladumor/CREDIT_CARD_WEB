@@ -2,7 +2,9 @@ import { apiConnector } from "../apiconnector"
 import toast from "react-hot-toast"
 import { cardEndpoints } from "../apis"
 
-const {GET_ALL_CARDS,GET_ALL_CARDS_BY_BANK,GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS,GET_ALL_CARD_BY_PRIVILEGE,GET_ALL_CARD_BY_INCOME,GET_ALL_INCOME,GET_ALL_PRIVILEGE} = cardEndpoints
+const { GET_ALL_CARDS, GET_ALL_CARDS_BY_BANK, GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS, GET_ALL_CARD_BY_PRIVILEGE, GET_ALL_CARD_BY_INCOME,GET_ALL_INCOME,
+    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE
+} = cardEndpoints
 
 export const fetchAllCard = async () => {
     let result = []
@@ -88,27 +90,27 @@ export const fetchAllCardByPrivilege = async () => {
     return result
 }
 
-export const fetchAllIncome = async () => {
+export const fetchAllProvider = async () => {
     let res = [];
     try {
-        const response = await apiConnector("GET",GET_ALL_INCOME)
-        console.log("GET_ALL_INCOME API RESPONSE............", response)
-        if(!response?.data?.success) {
-            throw new Error("Could Not Fetch All Income")
+        const response = await apiConnector("GET", GET_ALL_PROVIDER)
+        console.log("GET_ALL_PROVIDER API RESPONSE............", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Fetch All Provider")
         }
         res = response?.data?.data
         return res;
     } catch (error) {
-        console.log("GET_ALL_INCOME............", error)
+        console.log("GET_ALL_PROVIDER............", error)
         toast.error(error.message)
     }
 }
 
 export const fetchOneCardDetails = async (cardId) => {
     let result = null
-    console.log("CARDID..........",cardId);
+    console.log("CARDID..........", cardId);
     try {
-        const response = await apiConnector("GET", GET_ONE_CARD_DETAILS,null, null, { cardId })
+        const response = await apiConnector("GET", GET_ONE_CARD_DETAILS, null, null, { cardId })
         console.log("GET_ONE_CARD_DETAILS API RESPONSE............", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch one Card Detail")
@@ -122,6 +124,23 @@ export const fetchOneCardDetails = async (cardId) => {
         toast.error(error.message)
     }
     return result
+}
+
+
+export const fetchAllIncome = async () => {
+    let res = [];
+    try {
+        const response = await apiConnector("GET", GET_ALL_INCOME)
+        console.log("GET_ALL_INCOME API RESPONSE............", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Fetch All Income")
+        }
+        res = response?.data?.data
+        return res;
+    } catch (error) {
+        console.log("GET_ALL_INCOME............", error)
+        toast.error(error.message)
+    }
 }
 
 export const fetchAllPrivilege = async () => {
@@ -139,6 +158,3 @@ export const fetchAllPrivilege = async () => {
         toast.error(error.message)
     }
 }
-
-
-
