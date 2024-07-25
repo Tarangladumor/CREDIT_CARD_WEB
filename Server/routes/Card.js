@@ -38,4 +38,5 @@ router.get("/showAllNetwork",showAllNetwork)
 router.get("/showAllIncome",showAllIncome)
 router.get("/showAllPrivilege",showAllPrivilege)
 
+
 export default router;

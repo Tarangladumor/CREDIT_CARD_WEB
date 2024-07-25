@@ -7,9 +7,7 @@ import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"
 import { addEligibility, deleteEligibiity, updateEligibility } from "../controllers/Eligibility.js"
 import { addApply, deleteApply, updateApply } from "../controllers/Apply.js"
 import { addRewards, deleteRewards, updateRewards } from "../controllers/Reward.js"
-import { addNetwork } from "../controllers/Network.js";
-import { addIncome } from "../controllers/Income.js";
-import { addPrivilege } from "../controllers/Privilege.js";
+
 
 const router = express.Router()
 
@@ -45,5 +43,9 @@ router.put("/updateHowToApply",updateApply)
 router.post("/addReward",addRewards)
 router.delete("/deleteReward",deleteRewards)
 router.put("/updateReward",updateRewards)
+
+//compare cards
+router.get('/compare/:cardId1/:cardId2', compareCards);
+
 
 export default router;
