@@ -84,6 +84,12 @@ const cardSchema = new mongoose.Schema({
             ref: "Eligibility"
         }
     ],
+    bestFor: {
+        type: String
+    },
+    income: {
+        type: String,
+    },
     createdAt: {
         type: Date,
         default:Date.now,
