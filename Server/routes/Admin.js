@@ -5,6 +5,7 @@ import { addNetwork, showAllNetwork } from "../controllers/Network.js"
 import { addCard, deleteCard,updateCard } from "../controllers/Card.js"
 import { addAdditionalBenefits, editAdditionalBenefits,getAllAdditionalBenefits ,deleteAdditionalBenefits} from '../controllers/AdditionalBenefit.js';
 import { createFaq, deleteFaq, updateFaq } from "../controllers/Faq.js"
+import { compareCards } from "../controllers/Comparison.js"
 
 const router = express.Router()
 
@@ -30,6 +31,7 @@ router.post("/addCard",addCard)
 router.put("/editCard",updateCard)
 router.delete("/deleteCard",deleteCard)
 
-
+//compare cards
+router.get('/compare/:cardId1/:cardId2', compareCards);
 
 export default router;

@@ -26,4 +26,5 @@ router.get("/getCardByNetwork",getCardByNetwork)
 
 router.post("/newsletter/subscriber",signupNewsletter)
 
+
 export default router;
