@@ -56,15 +56,15 @@ export const fetchAllCardByNetwork = async ({ networkId }) => {
     return result;
 };
 
-export const fetchAllCardByIncome = async () => {
+export const fetchAllCardByIncome = async ({incomeId}) => {
     let result = []
     try {
-        const response = await apiConnector("GET", GET_ALL_CARD_BY_INCOME)
+        const response = await apiConnector("GET", GET_ALL_CARD_BY_INCOME, null, null, {incomeId})
         console.log("GET_ALL_CARD_BY_INCOME API RESPONSE............", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by income")
         }
-        result = response?.data?.data
+        result = response?.data?.data?.card
     }
     catch (error) {
         console.log("GET_ALL_CARD_BY_INCOME API ERROR............", error)
@@ -73,15 +73,15 @@ export const fetchAllCardByIncome = async () => {
     return result
 }
 
-export const fetchAllCardByPrivilege = async () => {
+export const fetchAllCardByPrivilege = async ({privilegeId}) => {
     let result = []
     try {
-        const response = await apiConnector("GET", GET_ALL_CARD_BY_PRIVILEGE)
+        const response = await apiConnector("GET", GET_ALL_CARD_BY_PRIVILEGE, null, null, {privilegeId})
         console.log("GET_ALL_CARD_BY_PRIVILEGE API RESPONSE............", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by privilege")
         }
-        result = response?.data?.data
+        result = response?.data?.data?.card
     }
     catch (error) {
         console.log("GET_ALL_CARD_BY_PRIVILEGE API ERROR............", error)

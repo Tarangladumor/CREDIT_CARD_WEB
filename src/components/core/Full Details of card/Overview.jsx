@@ -17,7 +17,7 @@ const Overview = ({ Data }) => {
 
                     <div className='flex gap-2'>
                         <p className='font-semibold text-xl'>Best for: </p>
-                        <p className='font-medium text-xl opacity-60'>{Data?.bestFor}</p>
+                        <p className='font-medium text-xl opacity-60'>{Data?.bestFor?.name}</p>
                     </div>
 
                     <div className='flex gap-2'>

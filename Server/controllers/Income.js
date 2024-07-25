@@ -64,7 +64,11 @@ export const getCardByIncome = async(req,res) => {
         return respond(res,"income id is not found",400,false)
       }
   
-      const cardByIncome = await Income.findById(incomeId).populate("card").exec();
+      const cardByIncome = await Income.findById(incomeId).populate({
+        path: "card",
+        populate: "network",
+        populate: "charges"
+      }).exec();
   
       if(!cardByIncome) {
         return respond(res,"privilege is not found",400,false)
