@@ -33,4 +33,5 @@ router.post("/newsletter/subscriber",signupNewsletter)
 router.post("/addNetwork",addNetwork)
 router.get("/showAllNetwork",showAllNetwork)
 
+
 export default router;

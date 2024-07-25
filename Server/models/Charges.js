@@ -76,6 +76,9 @@ const chargesSchema = new mongoose.Schema({
     anyAmountDue: {
         type: String
     },
+    APR: {
+        type: Number
+    },
     // card: [
     //     {
     //         type:mongoose.Schema.Types.ObjectId,
