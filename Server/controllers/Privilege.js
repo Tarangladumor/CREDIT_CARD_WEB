@@ -1,7 +1,6 @@
 import { Privilege } from "../models/Privilege.js";
 import { respond } from "../utils/response.js";
 import {uploadImageCloudinary} from "../utils/imageUploader.js"
-import { Card } from "../models/Card.js";
 
 export const addPrivilege = async (req, res) => {
   try {
@@ -59,21 +58,21 @@ export const showAllPrivilege = async (req, res) => {
 
 export const getCardByPrivilege = async(req,res) => {
     try{
-      const { bestFor } = req.query; 
+      const {privilegeId} = req.query
   
-    if (!bestFor) {
-      return respond(res, "Please provide a valid 'bestFor' value", 400, false);
-    }
-  
-     const cards = await Card.find({ bestFor }); 
-  
-      if (!cards.length) {
-        return respond(res, "No cards found for the given privilege", 404, false);
+      if(!privilegeId) {
+        return respond(res,"privilege id is not found",400,false)
       }
   
-      return respond(res,"all card fetched successfully by privilege",200,true,cards)
+      const cardByPrivilege = await Privilege.findById(privilegeId).populate("card").exec();
+  
+      if(!cardByPrivilege) {
+        return respond(res,"privilege is not found",400,false)
+      }
+  
+      return respond(res,"all card fetched by privilege successfully",200,true,cardByPrivilege)
     }catch(error) {
-      console.log(error) 
-      return respond(res,"soemthing went wrong while getting all the card by privilege",500,false)
+      console.log(error)
+      return respond(res,"something went wrong while geting the card by privilege",500,false)
     }
   }

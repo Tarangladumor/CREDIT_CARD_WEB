@@ -85,10 +85,12 @@ const cardSchema = new mongoose.Schema({
         }
     ],
     bestFor: {
-        type: String
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "Privilege"
     },
     income: {
-        type: String,
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "Income"
     },
     createdAt: {
         type: Date,

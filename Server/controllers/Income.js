@@ -1,7 +1,6 @@
 import { respond } from "../utils/response.js";
 import {uploadImageCloudinary} from "../utils/imageUploader.js"
 import { Income } from "../models/Income.js";
-import { Card } from "../models/Card.js";
 
 export const addIncome = async (req, res) => {
   try {
@@ -59,36 +58,21 @@ export const showAllIncome = async (req, res) => {
 
 export const getCardByIncome = async(req,res) => {
     try{
-      const { income } = req.query; // Get the income value from the query parameter
+      const {incomeId} = req.query
   
-    if (!income) {
-      return respond(res, "Please provide a valid 'income' value", 400, false);
-    }
-  
-    let query;
-    const incomeValue = parseInt(income, 10);
-  
-    if (incomeValue <= 25000) {
-      query = { income: { $lte: 25000 } };
-    } else if (incomeValue > 25000 && incomeValue <= 50000) {
-      query = { income: { $gt: 25000, $lte: 50000 } };
-    } else if (incomeValue > 50000 && incomeValue <= 100000) {
-      query = { income: { $gt: 50000, $lte: 100000 } };
-    } else if (incomeValue > 100000 && incomeValue <= 150000) {
-      query = { income: { $gt: 100000, $lte: 150000 } };
-    } else {
-      query = { income: { $gt: 150000 } };
-    }
-  
-      const cards = await Card.find(query);
-  
-      if (!cards.length) {
-        return respond(res, "No cards found for the given income range", 404, false);
+      if(!incomeId) {
+        return respond(res,"income id is not found",400,false)
       }
   
-      return respond(res,"all card fetched successfully by income",200,true,cards)
+      const cardByIncome = await Income.findById(incomeId).populate("card").exec();
+  
+      if(!cardByIncome) {
+        return respond(res,"privilege is not found",400,false)
+      }
+  
+      return respond(res,"all card fetched by Income successfully",200,true,cardByIncome)
     }catch(error) {
-      console.log(error) 
-      return respond(res,"soemthing went wrong while getting all the card by income",500,false)
+      console.log(error)
+      return respond(res,"something went wrong while geting the card by Income",500,false)
     }
   }
