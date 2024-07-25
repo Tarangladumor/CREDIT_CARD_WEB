@@ -1,12 +1,14 @@
 import express from 'express'
 import { createRating,getAllRating,getAverageRating } from '../controllers/RatingAndReview.js';
 import { createComment, deleteComment, editComment, getAllComments } from '../controllers/Comment.js';
-import { getAllCard, getOneCardDetails } from '../controllers/Card.js';
-import { getCardByBank } from '../controllers/Provider.js';
+import { getAllCard,getOneCardDetails } from '../controllers/Card.js';
+import { getCardByBank, showAllProvider } from '../controllers/Provider.js';
 import { getCardByNetwork } from '../controllers/Network.js';
 import { signupNewsletter } from '../controllers/Sunscriber.js';
-import { addNetwork, showAllNetwork } from "../controllers/Network.js"
-import { addProvider, showAllProvider } from "../controllers/Provider.js"
+import {showAllNetwork } from "../controllers/Network.js"
+import { getCardByIncome, showAllIncome } from '../controllers/Income.js';
+import { getCardByPrivilege, showAllPrivilege } from '../controllers/Privilege.js';
+
 
 const router = express.Router()
 
@@ -25,13 +27,17 @@ router.get("/getAllCard",getAllCard)
 router.get("/getCardByBank",getCardByBank)
 router.get("/getCardByNetwork",getCardByNetwork)
 router.get("/getOneCardDetail",getOneCardDetails)
-router.get("/getCardByIncome",)
-router.get("/getCardByPrivilege",)
+router.get("/getCardByIncome",getCardByIncome)
+router.get("/getCardByPrivilege",getCardByPrivilege)
 
 router.post("/newsletter/subscriber",signupNewsletter)
 
-router.post("/addNetwork",addNetwork)
+
+router.get("/showAllProvider",showAllProvider)
 router.get("/showAllNetwork",showAllNetwork)
+router.get("/showAllIncome",showAllIncome)
+router.get("/showAllPrivilege",showAllPrivilege)
+
 
 router.post("/addProvider",addProvider)
 router.get("/showAllProvider",showAllProvider)
