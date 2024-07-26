@@ -29,7 +29,7 @@ const Page_2 = () => {
               <div className="border-[#159A9C] border-b border-[5px] w-[70%] mx-auto"></div>
             </div>
           </div>
-          <div>
+          <div className="flex flex-col gap-2">
             <p className="font-black text-6xl mt-6">Find great deals here!</p>
             <p className="font-medium text-3xl max-w-[85%] opacity-50">
               Discover exclusive deals and special discounts available for a limited time.

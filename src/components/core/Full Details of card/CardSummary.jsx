@@ -18,13 +18,13 @@ const CardSummary = ({ Data }) => {
 
             <div className='flex justify-center items-center gap-5'>
                 <div className=' min-w-[20%]'>
-                    <img src={Data?.image} alt="Card" />
+                    <img src={Data?.cardData?.image} alt="Card" />
                 </div>
 
                 <div>
 
                     <div className='flex justify-between items-center mb-3'>
-                        <h2 className='font-semibold text-3xl'>{Data?.cardName}</h2>
+                        <h2 className='font-semibold text-3xl'>{Data?.cardData?.cardName}</h2>
 
                         <div className='flex gap-x-3 items-center'>
                             <img src={VISA} className='h-5' alt="Visa" />
@@ -34,7 +34,7 @@ const CardSummary = ({ Data }) => {
 
                     <div className='text-base font-normal'>
                         <p>
-                            {showFull ? Data?.description : truncateDescription(Data?.description)}
+                            {showFull ? Data?.cardData?.description : truncateDescription(Data?.cardData?.description)}
                             <span
                                 className='text-[#159A9C] cursor-pointer'
                                 onClick={() => setShowFull(!showFull)}

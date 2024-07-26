@@ -28,7 +28,7 @@ const IncludeSection = ({Data}) => {
                     <h1 className=' text-3xl font-semibold mb-4'>What’s included?</h1>
 
                     {
-                        Data?.includedBnefits.map((item, index) => (
+                        Data?.cardData?.includedBnefits.map((item, index) => (
                             <div key={index} className='flex gap-x-1 items-center ml-10'>
                                 <img src={TRUEIMG} className=' h-12 w-12' />
                                 <p className=' font-medium text-2xl'>{item}</p>
@@ -43,7 +43,7 @@ const IncludeSection = ({Data}) => {
                     <h1 className=' text-3xl font-semibold mb-4'>What’s not included?</h1>
 
                     {
-                        Data?.notIncludedBnefits.map((item, index) => (
+                        Data?.cardData?.notIncludedBnefits.map((item, index) => (
                             <div key={index} className='flex gap-x-1 items-center ml-10'>
                                 <img src={FALSEIMG} className=' h-12 w-12' />
                                 <p className='font-medium text-2xl'>{item}</p>

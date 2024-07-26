@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import LIMITED from "../../assets/limited_offer_img.png";
 import ReviewImg from "../../assets/home section img2.jpg";
 import { Link } from "react-router-dom";
+import ReviewCarousel from "./ReviewCarousel";
 
 const CardDetails = ({ Data }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -88,15 +89,20 @@ const CardDetails = ({ Data }) => {
             <div>
               <p>See what our top customer has to say?</p>
               {/* {Data?.ratingAndReviews.map((review, index) => (
-                <div key={index} className="flex gap-1">
-                  <img
+                <>
+                  <div key={index} className="flex gap-1 items-center">
+                    <img
                     src={ReviewImg}
                     alt="review image"
-                    className="w-5 h-5 aspect-square rounded-full"
+                    className="w-10 h-10 aspect-square rounded-full"
                   />
-                  <p className="text-xs opacity-75">{review}</p>
-                </div>
+                    <h3 className=" font-semibold">{review?.Author}</h3>
+                  </div>
+                  <p className="text-xs opacity-75">{review?.description}</p>
+                </>
+
               ))} */}
+              <ReviewCarousel reviews={Data?.ratingAndReviews} />
 
               <div className="flex gap-5 mt-5">
                 <button className="bg-[#F77F00] text-base font-semibold px-5 py-2 rounded-full text-white shadow-[0px_30px_35px_10px_#00000060]">

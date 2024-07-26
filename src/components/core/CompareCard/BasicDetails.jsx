@@ -1,101 +1,39 @@
-import React, { useEffect } from 'react'
-import img from "../../../assets/Visa.png"
-import img1 from "../../../assets/right.png"
-import img2 from "../../../assets/wrong.png"
-import Table from './Table'
-import Table_1 from './Table_1'
-import Table_3 from './Table_3'
-import Table_4 from './Table_4'
-import CardCharges from './CardCharges'
-import FrequentlyAskQue from './FrequentlyAskQue'
-import TermsCondition from '../../common/TermsCondition'
+import React from 'react';
+import { Table, Tbody, Thead, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
-const cardType = [
-    {
-        cardType:"Regular",
-        networkType:img,
-        bestFor:"lifestyle"
-    }
-]
+const BasicDetails = ({ card1, selectedCard }) => {
 
-const creditCardRating =[
-    {
-        usabilityRating:"abc",
-        customerRating:"abc"
-    }
-]
+    console.log("HIIIIIIIIIII", card1);
 
-const feature = [
-    {
-        diningBenefits:img1,
-        travelBenifits:img1,
-        shoppingBenifits:img1,
-        insuranceBuying:img2,
-        intrestFreePeriod:img1,
-        milestone:img2,
-    }
-]
+    const renderNetwork = (networks) => (
+        networks?.map((item, i) => <p key={i}>{item?.name}</p>)
+    );
 
- const cardCharges = [
-    {
-        anualFees:"Free",
-        joingFrees:"Free",
-        apr:"42%",
-        addOnCardFree:"Free",
-        minimumRePayment:"5%",
-        cashAdvance:"NA"
-    }
- ]
-
-const BasicDetails = () => {
-  return (
-    <div>
-
-    
-    <div className='w-11/12 mx-auto'>
-    <div>
-    {
-        cardType.map((Data,i) => (
-            <Table key={i} Data={Data}/>
-        ))
-    }
-    </div>
-
-    <div>
-        {
-            creditCardRating.map((item,i) => (
-                <Table_1 key={i} item={item} />
-            ))
-        }
-    </div>
-
-    <div>
-        {
-            feature.map((feature,i)=>(
-                <Table_3 key={i} feature={feature} />
-            ))
-        }
-    </div>
-
-    <div>
-        {
-            cardCharges.map((card,i) => (
-                <Table_4 key={i} card={card} />
-            ))
-        }
-    </div>
-    <div>
-        <CardCharges/>
-    </div>
-    <div>
-        <FrequentlyAskQue/>
-    </div>
-   
-
-    </div>
-    <TermsCondition/>
-    </div>
-  )
+    return (
+        <div className='w-11/12 mx-auto mt-20'>
+            <Table className="table-striped text-2xl w-full">
+                <Thead className="bg-[#159A9C]">
+                    <Tr>
+                        <Th colSpan="3" className="text-center py-5">Basic Details</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {[
+                        { label: 'Card Type', cardKey: 'type', render: (data) => data?.[0] },
+                        { label: 'Network Type', cardKey: 'network', render: renderNetwork },
+                        { label: 'Best For', cardKey: 'bestFor', render: (data) => data?.name },
+                    ].map((detail, index) => (
+                        <Tr key={index}>
+                            <Td className='py-5 px-5 opacity-50 font-medium w-1/3'>{detail.label}</Td>
+                            <Td className='py-5 px-5 opacity-75 font-bold text-center w-1/3'>{detail.render(card1?.cardData?.[detail.cardKey])}</Td>
+                            <Td className='py-5 px-5 opacity-75 font-bold text-center w-1/3'>{detail.render(selectedCard?.cardData?.[detail.cardKey])}</Td>
+                        </Tr>
+                    ))}
+                </Tbody>
+            </Table>
+        </div>
+    );
 }
 
-export default BasicDetails
+export default BasicDetails;

@@ -27,7 +27,7 @@ function App() {
 
         <Route path='/fulldetailsofcard/:id' element={<FullDetailsOfCard/>}/>
 
-        <Route path='/cardComparison' element={<CompareCard/>}/> 
+        <Route path='/cardComparison/:id' element={<CompareCard/>}/> 
 
         <Route path='/cardByNetwork' element={<CardNetwork/>}/>
 

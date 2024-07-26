@@ -9,7 +9,7 @@ import IMG2 from '../../../assets/Benefits_img2.png';
 
 const Benefits = ({ Data }) => {
     
-    const benefits = Data?.additionalBenefits[0] || {};
+    const benefits = Data?.cardData?.additionalBenefits[0] || {};
 
     return (
         <div className='mb-20'>

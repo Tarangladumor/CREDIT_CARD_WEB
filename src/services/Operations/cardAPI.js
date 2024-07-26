@@ -170,6 +170,8 @@ export const comparison = async(cardId1,cardId2)=>{
         throw new Error("Could Not Fetch All Privilege")
        }
        res = response?.data?.data;
+
+       return res;
     }catch(error){
         console.log("COMPARE_CARDS_ERROR ...........",error);
         toast.error(error.message);
