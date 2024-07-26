@@ -115,13 +115,13 @@ const Categorized_Cards = () => {
                   <SwiperSlide>
                     <div className='bg-[#DEEFE7] rounded-3xl '>
                       <div className=' w-[80%] mx-auto py-7 flex flex-col gap-y-1 '>
-                        <h2 className=' text-3xl text-[#002333] opacity-30 font-bold'>{card.name}</h2>
+                        <h2 className=' text-3xl text-[#002333] opacity-80 font-bold'>{card.name}</h2>
 
                         <p className=' text-xs font-medium'>{card.card.length}+ Cards includes Offers</p>
 
                         <p className=' text-xs font-medium'>{card.card.length}k has purchased in last 1 month</p>
 
-                        <img alt='card Image' src={card.image} className='flex justify-center items-center h-[200px] w-[200px] py-5' />
+                        <img alt='card Image' src={CARD_IMAGES} className='flex justify-center items-center h-[150px] w-[180px] py-5' />
 
                         <div className='flex justify-center'>
                           <Link to={`/cardByBank/${card.name}/${card._id}`}>

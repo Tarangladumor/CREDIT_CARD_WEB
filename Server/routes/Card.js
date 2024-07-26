@@ -31,8 +31,7 @@ router.get("/getOneCardDetail",getOneCardDetails)
 router.get("/getCardByIncome",getCardByIncome)
 router.get("/getCardByPrivilege",getCardByPrivilege)
 
-router.post("/newsletter/subscriber",signupNewsletter)
-
+router.post("/newsletter/signup",signupNewsletter)
 
 router.get("/showAllProvider",showAllProvider)
 router.get("/showAllNetwork",showAllNetwork)
