@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useEffect} from 'react'
 import FindGreatDeal from '../components/common/FindGreatDeal'
 import img from "../assets/doubleCard.png"
 import Section_1 from '../components/core/CompareCard/Section_1'
@@ -19,6 +20,9 @@ const CompareCard = () => {
   const [card1, setCard1] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
+  }, []);
   return (
     <div>
       <FindGreatDeal img={img} heading={"Compare the Cards!"} desc={"Compare your cards to get better understanding and deals."} />

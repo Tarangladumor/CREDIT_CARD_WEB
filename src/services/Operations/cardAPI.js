@@ -3,7 +3,7 @@ import toast from "react-hot-toast"
 import { cardEndpoints } from "../apis"
 
 const { GET_ALL_CARDS, GET_ALL_CARDS_BY_BANK, GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS, GET_ALL_CARD_BY_PRIVILEGE, GET_ALL_CARD_BY_INCOME,GET_ALL_INCOME,
-    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE,CARD_COMPARISON
+    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE,CARD_COMPARISON,ADD_COMMENT
 } = cardEndpoints
 
 export const fetchAllCard = async () => {
@@ -174,6 +174,21 @@ export const comparison = async(cardId1,cardId2)=>{
        return res;
     }catch(error){
         console.log("COMPARE_CARDS_ERROR ...........",error);
+        toast.error(error.message);
+    }
+}
+
+export const addComment = async(data)=>{
+    let res = [];
+    try{
+       const response = await apiConnector("POST",ADD_COMMENT,data);
+       console.log("ADD_COMMENT_RESPONSE..........",response)
+       if(!response?.data?.success) {
+        throw new Error("Could Not Send Comment")
+       }
+       res = response?.data?.data;
+    }catch(error){
+        console.log("ADD_COMMENT_ERROR ...........",error);
         toast.error(error.message);
     }
 }
