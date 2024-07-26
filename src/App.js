@@ -10,6 +10,8 @@ import CardIncome from './Pages/CardIncom';
 import CardsByNetwork from './components/core/CardNetwork/CardsByNetwork';
 import CardsByBank from './components/core/CardsByBank/CardsByBank';
 import CardByPrivilege from './Pages/CardByPrivilege';
+import CardsByIncome from './components/core/CardIncom/CardsByIncome';
+import CardsByPrivilege from './components/core/CardByPrivilege/CardsByPrivilege';
 
 function App() {
   return (
@@ -36,6 +38,10 @@ function App() {
         <Route path='/cardByNetwork/:name/:id' element={<CardsByNetwork/>}/>
 
         <Route path='/cardByBank/:name/:id' element={<CardsByBank/>}/>
+
+        <Route path='/cardByIncome/:name/:id' element={<CardsByIncome/>}/>
+
+        <Route path='/:name/:id' element={<CardsByPrivilege/>}/>
         
       </Routes>
 

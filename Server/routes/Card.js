@@ -38,7 +38,7 @@ router.get("/showAllNetwork",showAllNetwork)
 router.get("/showAllIncome",showAllIncome)
 router.get("/showAllPrivilege",showAllPrivilege)
 
-router.get('/compare/:cardId1/:cardId2', compareCards);
+router.post('/comparison', compareCards);
 
 
 router.post("/addProvider",addProvider)

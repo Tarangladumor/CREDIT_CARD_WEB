@@ -9,6 +9,7 @@ import QuestionsSection from './QuestionsSection'
 import SimmilarCards from './SimmilarCards'
 import { useLocation } from 'react-router-dom'
 import { fetchOneCardDetails } from '../../../services/Operations/cardAPI'
+import Comment from './Comment'
 
 const FullDetails = ({Details}) => {
 
@@ -30,6 +31,8 @@ const FullDetails = ({Details}) => {
       <Overview Data={Details}/>
 
       <QuestionsSection Data={Details}/>
+
+      <Comment Data={Details}/>
 
       <SimmilarCards Data={Details}/>
     </div>
