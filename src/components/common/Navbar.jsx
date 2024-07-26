@@ -1,6 +1,6 @@
 import React from 'react'
 import { RiSearch2Line } from "react-icons/ri";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -17,9 +17,9 @@ const Navbar = () => {
                 <div>
                     <div className=' flex gap-x-16 items-center'>
                         <ul className=' flex gap-16 items-center font-normal text-xl'>
-                            <li>Home</li>
-                            <li>About Us</li>
-                            <li>Contact</li>
+                            <Link to='/'>Home</Link>
+                            <Link to='/more-cards'>Credit Cards</Link>
+                            <Link>About Us</Link>
                         </ul>
                         <form className='relative'>
                             <input type="text" placeholder='Search' className=' rounded-full  text-black px-3' />

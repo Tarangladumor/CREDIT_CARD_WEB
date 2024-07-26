@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Section1 from '../components/core/HomePage/Section1'
 import Choose_your_preference from '../components/core/HomePage/Choose_your_preference'
 import Check_Offers from '../components/core/HomePage/Check_Offers'
@@ -8,6 +8,9 @@ import Footer from '../components/common/Footer'
 import Categorized_Cards from '../components/core/HomePage/Categorized_Cards'
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
+  }, []);
   return (
     <div>
 
