@@ -1,8 +1,9 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import TRUEIMG from '../../../assets/true_green.png'
 import FALSEIMG from '../../../assets/false_red.png'
 import Review from '../../../assets/home section img2.jpg'
 import { FaHeart } from "react-icons/fa";
+import Reviews from './Reviews';
 
 const incluted = [
     "Lounge facilities",
@@ -17,6 +18,16 @@ const notIncluted = [
 ]
 
 const IncludeSection = ({Data}) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleAddReviewClick = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
 
     return (
         <div className='w-10/12 mx-auto  mt-16 rounded-2xl py-10 px-14 shadow-[0px_20px_50px_10px_#00000040]'>
@@ -93,12 +104,20 @@ const IncludeSection = ({Data}) => {
                     Apply Now
                 </button>
 
+                <button 
+                onClick={handleAddReviewClick}
+                className='border border-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
+                    Add review
+                </button>
+
                 <div className='flex items-center font-medium text-lg gap-2'>
                     <FaHeart color='red' size={25}/>
                     <p>Liked this card?</p>
                 </div>
             </div>
-
+          {
+            showModal && <Reviews handleCloseModal={handleCloseModal}/>
+          }
 
         </div>
     )
