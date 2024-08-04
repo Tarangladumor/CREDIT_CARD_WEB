@@ -109,7 +109,7 @@ const CardDetails = ({ Data }) => {
                   Apply Now
                 </button>
 
-                <Link to={`fulldetailsofcard/${Data._id}`}>
+                <Link to={`/fulldetailsofcard/${Data._id}`}>
                   <button className="border-[5px] rounded-full bg-transparent border-[#159A9C]  shadow-[0px_30px_35px_10px_#00000060,inset_0px_7px_30px_0px_#00000060] text-base font-semibold px-5 py-2">
                     More Details
                   </button>
