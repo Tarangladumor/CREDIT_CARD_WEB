@@ -3,28 +3,27 @@
 @tailwind utilities;
 
 .table-striped tbody tr:nth-child(odd) {
-    background-color: rgba(21, 154, 156, 0.21);
+  background-color: rgba(21, 154, 156, 0.21);
 }
 
 .table-striped tbody tr:nth-child(even) {
-    background-color: rgba(217, 217, 217, 0.24);
+  background-color: rgba(217, 217, 217, 0.24);
 }
 
 .fade-enter {
-    opacity: 0;
-  }
-  
-  .fade-enter-active {
-    opacity: 1;
-    transition: opacity 500ms;
-  }
-  
-  .fade-exit {
-    opacity: 1;
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transition: opacity 500ms;
-  }
-  
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}

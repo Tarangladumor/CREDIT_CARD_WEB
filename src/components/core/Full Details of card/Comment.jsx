@@ -1,5 +1,5 @@
 import React from 'react'
-import FEECHARGES from '../Assets/FeeCharges_img.png'
+import FEECHARGES from '../../../assets/FeeCharges_img.png'
 import { useForm } from "react-hook-form"
 import { addComment } from '../../../services/Operations/cardAPI'
 
@@ -35,8 +35,8 @@ const Comment = ({ Details }) => {
         <div className='flex flex-col '>
           <label htmlFor="description" className='text-[#0000008A] text-[28px] leading-[42px]
 '>Comment</label>
-          <textarea id="description" name="description" className='border-[2px]  border-[#056E67] rounded-md'
-            rows="4" cols="30"
+          <textarea id="description" name="description" className='border-[2px]  border-[#056E67] rounded-md p-2'
+            rows="8" cols="30"
             {...register("description", { required: true })}
           ></textarea>
           {errors.description && (
@@ -61,9 +61,17 @@ const Comment = ({ Details }) => {
           <input
             id="card"
             name="card"
-            className='border-[2px] border-[#056E67] rounded-md p-2' type="text"
+            className='border-[2px] border-[#056E67] rounded-md p-2' type="email"
+            placeholder='email'
             // defaultValue={cardName}
-            {...register("card", { required: true })} />
+            {...register("email", { required: true })} />
+            {
+              errors.email && (
+                <span className="ml-2 text-xs tracking-wide text-pink-200">
+                  Email is required
+                </span>
+              )
+            }
 
         </div>
 

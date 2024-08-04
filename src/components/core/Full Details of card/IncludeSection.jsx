@@ -4,6 +4,7 @@ import FALSEIMG from '../../../assets/false_red.png'
 import Review from '../../../assets/home section img2.jpg'
 import { FaHeart } from "react-icons/fa";
 import Reviews from './Reviews';
+import ReviewCarousel from '../../common/ReviewCarousel';
 
 const incluted = [
     "Lounge facilities",
@@ -27,6 +28,8 @@ const IncludeSection = ({Data}) => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+
+    console.log("REVIEWS..............",Data?.cardData?.ratingAndReviews)
 
 
     return (
@@ -79,20 +82,17 @@ const IncludeSection = ({Data}) => {
                     </div>
                 </div>
 
-                <div className='flex items-center gap-x-4 relative'>
+                <div className=''>
 
-                    <div className=' '>
+                    {/* <div>
                         <img src={Review} className=' h-14 w-14 rounded-full' />
                         <div className=' flex items-center absolute -bottom-2 left-8'>
                             <img className='  h-6 w-6' src={TRUEIMG} />
-                            <p className=' text-[#056E67] text-xs'>Verified Customer</p>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div>
-                        <p className=' font-medium text-sm opacity-50'>Michel</p>
-                        <p className='font-medium text-sm'>Great rewards, low fees, excellent customer service. Highly recommend!</p>
-                    </div>
+
+                    <ReviewCarousel reviews={Data?.cardData?.ratingAndReviews}/>
 
                 </div>
 
