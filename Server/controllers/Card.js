@@ -21,7 +21,7 @@ export const addCard = async (req, res) => {
       provider,
       network,
       bestFor,
-      income
+      income,applyLink
     } = req.body;
 
     const image = req.files.cardImage;
@@ -40,7 +40,7 @@ export const addCard = async (req, res) => {
       !provider ||
       !network || 
       !bestFor ||
-      !income
+      !income || !applyLink
     ) {
       return respond(res, "Allfields are required", 400, false);
     }
@@ -81,6 +81,7 @@ export const addCard = async (req, res) => {
       image: cardImage.secure_url,
       bestFor: privilegeDetails._id,
       income: incomeDetails._id,
+      applyLink
     });
 
     const providerData = await Provider.findByIdAndUpdate(

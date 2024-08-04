@@ -5,7 +5,7 @@ export const createComment = async(req,res)=>{
 
     try{
         
-        const {Author, description, cardId} = req.body;
+        const {Author, description, cardId,email} = req.body;
          
         if(!Author || !description || !cardId){
             return res.status(403).send({
@@ -15,7 +15,7 @@ export const createComment = async(req,res)=>{
         }
 
         const comment = await Comments.create({
-            Author,description, card:cardId
+            Author,description, card:cardId,email
         });
 
         const updatedCardDetails = await Card.findByIdAndUpdate({_id:cardId },
