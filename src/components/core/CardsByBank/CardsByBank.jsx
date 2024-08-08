@@ -47,8 +47,9 @@ const CardsByBank = () => {
         <div className="w-11/12 mx-auto mt-20">
           <div className="grid grid-cols-2 gap-y-16 gap-x-24">
             {cards.map((card, index) => (
+              
               <CardDetails Data={card} key={index} />
-            ))}
+))}
           </div>
         </div>
       </div>
