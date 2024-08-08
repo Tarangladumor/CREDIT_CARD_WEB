@@ -1,6 +1,7 @@
 import React from 'react'
 import CARDIMG from '../../../assets/Card_img.png'
 import TYPE from '../../../assets/Visa.png'
+import { Link } from 'react-router-dom'
 
 // const similarCards = [
 //     {
@@ -28,7 +29,7 @@ import TYPE from '../../../assets/Visa.png'
 
 const SimmilarCards = ({ Data }) => {
     console.log("DTAATTATATTAA", Data)
-    
+
     return (
         <div className='w-10/12 mx-auto mt-20'>
 
@@ -66,7 +67,7 @@ const SimmilarCards = ({ Data }) => {
                                                 />
                                             ))
                                         }
-                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>Lifestyle</button>
+                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{card?.type[0]}</button>
                                     </div>
                                 </div>
 
@@ -87,9 +88,11 @@ const SimmilarCards = ({ Data }) => {
                                     </div>
 
                                     <div className='flex items-end'>
-                                        <button className='border-[5px] rounded-full bg-transparent border-[#159A9C]  shadow-[0px_20px_20px_2px_#00000060,inset_0px_7px_15px_0px_#00000060] text-base font-semibold px-5 py-2'>
-                                            More Details
-                                        </button>
+                                        <Link to={`/fulldetailsofcard/${card._id}`}>
+                                            <button className="border-[5px] rounded-full bg-transparent border-[#159A9C]  shadow-[0px_30px_35px_10px_#00000060,inset_0px_7px_30px_0px_#00000060] text-base font-semibold px-5 py-2">
+                                                More Details
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
 

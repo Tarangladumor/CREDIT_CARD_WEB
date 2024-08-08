@@ -34,7 +34,7 @@ const CardSummary = ({ Data }) => {
                                     />
                                 ))
                             }
-                            <button className='border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>Lifestyle</button>
+                            <button className='border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{Data?.cardData?.type[0]}</button>
                         </div>
                     </div>
 

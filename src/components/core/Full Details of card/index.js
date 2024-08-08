@@ -32,9 +32,9 @@ const FullDetails = ({Details}) => {
 
       <QuestionsSection Data={Details}/>
 
-      <Comment Data={Details}/>
-
       <SimmilarCards Data={Details}/>
+
+      <Comment Data={Details}/>
     </div>
   )
 }

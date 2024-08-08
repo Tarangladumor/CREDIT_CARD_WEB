@@ -1,10 +1,11 @@
-import React ,{useState}from 'react'
+import React, { useState } from 'react'
 import TRUEIMG from '../../../assets/true_green.png'
 import FALSEIMG from '../../../assets/false_red.png'
 import Review from '../../../assets/home section img2.jpg'
 import { FaHeart } from "react-icons/fa";
 import Reviews from './Reviews';
 import ReviewCarousel from '../../common/ReviewCarousel';
+import { Link } from 'react-router-dom';
 
 const incluted = [
     "Lounge facilities",
@@ -18,7 +19,7 @@ const notIncluted = [
     "Fueling Facilities"
 ]
 
-const IncludeSection = ({Data}) => {
+const IncludeSection = ({ Data }) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleAddReviewClick = () => {
@@ -29,7 +30,7 @@ const IncludeSection = ({Data}) => {
         setShowModal(false);
     };
 
-    console.log("REVIEWS..............",Data?.cardData?.ratingAndReviews)
+    console.log("REVIEWS..............", Data?.cardData?.ratingAndReviews)
 
 
     return (
@@ -92,7 +93,7 @@ const IncludeSection = ({Data}) => {
                     </div> */}
 
 
-                    <ReviewCarousel reviews={Data?.cardData?.ratingAndReviews}/>
+                    <ReviewCarousel reviews={Data?.cardData?.ratingAndReviews} />
 
                 </div>
 
@@ -101,23 +102,25 @@ const IncludeSection = ({Data}) => {
 
             <div className='mt-10 flex justify-between items-center'>
                 <button className='bg-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
-                    Apply Now
+                    <Link to={Data?.cardData?.applyLink} target="blank">
+                        Apply Now
+                    </Link>
                 </button>
 
-                <button 
-                onClick={handleAddReviewClick}
-                className='border border-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
+                <button
+                    onClick={handleAddReviewClick}
+                    className='border border-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
                     Add review
                 </button>
 
                 <div className='flex items-center font-medium text-lg gap-2'>
-                    <FaHeart color='red' size={25}/>
+                    <FaHeart color='red' size={25} />
                     <p>Liked this card?</p>
                 </div>
             </div>
-          {
-            showModal && <Reviews handleCloseModal={handleCloseModal}/>
-          }
+            {
+                showModal && <Reviews handleCloseModal={handleCloseModal} />
+            }
 
         </div>
     )
