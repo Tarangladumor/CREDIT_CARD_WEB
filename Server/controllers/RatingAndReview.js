@@ -8,6 +8,8 @@ export const createRating = async(req,res)=>{
     try{
             
         const {Author,rating,description,cardId} = req.body;
+      
+        console.log("cardId: ",cardId);
 
         if(!Author || !rating, !description || !cardId){
             return res.status(403).send({

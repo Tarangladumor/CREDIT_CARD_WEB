@@ -2,24 +2,43 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import reviewImage from '../../../assets/reviewImage.png'
 import StarRating from './StarRating';
+import { addReview } from '../../../services/Operations/cardAPI';
 
-
-const Reviews = ({handleCloseModal}) => {
+const Reviews = ({handleCloseModal,cardData}) => {
     const {
         register,
         handleSubmit,
         setValue,
         getValues,
+        // reset,
         formState: { errors },
     } = useForm()
 
     const onSubmit = async (data) => {
+        // console.log(data);
         const formData = new FormData()
         formData.append("Author", data.Author)
         formData.append("rating", data.rating)
         formData.append("description", data.description)
+        console.log("cardId: in reviews : ",cardData.cardData._id)
+        formData.append("cardId",cardData.cardData._id);
+        
 
-        console.log(data);
+        // const response = await addReview(formData);
+
+        // console.log(response);
+        // if(reponse.data)
+
+        // console.log(formData);
+
+      
+            const response = await addReview(formData);
+            // console.log(response.data);
+            // if (response) {
+            //     // reset();
+                
+            // } 
+      
 
     }
     return (
