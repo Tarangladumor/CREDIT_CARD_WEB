@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className='w-10/12 mx-auto flex justify-between items-center py-3 h-10vh border-2 border-red-400 rounded-full px-5 bg-[#056E67]'>
 
                 <div className=' font-black text-4xl'>
-                    LOGO
+                <Link to='/'>CARD POUCH</Link>
                 </div>
 
                 <div>

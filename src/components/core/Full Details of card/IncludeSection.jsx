@@ -107,15 +107,9 @@ const IncludeSection = ({ Data }) => {
                     </Link>
                 </button>
 
-<<<<<<< HEAD
-                <button
-                    onClick={handleAddReviewClick}
-                    className='border border-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
-=======
                 <button 
                 onClick={handleAddReviewClick}
                 className='border border-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-black shadow-[0px_5px_30px_5px_#00000060]'>
->>>>>>> 8ed6a1248ff1bf52ba8c624bae797e74d2cb35aa
                     Add review
                 </button>
 

@@ -45,14 +45,21 @@ export const addCard = async (req, res) => {
       return respond(res, "Allfields are required", 400, false);
     }
 
+    const networkArray = Array.isArray(network) ? network : [network];
+
     const providerDetails = await Provider.findById(provider);
     if (!providerDetails) {
       return respond(res, "provider details not found", 404, false);
     }
 
-    const networkDetails = await Network.find({ _id: { $in: network } });
-    if (networkDetails.length !== network.length) {
-      return respond(res, "some network details not found", 404, false);
+    // const networkDetails = await Network.find({ _id: { $in: network } });
+    // if (networkDetails.length !== network.length) {
+    //   return respond(res, "some network details not found", 404, false);
+    // }
+
+    const networkDetails = await Network.find({ _id: { $in: networkArray } });
+    if (networkDetails.length !== networkArray.length) {
+      return respond(res, "Some network details not found", 404, false);
     }
 
     const privilegeDetails = await Privilege.findById(bestFor);
