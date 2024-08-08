@@ -68,8 +68,9 @@ export const getCardByBank = async (req, res) => {
       path: "card",
       populate: "network",
       populate: "charges",
-      populate: "ratingAndReviews"
     }).exec();
+
+     
 
     if (!cardByBank) {
       return respond(res, "Provider is not found", 400, false);

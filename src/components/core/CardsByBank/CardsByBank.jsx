@@ -17,13 +17,14 @@ const CardsByBank = () => {
   useEffect(() => {
     const fetchData = async () => {
       const cardData = await fetchAllCardByBank({ providerId });
+      console.log("CARDDAAT...........",cardData);
       setCards(cardData);
     };
 
     fetchData();
   }, [providerId]);
 
-  console.log(cards);
+  console.log("CARDS>>>>>>>>>>>>>>>>>>>>",cards);
 
   return (
     <div>
