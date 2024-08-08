@@ -1,52 +1,55 @@
 import { Comments } from "../models/Comments.js";
 import { Card } from "../models/Card.js";
 
-export const createComment = async(req,res)=>{
-
-    try{
+export const createComment = async(req, res) => {
+    try {
+        const { author, description, cardId, email } = req.body; 
         
-        const {Author, description, cardId,email} = req.body;
-         
-        if(!Author || !description || !cardId){
+
+        if (!author || !description || !cardId) {
             return res.status(403).send({
-                success:false,
-                message:"All fields are required."
+                success: false,
+                message: "All fields are required."
             });
         }
 
+        // Create the comment
         const comment = await Comments.create({
-            Author,description, card:cardId,email
+            Author: author, // Match the lowercase 'author' to 'Author' in your model
+            description,
+            card: cardId,
+            email
         });
 
-        const updatedCardDetails = await Card.findByIdAndUpdate({_id:cardId },
+        // Update the card with the new comment
+        const updatedCardDetails = await Card.findByIdAndUpdate(
+            { _id: cardId },
             {
-            $push:{
-                comments:comment._id,
-            }
-          },
-          {new:true}
+                $push: {
+                    comments: comment._id,
+                }
+            },
+            { new: true }
         );
 
-        // console.log("Updated Card details ",updatedCardDetails);
-
+        // Return success response
         return res.status(200).json({
-            success:true,
-            message:"Comment is created Successfully",
+            success: true,
+            message: "Comment is created Successfully",
             comment,
             updatedCardDetails
-        })
+        });
 
-    }catch(error){
+    } catch (error) {
         console.log(error);
 
         return res.status(500).json({
-            success:false,
-            message:"Error in creating comments"
-        })
-
+            success: false,
+            message: "Error in creating comments"
+        });
     }
-
 }
+
 
 
 export const editComment = async (req, res) => {

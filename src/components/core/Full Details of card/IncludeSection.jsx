@@ -1,9 +1,11 @@
-import React ,{useState}from 'react'
+import React, { useState } from 'react'
 import TRUEIMG from '../../../assets/true_green.png'
 import FALSEIMG from '../../../assets/false_red.png'
 import Review from '../../../assets/home section img2.jpg'
 import { FaHeart } from "react-icons/fa";
 import Reviews from './Reviews';
+import ReviewCarousel from '../../common/ReviewCarousel';
+import { Link } from 'react-router-dom';
 
 const incluted = [
     "Lounge facilities",
@@ -17,7 +19,7 @@ const notIncluted = [
     "Fueling Facilities"
 ]
 
-const IncludeSection = ({Data}) => {
+const IncludeSection = ({ Data }) => {
     const [showModal, setShowModal] = useState(false);
     console.log("DATA IN INCLUDED SECTION: ",Data);
 
@@ -28,6 +30,8 @@ const IncludeSection = ({Data}) => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+
+    console.log("REVIEWS..............", Data?.cardData?.ratingAndReviews)
 
 
     return (
@@ -80,20 +84,17 @@ const IncludeSection = ({Data}) => {
                     </div>
                 </div>
 
-                <div className='flex items-center gap-x-4 relative'>
+                <div className=''>
 
-                    <div className=' '>
+                    {/* <div>
                         <img src={Review} className=' h-14 w-14 rounded-full' />
                         <div className=' flex items-center absolute -bottom-2 left-8'>
                             <img className='  h-6 w-6' src={TRUEIMG} />
-                            <p className=' text-[#056E67] text-xs'>Verified Customer</p>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div>
-                        <p className=' font-medium text-sm opacity-50'>Michel</p>
-                        <p className='font-medium text-sm'>Great rewards, low fees, excellent customer service. Highly recommend!</p>
-                    </div>
+
+                    <ReviewCarousel reviews={Data?.cardData?.ratingAndReviews} />
 
                 </div>
 
@@ -102,7 +103,9 @@ const IncludeSection = ({Data}) => {
 
             <div className='mt-10 flex justify-between items-center'>
                 <button className='bg-[#F77F00] text-xl font-semibold px-10 py-2 rounded-full text-white shadow-[0px_5px_30px_5px_#00000060]'>
-                    Apply Now
+                    <Link to={Data?.cardData?.applyLink} target="blank">
+                        Apply Now
+                    </Link>
                 </button>
 
                 <button 
@@ -112,13 +115,15 @@ const IncludeSection = ({Data}) => {
                 </button>
 
                 <div className='flex items-center font-medium text-lg gap-2'>
-                    <FaHeart color='red' size={25}/>
+                    <FaHeart color='red' size={25} />
                     <p>Liked this card?</p>
                 </div>
             </div>
+
           {
             showModal && <Reviews handleCloseModal={handleCloseModal} cardData={Data}/>
           }
+
 
         </div>
     )

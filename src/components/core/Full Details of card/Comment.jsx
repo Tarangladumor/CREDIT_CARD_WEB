@@ -3,18 +3,21 @@ import FEECHARGES from "../../../assets/FeeCharges_img.png";
 import { useForm } from "react-hook-form";
 import { addComment } from "../../../services/Operations/cardAPI";
 
-const Comment = ({ Details }) => {
+const Comment = ({ Data }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  console.log("DETAILS>>>>>>>>>>>>>>>>>>",Data);
+
   const onSubmit = async (data) => {
     const formData = new FormData();
     formData.append("description", data.description);
-    formData.append("author", data.Author);
-    formData.append("card", data.card);
+    formData.append("author", data.Author); 
+    formData.append("cardId", Data.cardData._id); // Use the correct card ID from Details
+    formData.append("email", data.email); 
     const result = await addComment(formData);
     console.log("Result of add comment", result);
   };
@@ -24,37 +27,29 @@ const Comment = ({ Details }) => {
       <header className="flex justify-start items-center gap-2 w-10/12 mx-auto mb-5">
         <img src={FEECHARGES} className="w-[125px] aspect-square" />
         <div className="flex flex-col">
-          <h2 className=" font-semibold text-[40px]">Leave us a comment</h2>
+          <h2 className="font-semibold text-[40px]">Leave us a comment</h2>
           <p className="text-[#0000008A] text-[20px] leading-[30px]">
-            Don't worry, we will not publish your email address. Each section is
-            mandatory.
+            Don't worry, we will not publish your email address. Each section is mandatory.
           </p>
         </div>
       </header>
 
-      <form
-        className="w-9/12 mx-auto flex flex-col"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="flex flex-col ">
-          <label
-            htmlFor="description"
-            className="text-[#0000008A] text-[28px] leading-[42px]
-"
-          >
+      <form className="w-9/12 mx-auto flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col">
+          <label htmlFor="description" className="text-[#0000008A] text-[28px] leading-[42px]">
             Comment
           </label>
           <textarea
             id="description"
             name="description"
-            className="border-[2px]  border-[#056E67] rounded-md"
-            rows="4"
+            className="border-[2px] border-[#056E67] rounded-md p-2"
+            rows="8"
             cols="30"
             {...register("description", { required: true })}
           ></textarea>
           {errors.description && (
             <span className="ml-2 text-xs tracking-wide text-pink-200">
-              comment is required
+              Comment is required
             </span>
           )}
         </div>
@@ -74,13 +69,18 @@ const Comment = ({ Details }) => {
             </span>
           )}
           <input
-            id="card"
-            name="card"
+            id="email"
+            name="email"
             className="border-[2px] border-[#056E67] rounded-md p-2"
-            type="text"
-            // defaultValue={cardName}
-            {...register("card", { required: true })}
+            type="email"
+            placeholder="Email"
+            {...register("email", { required: true })}
           />
+          {errors.email && (
+            <span className="ml-2 text-xs tracking-wide text-pink-200">
+              Email is required
+            </span>
+          )}
         </div>
 
         <button

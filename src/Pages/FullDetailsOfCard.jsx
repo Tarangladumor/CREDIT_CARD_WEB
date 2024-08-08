@@ -25,7 +25,7 @@ const FullDetailsOfCard = () => {
         };
 
         fetchDetails();
-    }, []);
+    }, [location.pathname]);
 
     console.log(details);
 

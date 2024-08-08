@@ -118,7 +118,9 @@ const CardDetails = ({ Data }) => {
 
               <div className="flex gap-5 mt-5">
                 <button className="bg-[#F77F00] text-base font-semibold px-5 py-2 rounded-full text-white shadow-[0px_30px_35px_10px_#00000060]">
-                  Apply Now
+                  <Link to={Data?.applyLink} target="blank">
+                    Apply Now
+                  </Link>
                 </button>
 
                 <Link to={`/fulldetailsofcard/${Data._id}`}>

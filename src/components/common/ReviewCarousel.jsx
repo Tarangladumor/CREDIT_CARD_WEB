@@ -2,18 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ReviewImg from "../../assets/home section img2.jpg";
 
-const ReviewCarousel = ({ reviews }) => {
+const ReviewCarousel = ({ reviews = [] }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-        }, 1500);
+        if (reviews.length > 0) {
+            const interval = setInterval(() => {
+                setIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+            }, 5000);
 
-        return () => clearInterval(interval);
+            return () => clearInterval(interval);
+        }
     }, [reviews.length]);
 
     console.log("REVIEWS", reviews);
+
+    if (reviews.length === 0) {
+        return <div>No reviews available</div>;
+    }
 
     return (
         <div className="relative h-10 flex">
@@ -24,7 +30,7 @@ const ReviewCarousel = ({ reviews }) => {
                     classNames="fade"
                 >
                     <div className="absolute w-full rounded">
-                        <div className='flex gap-2 items-center '>
+                        <div className='flex gap-2 items-center'>
                             <img
                                 src={ReviewImg}
                                 alt="review image"
@@ -35,7 +41,6 @@ const ReviewCarousel = ({ reviews }) => {
                                 {reviews[index]?.description}
                             </div>
                         </div>
-
                     </div>
                 </CSSTransition>
             </TransitionGroup>
