@@ -3,9 +3,20 @@ import LIMITED from "../../assets/limited_offer_img.png";
 import ReviewImg from "../../assets/home section img2.jpg";
 import { Link } from "react-router-dom";
 import ReviewCarousel from "./ReviewCarousel";
+import GetAvgRating from "../../utils/avgRating";
+import RatingStars from "./RatingStars";
 
 const CardDetails = ({ Data }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  
+  const [avgReviewCount, setAvgReviewCount] = useState(0);
+
+  useEffect(()=> {
+      const count = GetAvgRating(Data.ratingAndReviews);
+      setAvgReviewCount(count);
+  },[Data])
+
 
   console.log("DATA", Data);
 
@@ -84,6 +95,7 @@ const CardDetails = ({ Data }) => {
             }`}
         >
           <p className="text-xl font-medium">User Reviews and Ratings:</p>
+          <RatingStars Review_Count={avgReviewCount}/>
 
           {isHovered && (
             <div>
