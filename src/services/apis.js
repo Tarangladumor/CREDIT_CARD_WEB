@@ -12,5 +12,6 @@ export const cardEndpoints = {
     GET_ALL_PROVIDER : BASE_URL + '/card/showAllProvider',
     GET_ALL_INCOME : BASE_URL + '/card/showAllIncome',
     GET_ALL_PRIVILEGE : BASE_URL + '/card/showAllPrivilege',
+    CREATE_RATING : BASE_URL + '/card/create-rating',
 
 }

@@ -16,7 +16,7 @@ import CardsByPrivilege from './components/core/CardByPrivilege/CardsByPrivilege
 function App() {
   return (
     <div>
-
+  
       <Navbar />
 
       <Routes>

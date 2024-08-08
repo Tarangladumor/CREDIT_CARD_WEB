@@ -19,6 +19,7 @@ const notIncluted = [
 
 const IncludeSection = ({Data}) => {
     const [showModal, setShowModal] = useState(false);
+    console.log("DATA IN INCLUDED SECTION: ",Data);
 
     const handleAddReviewClick = () => {
         setShowModal(true);
@@ -116,7 +117,7 @@ const IncludeSection = ({Data}) => {
                 </div>
             </div>
           {
-            showModal && <Reviews handleCloseModal={handleCloseModal}/>
+            showModal && <Reviews handleCloseModal={handleCloseModal} cardData={Data}/>
           }
 
         </div>
