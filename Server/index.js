@@ -26,12 +26,29 @@ app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 }
 }))
 
+// app.use(
+//     cors({
+//         origin:"https://credit-card-web.vercel.app/",
+//         credentials:true,
+//     })
+// )
+
 app.use(
     cors({
-        origin:"https://credit-card-web.vercel.app/",
-        credentials:true,
+        origin: (origin, callback) => {
+            const allowedOrigins = [
+                "https://credit-card-web.vercel.app/",
+                // Add other allowed origins if needed
+            ];
+            if (allowedOrigins.includes(origin) || !origin) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
+        credentials: true,
     })
-)
+);
 
 cloudinaryConnect();
 
