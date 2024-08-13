@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
         <div className={`${location.pathname === '/' ? "bg-[#056E67]" : "bg-white"} text-white pt-3`} >
 
-            <div className='w-10/12 mx-auto flex justify-between items-center py-3 h-10vh border-2 border-red-400 rounded-full px-5 bg-[#056E67]'>
+            <div className='w-10/12 mx-auto flex justify-between items-center py-3 h-10vh  rounded-full px-5 bg-[#056E67]'>
 
                 <div className=' font-black text-4xl'>
                 <Link to='/'>CARD POUCH</Link>
@@ -21,10 +21,10 @@ const Navbar = () => {
                             <Link to='/more-cards'>Credit Cards</Link>
                             <Link>About Us</Link>
                         </ul>
-                        <form className='relative'>
+                        {/* <form className='relative'>
                             <input type="text" placeholder='Search' className=' rounded-full  text-black px-3' />
                             <button type="submit" className='absolute top-1 right-2 text-black '><RiSearch2Line /></button>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
 

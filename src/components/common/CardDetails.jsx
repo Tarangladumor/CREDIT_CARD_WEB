@@ -21,7 +21,7 @@ const CardDetails = ({ Data }) => {
   console.log("DATA", Data);
 
   return (
-    <div className="relative">
+    <div className="relative mb-16">
       {isHovered && (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-10"></div>
       )}
