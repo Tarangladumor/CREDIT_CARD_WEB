@@ -35,8 +35,6 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         "https://credit-card-web.vercel.app",
-        "https://credit-card-j2akttu7g-tarangladumors-projects.vercel.app",
-        // Add other allowed origins if needed
       ];
       if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);
@@ -49,13 +47,13 @@ app.use(
 );
 
 // Optional: Manually adding CORS headers
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://credit-card-j2akttu7g-tarangladumors-projects.vercel.app");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "https://credit-card-j2akttu7g-tarangladumors-projects.vercel.app");
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//   next();
+// });
 
 // Cloudinary configuration
 cloudinaryConnect();
