@@ -35,7 +35,7 @@ const RewardPoints = ({ Data }) => {
                         </Tbody>
                     </Table>
                 ) : (
-                    <div>No reward points available</div>
+                    <div></div>
                 )}
 
                 {Data?.cardData?.rewards[0]?.listData.length > 0 ? (
@@ -47,7 +47,7 @@ const RewardPoints = ({ Data }) => {
                         </ul>
                     </div>
                 ) : (
-                    <div>No additional data available</div>
+                    <div></div>
                 )}
 
                 <p>*Note: Some transactions, such as fuel, EMI, insurance transaction are not eligible for reward points.</p>
