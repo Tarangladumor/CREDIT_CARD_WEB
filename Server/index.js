@@ -28,7 +28,7 @@ app.use(fileUpload({
 
 app.use(
     cors({
-        origin:"https://credit-card-edzsqtrml-tarangladumors-projects.vercel.app/",
+        origin:"https://credit-card-web.vercel.app/",
         credentials:true,
     })
 )
