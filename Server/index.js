@@ -35,6 +35,7 @@ app.use(
     origin: (origin, callback) => {
       const allowedOrigins = [
         "https://credit-card-web.vercel.app",
+        "http://localhost:3000/",
       ];
       if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);

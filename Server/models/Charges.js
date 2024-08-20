@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const chargesSchema = new mongoose.Schema({
 
-    joiningFee: { type: Number, required: true },
+  joiningFee: { type: Number, required: true },
   annualFee: { type: Number, required: true },
   annualPercentageRate: { type: Number, required: true },
   addOnCardFee: { type: Number, required: true },
