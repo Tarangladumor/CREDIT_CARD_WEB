@@ -30,22 +30,27 @@ app.use(
 );
 
 // CORS configuration
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       const allowedOrigins = [
+//         "https://credit-card-web.vercel.app",
+//       ];
+//       if (allowedOrigins.includes(origin) || !origin) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = [
-        "https://credit-card-web.vercel.app",
-        "http://localhost:3000/",
-      ];
-      if (allowedOrigins.includes(origin) || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+
   })
-);
+)
 
 // Optional: Manually adding CORS headers
 // app.use((req, res, next) => {
