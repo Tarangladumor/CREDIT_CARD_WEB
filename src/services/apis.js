@@ -1,4 +1,5 @@
-const BASE_URL = "https://credit-card-web-1.onrender.com/api/v1";
+// const BASE_URL = "https://credit-card-web-1.onrender.com/api/v1";
+const BASE_URL = "http://localhost:4000/api/v1"
 
 export const cardEndpoints = {
     GET_ALL_CARDS_BY_BANK : BASE_URL + "/card/getCardByBank",
