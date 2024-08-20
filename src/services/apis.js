@@ -16,6 +16,4 @@ export const cardEndpoints = {
     ADD_COMMENT : BASE_URL + '/card/create-comment',
     CREATE_RATING : BASE_URL + '/card/create-rating',
 
-
-
 }
