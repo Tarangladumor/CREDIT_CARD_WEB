@@ -10,12 +10,7 @@ export const addCharges = async (req, res) => {
             joiningFee, annualFee, annualPercentageRate, addOnCardFee,
             minimumRepaymentAmount, cashWithdrawalFee, cashAdvanceLimit,
             cardReplacementFee, foreignTransactionFee, overLimitPenalty,
-            fuelTransactionSurcharge, rewardPointValue, balanceBelow100,
-            balanceBelow500, balanceFrom0to500,balanceFrom100to500, balanceFrom501to5000,
-            balanceFrom500to1000, balanceFrom1000to10000, balanceFrom5001to10000,
-            balanceFrom5000to10000, balanceFrom10000to25000, balanceFrom10001to25000,
-            balanceFrom25000to50000, balanceFrom25001to50000, balanceMoreThan50000,
-            balanceMoreThan10000, anyAmountDue, cardId
+            fuelTransactionSurcharge, rewardPointValue, cardId
         } = req.body;
 
         const requiredFields = [
@@ -31,16 +26,23 @@ export const addCharges = async (req, res) => {
             }
         }
 
+        const points = [];
+        if (req.body["points[0][key]"]) {
+            let i = 0;
+            while (req.body[`points[${i}][key]`]) {
+                points.push({
+                    key: req.body[`points[${i}][key]`],
+                    value: req.body[`points[${i}][value]`],
+                });
+                i++;
+            }
+        }
+
         const newCharge = await Charges.create({
             joiningFee, annualFee, annualPercentageRate, addOnCardFee,
             minimumRepaymentAmount, cashWithdrawalFee, cashAdvanceLimit,
             cardReplacementFee, foreignTransactionFee, overLimitPenalty,
-            fuelTransactionSurcharge, rewardPointValue, balanceBelow100,
-            balanceBelow500, balanceFrom0to500,balanceFrom100to500, balanceFrom501to5000,
-            balanceFrom500to1000, balanceFrom1000to10000, balanceFrom5001to10000,
-            balanceFrom5000to10000, balanceFrom10000to25000, balanceFrom10001to25000,
-            balanceFrom25000to50000, balanceFrom25001to50000, balanceMoreThan50000,
-            balanceMoreThan10000, anyAmountDue, cardId
+            fuelTransactionSurcharge, rewardPointValue, cardId,points
         });
 
         const updatedCardDetails = await Card.findByIdAndUpdate(

@@ -1,5 +1,5 @@
 // const BASE_URL = "https://credit-card-web-1.onrender.com/api/v1";
-const BASE_URL = "http://localhost:4000/api/v1"
+const BASE_URL = process.env.REACT_APP_API_BASE_URL
 
 export const cardEndpoints = {
     GET_ALL_CARDS_BY_BANK : BASE_URL + "/card/getCardByBank",
@@ -15,5 +15,10 @@ export const cardEndpoints = {
     GET_ALL_PRIVILEGE : BASE_URL + '/card/showAllPrivilege',
     ADD_COMMENT : BASE_URL + '/card/create-comment',
     CREATE_RATING : BASE_URL + '/card/create-rating',
-
+    ADD_CARD_BASIC_DETAILS : '/admin/addCard',
+    ADD_CARD_REWARD_DETAILS : '/admin/addReward',
+    ADD_CARD_ELIGIBILITY_DETAILS : '/admin/addEligibility',
+    ADD_CARD_HOWTOAPPLY_DETAILS : '/admin/addHowToApply',
+    ADD_CARD_BENEFITS_DETAILS : '/admin/add-additional-benefit',
+    ADD_CARD_CHARGES_DETAILS : '/admin/addCharges'
 }

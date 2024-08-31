@@ -14,7 +14,7 @@ const cardSchema = new mongoose.Schema({
         required: true
     },
     type: {
-        type: [String],
+        type: String,
     },
     provider: 
         {
