@@ -41,41 +41,42 @@ const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
   };
 
   return (
-    <div className='flex justify-evenly mb-16 mt-10 w-11/12 mx-auto'>
-      <div className='flex-1 flex flex-col items-center border-r-4'>
-        <img src={img} alt="Phone User" className='w-[425px] h-[300px]' />
+    <div className="flex flex-row justify-evenly mb-8 lg:mb-16 mt-8 lg:mt-10 w-11/12 mx-auto">
+      {/* Hide this image on small screens */}
+      <div className="hidden md:flex flex-1 flex-col items-center border-r-4">
+        <img src={img} alt="Phone User" className="w-[250px] h-[175px] md:w-[425px] md:h-[300px] sm:w-[325px] sm:h-[200px]" />
       </div>
-      <div className='flex-1 flex flex-col items-center text-center border-r-4'>
-        <img src={card1?.cardData?.image} alt="Card" height={300} width={300} className='' />
-        <p className='text-[#000000ab] font-medium text-1xl'>
+      <div className="flex-1 flex flex-col items-center text-center border-r-4">
+        <img src={card1?.cardData?.image} alt="Card" className="w-[150px] h-[100px] md:w-[300px] md:h-[225px]" />
+        <p className="text-[#000000ab] font-medium text-lg md:text-1xl mt-4 md:mt-6">
           {card1?.cardData?.cardName}
         </p>
-        <button className='border-[8px] border-[#159A9C] rounded-full px-5 py-2 shadow-[0px_20px_50px_10px_#00000040] mt-3'>
-          <p className='font-medium text-sm'>More Details</p>
+        <button className="border-[4px] md:border-[8px] border-[#159A9C] rounded-full px-3 py-1 md:px-5 md:py-2 shadow-[0px_10px_25px_5px_#00000020] md:shadow-[0px_20px_50px_10px_#00000040] mt-4 md:mt-6">
+          <p className="font-medium text-xs md:text-sm">More Details</p>
         </button>
       </div>
-      <div className='flex-1 flex flex-col items-center'>
+      <div className="flex-1 flex flex-col items-center">
         <div>
           {!selectedCard ? (
             <>
               <div>
-                <p className='text-[#000000ab] text-xl'>Add 2nd Card</p>
+                <p className="text-[#000000ab] text-lg md:text-xl">Add 2nd Card</p>
               </div>
-              <select onChange={handleCardSelect} className='p-3 bg-[#d9d9d97a] rounded-md font-semibold w-[250px] mt-5'>
-                <option value="" className='text-[#000000]'>Pick a card</option>
+              <select onChange={handleCardSelect} className="p-2 md:p-3 bg-[#d9d9d97a] rounded-md font-semibold w-[200px] md:w-[250px] mt-4 md:mt-5">
+                <option value="" className="text-[#000000]">Pick a card</option>
                 {allCards && allCards.map((card) => (
                   <option key={card.id} value={card?._id}>{card.cardName}</option>
                 ))}
               </select>
             </>
           ) : (
-            <div className='flex flex-col items-center'>
-              <img src={selectedCard?.cardData?.image} alt="Card" height={300} width={300} className='' />
-              <p className='text-[#000000ab] font-medium text-1xl'>
+            <div className="flex flex-col items-center">
+              <img src={selectedCard?.cardData?.image} alt="Card" className="w-[150px] h-[100px] md:w-[300px] md:h-[225px]" />
+              <p className="text-[#000000ab] font-medium text-lg md:text-1xl mt-4 md:mt-6">
                 {selectedCard?.cardData?.cardName}
               </p>
-              <button className='border-[8px] border-[#159A9C] rounded-full px-5 py-2 shadow-[0px_20px_50px_10px_#00000040] mt-3'>
-                <p className='font-medium text-sm'>More Details</p>
+              <button className="border-[4px] md:border-[8px] border-[#159A9C] rounded-full px-3 py-1 md:px-5 md:py-2 shadow-[0px_10px_25px_5px_#00000020] md:shadow-[0px_20px_50px_10px_#00000040] mt-4 md:mt-6">
+                <p className="font-medium text-xs md:text-sm">More Details</p>
               </button>
             </div>
           )}

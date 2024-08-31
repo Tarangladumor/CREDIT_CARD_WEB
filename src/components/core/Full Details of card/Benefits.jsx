@@ -38,7 +38,7 @@ const Benefits = ({ Data }) => {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 40,
           },
           1024: {
@@ -61,9 +61,9 @@ const Benefits = ({ Data }) => {
           )
           .map(([key, value]) => (
             <SwiperSlide key={key}>
-              <div className="bg-[#D2F4E4] rounded-tl-3xl rounded-br-3xl p-10 h-[400px] flex flex-col gap-3 shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px] mb-24">
+              <div className="bg-[#D2F4E4] rounded-tl-3xl rounded-br-3xl p-10 md:p-8 h-[400px] flex flex-col gap-3 shadow-[rgba(0,_0,_0,_0.2)_0px_60px_40px_-7px] mb-24">
                 <div className="flex justify-start items-end gap-4">
-                  <img src={IMG2} className="w-[70px] aspect-square" />
+                  <img src={IMG2} className="w-[70px] aspect-square md:w-[40px]" />
                   <h3 className="font-semibold text-2xl pb-3">{key}</h3>
                 </div>
                 <section>

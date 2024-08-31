@@ -19,8 +19,6 @@ const Footer = () => {
     }));
   };
 
-  console.log(formData);
-
   const submitNewsletterForm = async () => {
     try {
       setLoading(true);
@@ -29,11 +27,9 @@ const Footer = () => {
         cardEndpoints.ADD_NEWSLETTER_SIGN_UP,
         formData
       );
-      console.log("Logging response", response);
       setIsSubmitSuccessful(true);
       toast.success("Subscription successful!");
     } catch (error) {
-      console.log("Error", error.message);
       setIsSubmitSuccessful(false);
       toast.error("Failed to subscribe. Please try again.");
     } finally {
@@ -50,15 +46,16 @@ const Footer = () => {
 
   return (
     <div>
-      <div className='w-full bg-[#f7f5fd] flex justify-around'>
-        <div className='w-11/12 flex justify-around'>
-          <div className='items-center p-4 flex flex-col gap-4 mt-4'>
-            <div className='text-4xl font-extrabold'>
+      <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around">
+        <div className="w-full md:w-11/12 flex flex-col md:flex-row justify-around p-4">
+          {/* Logo and Social Icons */}
+          <div className="flex flex-col items-center gap-4 mt-4">
+            <div className="text-3xl md:text-4xl font-extrabold">
               LOGO
             </div>
-            <div className='text-2xl'>
+            <div className="text-xl md:text-2xl">
               Follow Us
-              <div className='flex gap-x-4 mt-3'>
+              <div className="flex gap-x-4 mt-3">
                 <SocialIcon url="https://t.me/finnindeals2" style={{ height: 35, width: 35 }} />
                 <SocialIcon url="https://x.com/Dealspouch27" style={{ height: 35, width: 35 }} />
                 <SocialIcon url="https://chat.whatsapp.com/DjSHeQmtKILGlhFDL6TN4n" style={{ height: 35, width: 35 }} />
@@ -66,39 +63,44 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='flex flex-col p-4 gap-3 mt-4'>
+          {/* Contact Information */}
+          <div className="flex flex-col gap-3 mt-4">
             <div>
-              <p className='text-1xl font-medium'>Contact Us:</p>
-              <p className='text-[#374ab1] text-1xl font-medium w-[60%]'>dealspouch@gmail.com +91-8200440146</p>
+              <p className="text-lg font-medium">Contact Us:</p>
+              <p className="text-[#374ab1] text-lg font-medium">
+                dealspouch@gmail.com <br /> +91-8200440146
+              </p>
             </div>
 
-            <div className='flex flex-col'>
-              <p className='text-1xl font-medium'>Credit Card</p>
-              <Link to='/more-cards' className='text-[#374ab1] text-1xl font-medium w-[80%]'>All Credit Cards</Link>
-              <Link to='/cardByNetwork' className='text-[#374ab1] text-1xl font-medium w-[80%]'>All Cards Network</Link>
+            <div className="flex flex-col">
+              <p className="text-lg font-medium">Credit Card</p>
+              <Link to="/more-cards" className="text-[#374ab1] text-lg font-medium">
+                All Credit Cards
+              </Link>
+              <Link to="/cardByNetwork" className="text-[#374ab1] text-lg font-medium">
+                All Cards Network
+              </Link>
             </div>
           </div>
 
-          <div className='p-4 flex flex-col gap-4 mt-4'>
-            <p className='text-2xl font-semibold'>Newsletter Signup</p>
-            <p className='text-1xl text-[#00000087] w-[80%]'>Get the latest offers and tips—subscribe to our newsletter today.</p>
+          {/* Newsletter Signup */}
+          <div className="flex flex-col gap-4 mt-4 w-full md:w-[300px]">
+            <p className="text-xl md:text-2xl font-semibold">Newsletter Signup</p>
+            <p className="text-base md:text-lg text-[#00000087]">
+              Get the latest offers and tips—subscribe to our newsletter today.
+            </p>
 
-            <div className="relative h-10 w-full min-w-[200px] flex">
-              <div className='w-[300px]'>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleOnChange}
-                  className="peer h-full w-full rounded-[12px] border border-[#159a9c] border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-[#159a9c] placeholder-shown:border-t-[#159a9c] focus:border-2 focus:border-[#159a9c] focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                  placeholder="Email"
-                />
-              </div>
-
-              <button onClick={submitNewsletterForm} disabled={loading} className='ml-3 border-green-800 border-[4px] rounded-full'>
-                <div className='pb-[10px]'>
-                  <MdArrowOutward size={35} />
-                </div>
+            <div className="relative flex w-full">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleOnChange}
+                className="peer h-10 w-full rounded-[12px] border border-[#159a9c] bg-transparent px-3 py-2.5 text-sm font-normal text-blue-gray-700 placeholder-shown:border-[#159a9c] focus:border-2 focus:border-[#159a9c] focus:outline-none"
+                placeholder="Email"
+              />
+              <button onClick={submitNewsletterForm} disabled={loading} className="ml-3 border-green-800 border-[4px] rounded-full">
+                <MdArrowOutward size={35} />
               </button>
             </div>
           </div>

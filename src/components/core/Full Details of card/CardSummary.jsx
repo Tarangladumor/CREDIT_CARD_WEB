@@ -12,33 +12,33 @@ const CardSummary = ({ Data }) => {
     };
 
     return (
-        <div className='w-10/12 mx-auto mt-20 border-[#056E67] border-[3px] rounded-2xl py-3 px-5 shadow-[0px_20px_50px_10px_#00000040]'>
+        <div className='w-11/12 lg:w-10/12 mx-auto mt-8 lg:mt-20 border-[#056E67] border-[3px] rounded-2xl py-4 lg:py-3 px-4 lg:px-5 shadow-[0px_20px_50px_10px_#00000040]'>
 
-            <div className='flex justify-center items-center gap-5'>
-                <div className='min-w-[20%]'>
-                    <img src={Data?.cardData?.image} alt="Card" />
+            <div className='flex flex-col md:flex-row justify-center items-center gap-5'>
+                <div className='w-full md:w-1/4 lg:min-w-[20%] mb-4 md:mb-0'>
+                    <img src={Data?.cardData?.image} alt="Card" className='w-full h-auto' />
                 </div>
 
-                <div>
-                    <div className='flex justify-between items-center mb-3'>
-                        <h2 className='font-semibold text-3xl'>{Data?.cardData?.cardName}</h2>
+                <div className='w-full md:w-3/4'>
+                    <div className='flex flex-col md:flex-row justify-between items-center mb-3'>
+                        <h2 className='font-semibold text-2xl lg:text-3xl mb-3 md:mb-0'>{Data?.cardData?.cardName}</h2>
 
-                        <div className='flex gap-x-3 items-center'>
-                            {
-                                Data?.cardData?.network?.map((item, index) => (
-                                    <img
-                                        key={item._id}
-                                        src={item.image}
-                                        className='h-7'
-                                        alt={item.name}
-                                    />
-                                ))
-                            }
-                            <button className='border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{Data?.cardData?.type[0]}</button>
+                        <div className='flex gap-x-2 md:gap-x-3 items-center'>
+                            {Data?.cardData?.network?.map((item, index) => (
+                                <img
+                                    key={item._id}
+                                    src={item.image}
+                                    className='h-5 md:h-6 lg:h-7'
+                                    alt={item.name}
+                                />
+                            ))}
+                            <button className='border-[2px] rounded-full border-[#056E67] text-[#056E67] px-3 md:px-4 lg:px-5 py-1 text-sm md:text-base lg:text-lg'>
+                                {Data?.cardData?.type[0]}
+                            </button>
                         </div>
                     </div>
 
-                    <div className='text-base font-normal'>
+                    <div className='text-sm md:text-base font-normal'>
                         <p>
                             {showFull ? Data?.cardData?.description : truncateDescription(Data?.cardData?.description)}
                             <span

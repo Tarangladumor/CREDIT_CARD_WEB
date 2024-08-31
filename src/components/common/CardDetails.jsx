@@ -8,28 +8,49 @@ import RatingStars from "./RatingStars";
 
 const CardDetails = ({ Data }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  
+  const [isClicked, setIsClicked] = useState(false);
   const [avgReviewCount, setAvgReviewCount] = useState(0);
 
-  useEffect(()=> {
-      const count = GetAvgRating(Data.ratingAndReviews);
-      setAvgReviewCount(count);
-  },[Data])
+  useEffect(() => {
+    const count = GetAvgRating(Data.ratingAndReviews);
+    setAvgReviewCount(count);
+  }, [Data]);
 
+  // Function to handle toggle effect based on screen size
+  const handleClick = () => {
+    if (window.innerWidth < 1024) {
+      setIsClicked(prev => !prev);
+    }
+  };
+
+  // Function to handle media query changes
+  const handleResize = () => {
+    if (window.innerWidth >= 1024) {
+      setIsClicked(false); // Reset click state on larger screens
+    }
+  };
+
+  // Set up media query listener for resizing
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    mediaQuery.addEventListener('change', handleResize);
+
+    // Cleanup listener on unmount
+    return () => mediaQuery.removeEventListener('change', handleResize);
+  }, []);
 
   console.log("DATA", Data);
 
   return (
     <div className="relative mb-16">
-      {isHovered && (
+      {(isHovered || isClicked) && (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-10"></div>
       )}
       <div
-        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered ? "h-auto z-20 scale-105 shadow-2xl" : "h-[500px]"
-          } overflow-hidden transform`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered || isClicked ? "h-auto z-20 scale-105 shadow-2xl" : "h-[500px]"}`}
+        onMouseEnter={() => window.innerWidth >= 1024 && setIsHovered(true)}
+        onMouseLeave={() => window.innerWidth >= 1024 && setIsHovered(false)}
+        onClick={handleClick}
       >
         <div className="flex justify-between relative">
           <img
@@ -44,7 +65,7 @@ const CardDetails = ({ Data }) => {
           </p>
         </div>
 
-        <div className=" w-full flex justify-center">
+        <div className="w-full flex justify-center">
           <img
             src={Data?.image}
             height={300}
@@ -57,7 +78,9 @@ const CardDetails = ({ Data }) => {
         <div className="flex flex-col gap-2 px-12">
           <div className="flex justify-between">
             <p className="font-medium text-xl">{Data?.cardName}</p>
-            <p className="font-medium text-xl">APR: {Data?.charges[0]?.annualPercentageRate}</p>
+            <p className="font-medium text-xl">
+              APR: {Data?.charges[0]?.annualPercentageRate}
+            </p>
           </div>
           <p className="font-medium text-xl">Annual Fee: ₹{Data?.charges[0]?.annualFee}</p>
           <p className="text-[#8A8C17] font-medium text-xl">
@@ -65,10 +88,9 @@ const CardDetails = ({ Data }) => {
           </p>
         </div>
 
-        {isHovered && (
+        {(isHovered || isClicked) && (
           <div
-            className={`flex flex-col gap-2 px-12 pb-10 transition-all duration-300 ease-in-out ${isHovered ? "max-h-screen" : "max-h-0 overflow-hidden"
-              }`}
+            className={`flex flex-col gap-2 px-12 pb-10 transition-all duration-300 ease-in-out ${isHovered || isClicked ? "max-h-screen" : "max-h-0 overflow-hidden"}`}
           >
             <p className="font-medium text-2xl">
               Reward Point Value: ₹{Data?.charges[0]?.rewardPointValue}
@@ -76,44 +98,27 @@ const CardDetails = ({ Data }) => {
 
             <div className="font-medium text-xl">
               <ul className="list-disc ml-5">
-                {
-                  Data?.includedBnefits.slice(0, 4).map((item, i) => (
-                    <li>{item}</li>
-                  ))
-                }
+                {Data?.includedBnefits.slice(0, 4).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </div>
           </div>
         )}
 
-        {isHovered && (
+        {(isHovered || isClicked) && (
           <div className="border-[#159A9C] border-b border-[0.5px] w-[82%] mx-auto"></div>
         )}
 
         <div
-          className={`flex flex-col gap-2 px-12 pb-10 transition-all duration-300 ease-in-out ${isHovered ? "max-h-screen" : "max-h-0 overflow-hidden"
-            }`}
+          className={`flex flex-col gap-2 px-12 pb-10 transition-all duration-300 ease-in-out ${isHovered || isClicked ? "max-h-screen" : "max-h-auto overflow-hidden"}`}
         >
           <p className="text-xl font-medium">User Reviews and Ratings:</p>
-          <RatingStars Review_Count={avgReviewCount}/>
+          <RatingStars Review_Count={avgReviewCount} />
 
-          {isHovered && (
+          {(isHovered || isClicked) && (
             <div>
               <p>See what our top customer has to say?</p>
-              {/* {Data?.ratingAndReviews.map((review, index) => (
-                <>
-                  <div key={index} className="flex gap-1 items-center">
-                    <img
-                    src={ReviewImg}
-                    alt="review image"
-                    className="w-10 h-10 aspect-square rounded-full"
-                  />
-                    <h3 className=" font-semibold">{review?.Author}</h3>
-                  </div>
-                  <p className="text-xs opacity-75">{review?.description}</p>
-                </>
-
-              ))} */}
               <ReviewCarousel reviews={Data?.ratingAndReviews} />
 
               <div className="flex gap-5 mt-5">
@@ -124,7 +129,7 @@ const CardDetails = ({ Data }) => {
                 </button>
 
                 <Link to={`/fulldetailsofcard/${Data._id}`}>
-                  <button className="border-[5px] rounded-full bg-transparent border-[#159A9C]  shadow-[0px_30px_35px_10px_#00000060,inset_0px_7px_30px_0px_#00000060] text-base font-semibold px-5 py-2">
+                  <button className="border-[5px] rounded-full bg-transparent border-[#159A9C] shadow-[0px_30px_35px_10px_#00000060,inset_0px_7px_30px_0px_#00000060] text-base font-semibold px-5 py-2">
                     More Details
                   </button>
                 </Link>
