@@ -65,15 +65,22 @@ const SimmilarCards = ({ Data }) => {
                                         </p>
                                     </div>
 
-                                    <div className='flex flex-col gap-1 sm:gap-2'>
-                                        <p className='text-sm sm:text-xs md:text-sm lg:text-base font-medium'>
-                                            <span className='text-[#8A8C17]'>Annual Fee: </span>
-                                            <span>{card.charges[0]?.annualFee}</span>
-                                        </p>
-                                        <p className='text-sm sm:text-xs md:text-sm lg:text-base font-medium'>
-                                            <span className='text-[#8A8C17]'>Joining Fee: </span>
-                                            <span>{card.charges[0]?.joiningFee}</span>
-                                        </p>
+                                <div className='flex justify-between items-center mb-3'>
+                                    <h2 className=' font-semibold text-4xl'>{card?.cardName}</h2>
+
+                                    <div className=' flex gap-x-3 items-center'>
+                                        {/* <img src={card.network[0].image} className=' h-5 w-auto' /> */}
+                                        {
+                                            card?.network?.map((item, index) => (
+                                                <img
+                                                    key={item._id}
+                                                    src={item.image}
+                                                    className='h-7'
+                                                    alt={item.name}
+                                                />
+                                            ))
+                                        }
+                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{card?.type}</button>
                                     </div>
                                 </div>
 

@@ -92,11 +92,15 @@ const FeeCharges = ({ Data }) => {
                     </div>
                 </div>
 
-                <div className='mt-8'>
-                    <h2 className='font-semibold text-lg md:text-xl opacity-70'>Fuel Transaction Fee</h2>
-
-                    <p className='font-medium text-xs md:text-sm pt-3 md:pt-5'>Any Amount Due</p>
-                    <p className='font-semibold text-sm md:text-base'>15% of Total Amount Due subjects to a minimum of $50 and maximum of $100.</p>
+                <div>
+                    <h2 className='font-semibold text-xl opacity-55'>
+                    Late Payment Charges</h2>
+                    {Data?.cardData?.charges[0]?.points?.map((point, index) => (
+                        <div key={index} className='pt-5'>
+                            <p className='font-medium text-[13px]'>{point?.key}</p>
+                            <p className='font-semibold text-base'>{point?.value}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
         </div>

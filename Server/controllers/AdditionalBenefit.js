@@ -2,25 +2,12 @@ import {AdditionalBenefits} from "../models/AdditionalBenefits.js";
 import { Card } from '../models/Card.js';
 import { respond } from '../utils/response.js'; 
 
-
-
 export const addAdditionalBenefits = async (req, res) => {
     try {
-        const {
-            welcomeBonus,
-            emiBenefit,
-            fuelSurcharge,
-            rewardPoints,
-            loungeAccess,
-            zeroLostCardLiability,
-            milestoneBenefit,
-            otherBenefit,
-            travelBenefit,
-            diningBenefit,
-            conciergeServices,
-            shoppingBenefit,
-            cardId
-        } = req.body;
+        // Log the entire raw request body
+        console.log("Raw request body:", req.body);
+
+        const { cardId, benefits } = req.body;
 
         // Validate cardId
         if (!cardId) {
@@ -28,44 +15,52 @@ export const addAdditionalBenefits = async (req, res) => {
         }
 
         // Check if the card exists
-        const validCard = await Card.findOne({ _id: cardId });
+        const validCard = await Card.findById(cardId);
         if (!validCard) {
             return respond(res, "Card not found", 403, false);
         }
 
-        // Create new AdditionalBenefits document
-        const additionalBenefits = await AdditionalBenefits.create({
-            welcomeBonus: Array.isArray(welcomeBonus) ? welcomeBonus : [],
-            emiBenefit: Array.isArray(emiBenefit) ? emiBenefit : [],
-            fuelSurcharge: Array.isArray(fuelSurcharge) ? fuelSurcharge : [],
-            rewardPoints: Array.isArray(rewardPoints) ? rewardPoints : [],
-            loungeAccess: Array.isArray(loungeAccess) ? loungeAccess : [],
-            zeroLostCardLiability: Array.isArray(zeroLostCardLiability) ? zeroLostCardLiability : [],
-            milestoneBenefit: Array.isArray(milestoneBenefit) ? milestoneBenefit : [],
-            otherBenefit: Array.isArray(otherBenefit) ? otherBenefit : [],
-            travelBenefit: Array.isArray(travelBenefit) ? travelBenefit : [],
-            diningBenefit: Array.isArray(diningBenefit) ? diningBenefit : [],
-            conciergeServices: Array.isArray(conciergeServices) ? conciergeServices : [],
-            shoppingBenefit: Array.isArray(shoppingBenefit) ? shoppingBenefit : []
-        });
+        // Initialize an empty object to hold additional benefits
+        const additionalBenefits = {};
+
+        // Ensure benefits is an array before attempting to iterate over it
+        if (Array.isArray(benefits)) {
+            benefits.forEach(benefit => {
+                const { type, listData, note } = benefit;
+
+                // Log each benefit being processed
+                console.log("Processing benefit:", benefit);
+
+                additionalBenefits[type] = listData || [];
+                if (note) {
+                    additionalBenefits[`${type}_note`] = note;
+                }
+            });
+        } else {
+            // If benefits is not an array, log an error message
+            console.error("Benefits is not an array or is undefined.");
+            return respond(res, "Invalid data format for benefits", 400, false);
+        }
+
+        // Create the AdditionalBenefits document
+        const newBenefits = await AdditionalBenefits.create(additionalBenefits);
 
         // Update the card with the new additionalBenefits
-        const updatedCardDetails = await Card.findByIdAndUpdate(
+        await Card.findByIdAndUpdate(
             cardId,
-            {
-                $push: { additionalBenefits: additionalBenefits._id }
-            },
+            { $push: { additionalBenefits: newBenefits._id } },
             { new: true }
         );
 
-        console.log("Updated Card details", updatedCardDetails);
-
-        return respond(res, "Additional benefits successfully added", 200, true, additionalBenefits);
+        return respond(res, "Additional benefits successfully added", 200, true, newBenefits);
     } catch (error) {
         console.log(error);
         return respond(res, "Error in adding additional benefits", 500, false);
     }
 };
+
+
+
 
 
 export const editAdditionalBenefits = async (req, res) => {

@@ -4,11 +4,23 @@ import { respond } from "../utils/response.js"
 
 export const addEligibility = async (req, res) => {
     try {
-        const { instruction, points, cardId } = req.body;
+        const { instruction, cardId } = req.body;
 
         // if (!Array.isArray(points) || points.some(p => !p.key || !p.value)) {
         //     return respond(res, "Each point must have both key and value", 400, false);
         // }
+
+        const points = [];
+        if (req.body["points[0][key]"]) {
+            let i = 0;
+            while (req.body[`points[${i}][key]`]) {
+                points.push({
+                    key: req.body[`points[${i}][key]`],
+                    value: req.body[`points[${i}][value]`],
+                });
+                i++;
+            }
+        }
 
         const eligibility = new Eligibility({
             instruction,

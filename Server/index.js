@@ -9,6 +9,7 @@ import { authMiddleware } from "./middleware/auth.js";
 import cardRouter from "./routes/Card.js";
 import adminRouter from "./routes/Admin.js";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config();
@@ -19,7 +20,8 @@ const PORT = process.env.PORT || 4000;
 connectDB();
 
 // Middleware configuration
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   fileUpload({
@@ -48,10 +50,12 @@ app.use(
 
 app.use(
   cors({
-      origin:"http://localhost:3000",
-      credentials:true,
+    origin: "http://localhost:3000",
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
   })
-)
+);
+
 
 // Optional: Manually adding CORS headers
 // app.use((req, res, next) => {

@@ -12,6 +12,13 @@ import CardsByBank from './components/core/CardsByBank/CardsByBank';
 import CardByPrivilege from './Pages/CardByPrivilege';
 import CardsByIncome from './components/core/CardIncom/CardsByIncome';
 import CardsByPrivilege from './components/core/CardByPrivilege/CardsByPrivilege';
+import ProtectedRoute from './components/common/ProtectedRoute';
+import CardForm from './components/admin/Card'
+import RewardForm from './components/admin/Reward';
+import EligibilityForm from './components/admin/Eligibility';
+import HowToApplyForm from './components/admin/Apply';
+import BenefitsForm from './components/admin/Benefits';
+import CardFeesForm from './components/admin/Charges';
 
 function App() {
   return (
@@ -42,9 +49,20 @@ function App() {
         <Route path='/cardByIncome/:name/:id' element={<CardsByIncome/>}/>
 
         <Route path='/:name/:id' element={<CardsByPrivilege/>}/>
+
+        <Route path='/addCard' element={<ProtectedRoute element={CardForm} />} />
+
+        <Route path='/addReward' element={<ProtectedRoute element={RewardForm} />} />
+
+        <Route path='/addEligibility' element={<ProtectedRoute element={EligibilityForm} />} />
+
+        <Route path='/addHowToApply' element={<ProtectedRoute element={HowToApplyForm} />} />
+
+        <Route path='/addBenefits' element={<ProtectedRoute element={BenefitsForm} />} />
+
+        <Route path='/addCharges' element={<ProtectedRoute element={CardFeesForm} />} />
         
       </Routes>
-
 
     </div>
   );

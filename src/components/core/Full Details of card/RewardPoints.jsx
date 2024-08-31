@@ -50,7 +50,9 @@ const RewardPoints = ({ Data }) => {
                     <div className='my-4'></div>
                 )}
 
-                <p className='text-xs lg:text-sm mt-2'>*Note: Some transactions, such as fuel, EMI, insurance transactions are not eligible for reward points.</p>
+                <p>{Data?.cardData?.rewards[0]?.note && (
+                    <p>{Data?.cardData?.rewards[0]?.note}</p>
+                )}</p>
             </section>
         </div>
     )
