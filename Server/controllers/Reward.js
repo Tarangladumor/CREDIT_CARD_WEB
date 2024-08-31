@@ -43,33 +43,85 @@ import mongoose from "mongoose";
 //     }
 // };
 
+// export const addRewards = async (req, res) => {
+//     try {
+//         const { instruction, points, listData, note, cardId } = req.body;
+
+//         // Validate input
+//         if (points && !Array.isArray(points)) {
+//             return respond(res, "Points should be an array", 400, false);
+//         }
+//         if (listData && !Array.isArray(listData)) {
+//             return respond(res, "List data should be an array", 400, false);
+//         }
+
+//         // Create a new Reward document
+//         const reward = new Reward({
+//             instruction,
+//             points: points && points.length > 0 ? points.map(point => ({
+//                 _id: new mongoose.Types.ObjectId(),
+//                 key: point.key,
+//                 value: point.value
+//             })) : [],
+//             listData,
+//             note
+//         });
+
+//         // Save the Reward document
+//         const savedReward = await reward.save();
+
+//         const updatedCard = await Card.findByIdAndUpdate(
+//             cardId,
+//             { $push: { rewards: savedReward._id } },
+//             { new: true }
+//         ).populate("rewards");
+
+//         return respond(res, "Rewards added successfully", 200, true, savedReward);
+//     } catch (error) {
+//         console.log(error);
+//         return respond(res, "Something went wrong while adding the rewards", 500, false);
+//     }
+// };
+
 export const addRewards = async (req, res) => {
     try {
-        const { instruction, points, listData, note, cardId } = req.body;
+        const { instruction, note, cardId } = req.body;
 
-        // Validate input
-        if (points && !Array.isArray(points)) {
-            return respond(res, "Points should be an array", 400, false);
+        // Manually build the points array
+        const points = [];
+        if (req.body["points[0][key]"]) {
+            let i = 0;
+            while (req.body[`points[${i}][key]`]) {
+                points.push({
+                    key: req.body[`points[${i}][key]`],
+                    value: req.body[`points[${i}][value]`],
+                });
+                i++;
+            }
         }
-        if (listData && !Array.isArray(listData)) {
-            return respond(res, "List data should be an array", 400, false);
+
+        // Manually build the listData array
+        const listData = [];
+        if (req.body["listData[0]"]) {
+            let i = 0;
+            while (req.body[`listData[${i}]`]) {
+                listData.push(req.body[`listData[${i}]`]);
+                i++;
+            }
         }
 
         // Create a new Reward document
         const reward = new Reward({
             instruction,
-            points: points && points.length > 0 ? points.map(point => ({
-                _id: new mongoose.Types.ObjectId(),
-                key: point.key,
-                value: point.value
-            })) : [],
+            points,
             listData,
-            note
+            note,
         });
 
         // Save the Reward document
         const savedReward = await reward.save();
 
+        // Update the corresponding card with the new reward ID
         const updatedCard = await Card.findByIdAndUpdate(
             cardId,
             { $push: { rewards: savedReward._id } },
@@ -82,7 +134,6 @@ export const addRewards = async (req, res) => {
         return respond(res, "Something went wrong while adding the rewards", 500, false);
     }
 };
-
 
 export const updateRewards = async (req, res) => {
     try {

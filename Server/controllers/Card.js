@@ -15,7 +15,7 @@ export const addCard = async (req, res) => {
     let {
       cardName,
       description,
-      type: _type,
+      type,
       includedBnefits: _includedBnefits,
       notIncludedBnefits: _notIncludedBnefits,
       provider,
@@ -26,14 +26,14 @@ export const addCard = async (req, res) => {
 
     const image = req.files.cardImage;
 
-    const type = JSON.parse(_type);
+    // const type = JSON.parse(_type);
     const includedBnefits = JSON.parse(_includedBnefits);
     const notIncludedBnefits = JSON.parse(_notIncludedBnefits);
 
     if (
       !cardName ||
       !description ||
-      !type.length ||
+      !type||
       !image ||
       !includedBnefits.length ||
       !notIncludedBnefits.length ||
@@ -111,8 +111,8 @@ export const addCard = async (req, res) => {
       { new: true }
     );
 
-    const privilegeData = await Privilege.updateMany(
-      { _id: network },
+    const privilegeData = await Privilege.findByIdAndUpdate(
+      { _id: bestFor },
       {
         $push: {
           card: newCard._id,
@@ -121,8 +121,8 @@ export const addCard = async (req, res) => {
       { new: true }
     );
 
-    const incomeData = await Income.updateMany(
-      { _id: network },
+    const incomeData = await Income.findByIdAndUpdate(
+      { _id: income },
       {
         $push: {
           card: newCard._id,

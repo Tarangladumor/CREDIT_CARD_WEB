@@ -5,10 +5,18 @@ import mongoose from "mongoose";
 
 export const addApply = async (req, res) => {
     try {
-        const { instruction, points, note , cardId} = req.body;
+        const { instruction, note , cardId} = req.body;
 
-        if (!points || !Array.isArray(points) || points.some(point => !point.key || !point.value)) {
-            return respond(res, "Points are required and must include key and value", 400, false);
+        const points = [];
+        if (req.body["points[0][key]"]) {
+            let i = 0;
+            while (req.body[`points[${i}][key]`]) {
+                points.push({
+                    key: req.body[`points[${i}][key]`],
+                    value: req.body[`points[${i}][value]`],
+                });
+                i++;
+            }
         }
 
         const apply = new Apply({

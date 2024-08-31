@@ -67,7 +67,7 @@ const SimmilarCards = ({ Data }) => {
                                                 />
                                             ))
                                         }
-                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{card?.type[0]}</button>
+                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{card?.type}</button>
                                     </div>
                                 </div>
 

@@ -50,7 +50,9 @@ const RewardPoints = ({ Data }) => {
                     <div></div>
                 )}
 
-                <p>*Note: Some transactions, such as fuel, EMI, insurance transaction are not eligible for reward points.</p>
+                <p>{Data?.cardData?.rewards[0]?.note && (
+                    <p>{Data?.cardData?.rewards[0]?.note}</p>
+                )}</p>
             </section>
         </div>
     )

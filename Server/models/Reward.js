@@ -5,21 +5,21 @@ const rewardSchema = new mongoose.Schema({
         type: String,
     },
     points: [
-        {
-            _id: {
-                type: mongoose.Schema.Types.ObjectId,
-                default: () => new mongoose.Types.ObjectId(),
-            },
-            key: {
-                type: String,
-                required: true,
-            },
-            value: {
-                type: String,
-                required: true,
-            },
-        }
-    ],
+    {
+        _id: {
+            type: mongoose.Schema.Types.ObjectId,
+            default: () => new mongoose.Types.ObjectId(),
+        },
+        key: {
+            type: String,
+            required: true,
+        },
+        value: {
+            type: String,
+            required: true,
+        },
+    }
+],
     listData : [
         {
             type: String

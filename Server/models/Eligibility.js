@@ -20,9 +20,9 @@ const eligibleSchema = new mongoose.Schema({
             },
         }
     ],
-    income: {
-        type: Number,
-    }
+    // income: {
+    //     type: Number,
+    // }
 });
 
 export const Eligibility = mongoose.model("Eligibility", eligibleSchema);
