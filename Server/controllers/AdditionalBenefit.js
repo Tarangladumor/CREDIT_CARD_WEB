@@ -3,65 +3,72 @@ import { Card } from '../models/Card.js';
 import { respond } from '../utils/response.js'; 
 
 export const addAdditionalBenefits = async (req, res) => {
-    try {
-        // Log the entire raw request body
-        console.log("Raw request body:", req.body);
+  console.log("benefits", req.body);
+  const { cardId, ...rawBenefits } = req.body;
 
-        const { cardId, benefits } = req.body;
+  // Helper function to transform raw data into structured data
+  const transformBenefits = (rawData) => {
+    const benefitKeys = [
+      'welcomeBonus', 'emiBenefit', 'fuelSurcharge', 'rewardPoints', 'loungeAccess', 
+      'zeroLostCardLiablity', 'milestoneBenefit', 'otherBenefit', 'travelBenefit', 
+      'diningBenefit', 'conciergeServices', 'shoppingBenefit', 'entertainmentBenefit', 
+      'insuranceBenefit'
+    ];
+    
+    const benefits = {};
 
-        // Validate cardId
-        if (!cardId) {
-            return respond(res, "Card ID is required", 400, false);
+    benefitKeys.forEach(key => {
+      benefits[key] = [];
+    });
+
+    // Iterate over rawData to structure it correctly
+    Object.keys(rawData).forEach(key => {
+      const match = key.match(/(\w+)\[(\d+)]\[(\w+)]/);
+      if (match) {
+        const [_, benefitName, index, field] = match;
+        if (benefitKeys.includes(benefitName)) {
+          if (!benefits[benefitName][index]) benefits[benefitName][index] = {};
+          benefits[benefitName][index][field] = rawData[key];
         }
+      }
+    });
 
-        // Check if the card exists
-        const validCard = await Card.findById(cardId);
-        if (!validCard) {
-            return respond(res, "Card not found", 403, false);
-        }
+    return benefits;
+  };
 
-        // Initialize an empty object to hold additional benefits
-        const additionalBenefits = {};
+  try {
+    const benefits = transformBenefits(rawBenefits);
 
-        // Ensure benefits is an array before attempting to iterate over it
-        if (Array.isArray(benefits)) {
-            benefits.forEach(benefit => {
-                const { type, listData, note } = benefit;
+    let additionalBenefits = await AdditionalBenefits.findOne({ cardId });
 
-                // Log each benefit being processed
-                console.log("Processing benefit:", benefit);
-
-                additionalBenefits[type] = listData || [];
-                if (note) {
-                    additionalBenefits[`${type}_note`] = note;
-                }
-            });
-        } else {
-            // If benefits is not an array, log an error message
-            console.error("Benefits is not an array or is undefined.");
-            return respond(res, "Invalid data format for benefits", 400, false);
-        }
-
-        // Create the AdditionalBenefits document
-        const newBenefits = await AdditionalBenefits.create(additionalBenefits);
-
-        // Update the card with the new additionalBenefits
-        await Card.findByIdAndUpdate(
-            cardId,
-            { $push: { additionalBenefits: newBenefits._id } },
-            { new: true }
-        );
-
-        return respond(res, "Additional benefits successfully added", 200, true, newBenefits);
-    } catch (error) {
-        console.log(error);
-        return respond(res, "Error in adding additional benefits", 500, false);
+    if (additionalBenefits) {
+      // Update the existing record
+      additionalBenefits = await AdditionalBenefits.findOneAndUpdate(
+        { cardId },
+        { $set: benefits },
+        { new: true }
+      );
+    } else {
+      // Create a new record
+      additionalBenefits = new AdditionalBenefits({
+        cardId,
+        ...benefits,
+      });
+      await additionalBenefits.save();
     }
+
+    const updatedCard = await Card.findByIdAndUpdate(
+      cardId,
+      { $push: { additionalBenefits: additionalBenefits._id } },
+      { new: true }
+  ).populate("additionalBenefits");
+
+    res.status(200).json({ success: true, data: updatedCard });
+  } catch (error) {
+    console.error('Error saving benefits:', error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
-
-
-
-
 
 export const editAdditionalBenefits = async (req, res) => {
     try {

@@ -33,7 +33,7 @@ const CardSummary = ({ Data }) => {
                                 />
                             ))}
                             <button className='border-[2px] rounded-full border-[#056E67] text-[#056E67] px-3 md:px-4 lg:px-5 py-1 text-sm md:text-base lg:text-lg'>
-                                {Data?.cardData?.type[0]}
+                                {Data?.cardData?.type}
                             </button>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ import { authMiddleware } from "./middleware/auth.js";
 import cardRouter from "./routes/Card.js";
 import adminRouter from "./routes/Admin.js";
 import cors from "cors";
-import bodyParser from "body-parser";
+// import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config();
@@ -20,8 +20,8 @@ const PORT = process.env.PORT || 4000;
 connectDB();
 
 // Middleware configuration
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   fileUpload({

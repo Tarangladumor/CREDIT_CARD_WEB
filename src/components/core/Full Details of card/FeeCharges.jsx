@@ -40,7 +40,7 @@ const FeeCharges = ({ Data }) => {
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Annual Percentage Rate</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.annualPercentageRate}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.annualPercentageRate}</p>
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Add on Card Fee</p>
@@ -51,7 +51,7 @@ const FeeCharges = ({ Data }) => {
                                         <Tr>
                                             <Td className='py-5'>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Minimum Repayment Amount</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.minimumRepaymentAmount}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.minimumRepaymentAmount}</p>
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Cash Withdrawal Fee</p>
@@ -70,19 +70,19 @@ const FeeCharges = ({ Data }) => {
                                         <Tr>
                                             <Td className='py-5'>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Foreign Transaction Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.foreignTransactionFee}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.foreignTransactionFee}</p>
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Over Limit Penalty</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.overLimitPenalty}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.overLimitPenalty}</p>
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Fuel Transaction Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.fuelTransactionSurcharge}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.fuelTransactionSurcharge}</p>
                                             </Td>
                                             <Td>
                                                 <p className='font-medium text-xs md:text-sm opacity-60'>Reward Point Value</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.rewardPointValue}%</p>
+                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.rewardPointValue}</p>
                                             </Td>
                                         </Tr>
                                     </>
@@ -96,7 +96,7 @@ const FeeCharges = ({ Data }) => {
                     <h2 className='font-semibold text-xl opacity-55'>
                     Late Payment Charges</h2>
                     {Data?.cardData?.charges[0]?.points?.map((point, index) => (
-                        <div key={index} className='pt-5'>
+                        <div key={index} className='pt-5 flex flex-col'>
                             <p className='font-medium text-[13px]'>{point?.key}</p>
                             <p className='font-semibold text-base'>{point?.value}</p>
                         </div>

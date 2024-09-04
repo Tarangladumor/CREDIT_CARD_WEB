@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SimmilarCards = ({ Data }) => {
     console.log("Data:", Data);
@@ -44,7 +44,7 @@ const SimmilarCards = ({ Data }) => {
                                         />
                                     ))}
                                     <button className='border border-[#056E67] text-[#056E67] rounded-full px-3 sm:px-3 md:px-4 py-1 sm:py-1 md:py-1.5'>
-                                        {card?.type[0]}
+                                        {card?.type}
                                     </button>
                                 </div>
                             </div>
@@ -63,24 +63,6 @@ const SimmilarCards = ({ Data }) => {
                                         <p className='text-sm sm:text-xs md:text-sm lg:text-base'>
                                             Stars
                                         </p>
-                                    </div>
-
-                                <div className='flex justify-between items-center mb-3'>
-                                    <h2 className=' font-semibold text-4xl'>{card?.cardName}</h2>
-
-                                    <div className=' flex gap-x-3 items-center'>
-                                        {/* <img src={card.network[0].image} className=' h-5 w-auto' /> */}
-                                        {
-                                            card?.network?.map((item, index) => (
-                                                <img
-                                                    key={item._id}
-                                                    src={item.image}
-                                                    className='h-7'
-                                                    alt={item.name}
-                                                />
-                                            ))
-                                        }
-                                        <button className=' border-[2px] rounded-full border-[#056E67] text-[#056E67] px-5 py-1'>{card?.type}</button>
                                     </div>
                                 </div>
 
@@ -101,4 +83,4 @@ const SimmilarCards = ({ Data }) => {
     )
 }
 
-export default SimmilarCards
+export default SimmilarCards;
