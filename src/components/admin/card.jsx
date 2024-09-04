@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import ChipInput from '../common/ChipInput';
 import { useSelector } from 'react-redux';
@@ -15,67 +15,69 @@ const CardForm = () => {
   const { card, editCard } = useSelector((state) => state.card);
   const [loading, setLoading] = useState(false);
   const [cardNetwork, setCardNetwork] = useState([]);
+  const [selectedNetworks, setSelectedNetworks] = useState([]);
   const [cardProvider, setCardProvider] = useState([]);
   const [cardIncome, setCardIncome] = useState([]);
   const [cardPrivilege, setCardPrivilege] = useState([]);
   const [resetTrigger, setResetTrigger] = useState(false);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        setValue,
-        getValues,
-        reset
-      } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    getValues,
+    reset
+  } = useForm();
 
-      useEffect(() => {
-        const getnetwork = async () => {
-          setLoading(true);
-          const network = await fetchAllNetwork();
-          console.log(network);
-          if (network.length > 0) {
-            setCardNetwork(network);
-          }
-          setLoading(false);
-        };
-        const getprovider = async () => {
-          setLoading(true);
-          const provider = await fetchAllProvider();
-          console.log(provider);
-          if (provider.length > 0) {
-            setCardProvider(provider);
-          }
-          setLoading(false);
-        };
-        const getprivilege = async () => {
-          setLoading(true);
-          const privilege = await fetchAllPrivilege();
-          console.log(privilege);
-          if (privilege.length > 0) {
-            setCardPrivilege(privilege);
-          }
-          setLoading(false);
-        };
-        const getincome = async () => {
-          setLoading(true);
-          const income = await fetchAllIncome();
-          console.log(income);
-          if (income.length > 0) {
-            setCardIncome(income);
-          }
-          setLoading(false);
-        };
-        getnetwork();
-        getincome();
-        getprivilege();
-        getprovider();
-      }, []);
+  useEffect(() => {
+    const fetchNetworks = async () => {
+      setLoading(true);
+      const network = await fetchAllNetwork();
+      if (network.length > 0) {
+        setCardNetwork(network);
+      }
+      setLoading(false);
+    };
+    const fetchProvider = async () => {
+      setLoading(true);
+      const provider = await fetchAllProvider();
+      if (provider.length > 0) {
+        setCardProvider(provider);
+      }
+      setLoading(false);
+    };
+    const fetchPrivilege = async () => {
+      setLoading(true);
+      const privilege = await fetchAllPrivilege();
+      if (privilege.length > 0) {
+        setCardPrivilege(privilege);
+      }
+      setLoading(false);
+    };
+    const fetchIncome = async () => {
+      setLoading(true);
+      const income = await fetchAllIncome();
+      if (income.length > 0) {
+        setCardIncome(income);
+      }
+      setLoading(false);
+    };
+    fetchNetworks();
+    fetchIncome();
+    fetchPrivilege();
+    fetchProvider();
+  }, []);
 
-
+  const handleAddNetwork = () => {
+    const selectedNetwork = getValues("network");
+    if (selectedNetwork && !selectedNetworks.includes(selectedNetwork)) {
+      setSelectedNetworks((prev) => [...prev, selectedNetwork]);
+      setValue("network", ""); // Reset the network select
+    }
+  };
 
   const onSubmit = async (data) => {
-    console.log("data",data)
     const formData = new FormData();
     formData.append("cardName", data.cardName);
     formData.append("description", data.description);
@@ -83,24 +85,22 @@ const CardForm = () => {
     formData.append("includedBnefits", JSON.stringify(data.cardincludedBnefits));
     formData.append("notIncludedBnefits", JSON.stringify(data.cardNotIncludedBnefits));
     formData.append("provider", data.provider);
-    formData.append("network", data.network);
+    formData.append("network", JSON.stringify(selectedNetworks)); // Convert the array to JSON
     formData.append("bestFor", data.bestFor);
     formData.append("income", data.income);
     formData.append("applyLink", data.applyLink);
     if (data.cardimage.length > 0) {
       formData.append("cardImage", data.cardimage[0]);
     }
-    console.log("Form Data : ", formData);
     setLoading(true);
     try {
       const result = await addCardDetails(formData, token);
-      console.log("API Result:", result);
       if (result) {
         dispatch(setCard(result));
         dispatch(setEditCard(result));
         reset();
         setResetTrigger(!resetTrigger);
-        Navigate(`/addReward?token=${token}`)
+        Navigate(`/addReward?token=${token}`);
       }
     } catch (error) {
       console.error("Error in API call:", error);
@@ -113,7 +113,7 @@ const CardForm = () => {
     <div className="bg-teal-50 min-h-screen flex items-center justify-center">
       <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
         <h2 className="text-2xl font-bold text-teal-600 mb-6">Create a New Card</h2>
-        
+
         <div className="mb-4">
           <label className="block text-teal-700 text-sm font-bold mb-2">Card Name</label>
           <input 
@@ -177,15 +177,12 @@ const CardForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-teal-700 text-sm font-bold mb-2">Network</label>
+          <label className="block text-teal-700 text-sm font-bold mb-2">Networks</label>
           <select
-            {...register("network", {
-              required: true,
-              
-            })}
+            {...register("network")}
             defaultValue=""
             id="network"
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors.network ? 'border-red-500' : ''}`} 
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors.network ? 'border-red-500' : ''}`}
           >
             <option value="" disabled>
               Choose a Network
@@ -197,7 +194,22 @@ const CardForm = () => {
                 </option>
               ))}
           </select>
-          {errors.network && <p className="text-red-500 text-xs italic">Please select a network.</p>}
+          {errors.network && <p className="text-red-500 text-xs italic">{errors.network.message}</p>}
+          <button type="button" onClick={handleAddNetwork} className="mt-2 bg-teal-500 hover:bg-teal-700 text-white font-bold py-1 px-2 rounded">
+            Add Network
+          </button>
+        </div>
+
+        {/* Display selected networks */}
+        <div className="mb-4">
+          <label className="block text-teal-700 text-sm font-bold mb-2">Selected Networks</label>
+          <ul className="list-disc list-inside">
+            {selectedNetworks.map((networkId, index) => (
+              <li key={index}>
+                {cardNetwork.find((network) => network._id === networkId)?.name}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mb-4">
@@ -278,15 +290,20 @@ const CardForm = () => {
           resetTrigger={resetTrigger}
         />
 
-        <button 
-          type="submit" 
+        {/* Other form fields... */}
+
+        
+        {/* Other form fields... */}
+
+        <button
+          type="submit"
           className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Submit
         </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default CardForm
+export default CardForm;
