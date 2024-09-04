@@ -51,7 +51,7 @@ const Footer = () => {
           {/* Logo and Social Icons */}
           <div className="flex flex-col items-center gap-4 mt-4">
             <div className="text-3xl md:text-4xl font-extrabold">
-              LOGO
+              CARD POUCH
             </div>
             <div className="text-xl md:text-2xl">
               Follow Us

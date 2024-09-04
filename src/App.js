@@ -13,7 +13,7 @@ import CardByPrivilege from './Pages/CardByPrivilege';
 import CardsByIncome from './components/core/CardIncom/CardsByIncome';
 import CardsByPrivilege from './components/core/CardByPrivilege/CardsByPrivilege';
 import ProtectedRoute from './components/common/ProtectedRoute';
-import CardForm from './components/admin/Card'
+import CardForm from './components/admin/card'
 import RewardForm from './components/admin/Reward';
 import EligibilityForm from './components/admin/Eligibility';
 import HowToApplyForm from './components/admin/Apply';

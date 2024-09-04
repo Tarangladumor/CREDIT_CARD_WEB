@@ -45,7 +45,8 @@ const Check_Offers = () => {
                 </div>
             </div>
 
-            <div className='w-11/12 md:w-4/5 lg:w-3/4 mx-auto mt-10 md:mt-12 lg:mt-14'>
+            {/* For medium screens */}
+            <div className='w-11/12 md:w-4/5 lg:hidden mx-auto mt-10 md:mt-12 lg:mt-14'>
                 <div className='hidden md:block'>
                     <Swiper
                         slidesPerView={'auto'}
@@ -55,7 +56,7 @@ const Check_Offers = () => {
                         className='w-full'
                     >
                         {cards.map((Data, i) => (
-                            <SwiperSlide key={i} className='!w-[80%] md:!w-[70%] lg:!w-[60%]'>
+                            <SwiperSlide key={i} className='!w-[80%] md:!w-[70%]'>
                                 <CardDetails Data={Data} />
                             </SwiperSlide>
                         ))}
@@ -72,13 +73,22 @@ const Check_Offers = () => {
                 </div>
             </div>
 
+            {/* For large screens */}
+            <div className='hidden lg:block w-3/4 mx-auto mt-14'>
+                <div className='grid grid-cols-2 gap-y-16 gap-x-24'>
+                    {cards.slice(0, 2).map((Data, i) => (
+                        <CardDetails key={i} Data={Data} />
+                    ))}
+                </div>
+            </div>
+
             <div className='flex justify-center items-center mt-10 md:mt-12 lg:mt-14 mb-10 md:mb-12 lg:mb-14'>
                 <button onClick={() => navigate('/more-cards')} className='border-4 md:border-[6px] lg:border-[8px] border-[#159A9C] rounded-full px-8 md:px-10 lg:px-12 py-2 md:py-3 lg:py-4 shadow-[0px_10px_25px_5px_#00000040] md:shadow-[0px_15px_35px_7px_#00000040] lg:shadow-[0px_20px_50px_10px_#00000040]'>
                     <p className='font-medium text-lg md:text-xl lg:text-2xl'>Discover More</p>
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Check_Offers;

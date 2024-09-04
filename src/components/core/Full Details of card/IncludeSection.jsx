@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TRUEIMG from '../../../assets/true_green.png';
 import FALSEIMG from '../../../assets/false_red.png';
 import { FaHeart } from "react-icons/fa";
 import Reviews from './Reviews';
 import ReviewCarousel from '../../common/ReviewCarousel';
 import { Link } from 'react-router-dom';
+import GetAvgRating from '../../../utils/avgRating';
+import RatingStars from '../../common/RatingStars';
 
 const IncludeSection = ({ Data }) => {
     const [showModal, setShowModal] = useState(false);
+    const [avgReviewCount, setAvgReviewCount] = useState(0);
     console.log("DATA IN INCLUDED SECTION: ", Data);
 
     const handleAddReviewClick = () => {
@@ -17,6 +20,11 @@ const IncludeSection = ({ Data }) => {
     const handleCloseModal = () => {
         setShowModal(false);
     };
+
+    useEffect(() => {
+        const count = GetAvgRating(Data?.cardData?.ratingAndReviews);
+        setAvgReviewCount(count);
+      }, [Data]);
 
     console.log("REVIEWS..............", Data?.cardData?.ratingAndReviews);
 
@@ -58,8 +66,10 @@ const IncludeSection = ({ Data }) => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col md:flex-row md:items-center items-end'>
-                        <div className='text-sm md:text-base lg:text-lg'>Stars</div>
+                    <div className='flex flex-col items-end'>
+                        <div className='text-sm md:text-base lg:text-lg'>
+                            <RatingStars Review_Count={avgReviewCount} />
+                        </div>
                         <h2 className='font-medium text-base md:text-lg lg:text-2xl mt-2 md:mt-0 md:ml-4'>Overall ratings</h2>
                         <p className='font-medium text-xs md:text-sm lg:text-base opacity-45 mt-1 md:mt-0'>Avg rating by 200+ verified customers</p>
                     </div>
