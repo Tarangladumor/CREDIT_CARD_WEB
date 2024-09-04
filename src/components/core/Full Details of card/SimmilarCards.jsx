@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SimmilarCards = ({ Data }) => {
+const SimilarCards = ({ Data }) => {
     console.log("Data:", Data);
 
     return (
@@ -16,7 +16,7 @@ const SimmilarCards = ({ Data }) => {
                 <div className='border-[#159A9C] border-b-3 sm:border-b-4 md:border-b-4 my-5 rounded-full'></div>
             </div>
 
-            {Data?.similarCards.map((card, index) => (
+            {Data?.similarCards?.map((card, index) => (
                 <div
                     className='mt-10 sm:mt-12 md:mt-10 lg:mt-16 border-[#056E67] border-2 sm:border-3 md:border-2 lg:border-3 rounded-2xl p-4 sm:p-6 md:p-6 lg:p-8 shadow-md lg:shadow-lg'
                     key={index}
@@ -64,15 +64,16 @@ const SimmilarCards = ({ Data }) => {
                                             Stars
                                         </p>
                                     </div>
-                                </div>
 
-                                {/* More Details Button */}
-                                <div className='flex items-start md:items-end mt-4 sm:mt-4'>
-                                    <Link to={`/fulldetailsofcard/${card._id}`}>
-                                        <button className="border-2 md:border-2 rounded-full bg-transparent border-[#159A9C] shadow-md lg:shadow-lg text-sm sm:text-xs md:text-sm lg:text-base font-semibold px-4 sm:px-2 md:px-4 lg:px-6 py-2 mt-4 md:mt-0">
-                                            More Details
-                                        </button>
-                                    </Link>
+
+                                    {/* More Details Button */}
+                                    <div className='flex items-start md:items-end mt-4 sm:mt-4'>
+                                        <Link to={`/fulldetailsofcard/${card._id}`}>
+                                            <button className="border-2 md:border-2 rounded-full bg-transparent border-[#159A9C] shadow-md lg:shadow-lg text-sm sm:text-xs md:text-sm lg:text-base font-semibold px-4 sm:px-2 md:px-4 lg:px-6 py-2 mt-4 md:mt-0">
+                                                More Details
+                                            </button>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +81,7 @@ const SimmilarCards = ({ Data }) => {
                 </div>
             ))}
         </div>
-    )
-}
+    );
+};
 
-export default SimmilarCards;
+

@@ -1,7 +1,5 @@
-import React from 'react'
-import FEECHARGES from '../../../assets/FeeCharges_img.png'
-import { Table, Tbody, Tr, Td } from 'react-super-responsive-table';
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import React from 'react';
+import FEECHARGES from '../../../assets/FeeCharges_img.png';
 
 const FeeCharges = ({ Data }) => {
 
@@ -24,87 +22,11 @@ const FeeCharges = ({ Data }) => {
                 <div className='py-8 md:py-10'>
                     <h3 className='font-semibold text-lg md:text-xl opacity-70'>CHARGES</h3>
 
-                    <div className='pt-8 md:pt-10 px-4 md:px-10'>
-                        <Table className="w-full">
-                            <Tbody>
-                                {Data?.cardData?.charges && (
-                                    <>
-                                        <Tr>
-                                            <Td className="py-5">
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Joining Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.joiningFee}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Annual Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.annualFee}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Annual Percentage Rate</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.annualPercentageRate}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Add on Card Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.addOnCardFee}</p>
-                                            </Td>
-                                        </Tr>
-
-                                        <Tr>
-                                            <Td className='py-5'>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Minimum Repayment Amount</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.minimumRepaymentAmount}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Cash Withdrawal Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.cashWithdrawalFee}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Cash Advance Limit</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.cashAdvanceLimit}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Card Replacement Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.cardReplacementFee}</p>
-                                            </Td>
-                                        </Tr>
-
-                                        <Tr>
-                                            <Td className='py-5'>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Foreign Transaction Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.foreignTransactionFee}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Over Limit Penalty</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.overLimitPenalty}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Fuel Transaction Fee</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.fuelTransactionSurcharge}</p>
-                                            </Td>
-                                            <Td>
-                                                <p className='font-medium text-xs md:text-sm opacity-60'>Reward Point Value</p>
-                                                <p className='font-semibold text-sm md:text-base'>{Data.cardData.charges[0]?.rewardPointValue}</p>
-                                            </Td>
-                                        </Tr>
-                                    </>
-                                )}
-                            </Tbody>
-                        </Table>
-                    </div>
                 </div>
 
-                <div>
-                    <h2 className='font-semibold text-xl opacity-55'>
-                    Late Payment Charges</h2>
-                    {Data?.cardData?.charges[0]?.points?.map((point, index) => (
-                        <div key={index} className='pt-5 flex flex-col'>
-                            <p className='font-medium text-[13px]'>{point?.key}</p>
-                            <p className='font-semibold text-base'>{point?.value}</p>
-                        </div>
-                    ))}
-                </div>
             </section>
         </div>
     )
 }
 
-export default FeeCharges
+export default FeeCharges;
