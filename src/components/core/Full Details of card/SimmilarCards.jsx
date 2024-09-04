@@ -84,4 +84,4 @@ const SimilarCards = ({ Data }) => {
     );
 };
 
-
+export default SimilarCards
