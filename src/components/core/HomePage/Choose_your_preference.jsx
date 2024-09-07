@@ -21,7 +21,7 @@ const Choose_your_preference = () => {
         </div>
 
         <div className="flex flex-wrap justify-evenly items-center gap-5">
-          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-6 rounded-2xl">
+          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-3 rounded-2xl">
             <Link to='/cardByPrivilege' className="text-center flex flex-col gap-y-5">
               <div className="flex justify-center">
                 <img src={VIPICON} alt="vip icon"/>
@@ -32,7 +32,7 @@ const Choose_your_preference = () => {
             </Link>
           </div>
 
-          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-6 rounded-2xl">
+          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-3 rounded-2xl">
             <Link to='/cardByNetwork' className="text-center flex flex-col gap-y-5">
               <div className="flex justify-center">
                 <img src={NETWORKICON} alt="Network icon"/>
@@ -43,7 +43,7 @@ const Choose_your_preference = () => {
             </Link>
           </div>
 
-          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-6 rounded-2xl">
+          <div className="bg-[#DEEFE7] py-8 px-5 sm:py-10 sm:px-8 md:py-12 md:px-5 lg:py-14 lg:px-3 rounded-2xl">
             <Link to='/cardByIncome' className="text-center flex flex-col gap-y-5">              
               <div className="flex justify-center">
                 <img src={INCOMEICON} alt="income icon"/>

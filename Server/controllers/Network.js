@@ -68,8 +68,11 @@ export const getCardByNetwork = async(req,res) => {
 
     const cardByNetwork = await Network.findById(networkId).populate({
       path: "card",
-      populate: "network",
-      populate: "charges"
+      populate: [
+      { path: "network" }, 
+      { path: "charges" }, 
+      { path: "ratingAndReviews" }
+    ]
     }).exec();
 
     if(!cardByNetwork) {

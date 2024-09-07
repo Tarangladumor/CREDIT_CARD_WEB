@@ -66,8 +66,11 @@ export const getCardByBank = async (req, res) => {
 
     const cardByBank = await Provider.findById(providerId).populate({
       path: "card",
-      populate: "network",
-      populate: "charges",
+      populate: [
+      { path: "network" }, 
+      { path: "charges" }, 
+      { path: "ratingAndReviews" }
+    ]
     }).exec();
 
      

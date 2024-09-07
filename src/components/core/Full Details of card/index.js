@@ -10,6 +10,7 @@ import SimmilarCards from './SimmilarCards'
 import { useLocation } from 'react-router-dom'
 import { fetchOneCardDetails } from '../../../services/Operations/cardAPI'
 import Comment from './Comment'
+import Footer from '../../common/Footer'
 
 const FullDetails = ({Details}) => {
 
@@ -35,6 +36,8 @@ const FullDetails = ({Details}) => {
       <SimmilarCards Data={Details}/>
 
       <Comment Data={Details}/>
+
+      <Footer/>
     </div>
   )
 }

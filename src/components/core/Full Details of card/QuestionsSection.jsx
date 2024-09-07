@@ -43,39 +43,31 @@ const QuestionsSection = ({ Data }) => {
 
           {activeIndex === 0 && (
             <div className="py-4 lg:py-5 px-6 lg:px-10">
-              {Data?.cardData?.howToApply[0]?.instruction ? (
                 <p className="text-base lg:text-lg">
-                  {Data?.cardData?.howToApply[0]?.instruction}
+                Applying for a {Data?.cardData?.cardName} is possible via the Swiggy app or online. The steps to apply for the card online are as follows:
                 </p>
-              ) : (
-                <p className="text-base lg:text-lg">
-                  No instructions available for this card.
-                </p>
-              )}
 
-              {Data?.cardData?.howToApply[0]?.points ? (
                 <ul className="list-disc pl-5">
-                  {Data?.cardData?.howToApply[0]?.points.map((item) => (
-                    <li key={item.key} className="text-base lg:text-lg">
-                      {item?.key} : {item?.value}
+                    <li  className="text-base lg:text-lg">
+                    Step 1 : Visit cardpouch.com and navigate to the 'Credit Card' section.
                     </li>
-                  ))}
+                    <li  className="text-base lg:text-lg">
+                    Step 2 : Select the {Data?.cardData?.cardName} from the available options and click on 'Apply Now'.
+                    </li>
+                    <li  className="text-base lg:text-lg">
+                    Step 3 : Provide your personal and financial information on the online application form.
+                    </li>
+                    <li  className="text-base lg:text-lg">
+                    Step 4 : Upload the necessary files, including proof of identity and income.
+                    </li>
+                    <li  className="text-base lg:text-lg">
+                    Step 5 : Wait for the bank's decision after submitting the application.
+                    </li>
                 </ul>
-              ) : (
+              
                 <p className="text-base lg:text-lg">
-                  No instructions available for this card.
+                Before applying for a credit card, it's a good idea to carefully read over the terms and conditions. You can also speak with the bank or a financial advisor if you have any questions or concerns.
                 </p>
-              )}
-
-              {Data?.cardData?.howToApply[0]?.note ? (
-                <p className="text-base lg:text-lg">
-                  {Data?.cardData?.howToApply[0]?.note}
-                </p>
-              ) : (
-                <p className="text-base lg:text-lg">
-                  No instructions available for this card.
-                </p>
-              )}
             </div>
           )}
         </div>

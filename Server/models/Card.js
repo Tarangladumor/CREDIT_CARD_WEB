@@ -16,6 +16,9 @@ const cardSchema = new mongoose.Schema({
     type: {
         type: String,
     },
+    bestFor: {
+        type: String,
+    },
     provider: 
         {
             type:mongoose.Schema.Types.ObjectId,
@@ -84,7 +87,7 @@ const cardSchema = new mongoose.Schema({
             ref: "Eligibility"
         }
     ],
-    bestFor: {
+    privilege: {
         type:mongoose.Schema.Types.ObjectId,
         ref: "Privilege"
     },

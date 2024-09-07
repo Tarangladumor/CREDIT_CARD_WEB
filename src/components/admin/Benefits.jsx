@@ -23,6 +23,9 @@ const AdditionalBenefitsForm = () => {
       shoppingBenefit: [{ listData: '', note: '' }],
       entertainmentBenefit: [{ listData: '', note: '' }],
       insuranceBenefit: [{ listData: '', note: '' }],
+      cashbackBenefit: [{ listData: '', note: '' }],
+      revolvingCredit: [{ listData: '', note: '' }],
+      interestfreePeriod: [{ listData: '', note: '' }],
     },
   });
 
@@ -38,10 +41,26 @@ const AdditionalBenefitsForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
+  
+    // Filter out empty benefits (those without listData or note)
+    const filteredData = {};
+    Object.keys(data).forEach((benefitKey) => {
+      if (Array.isArray(data[benefitKey])) {
+        const nonEmptyBenefits = data[benefitKey].filter(
+          (item) => item.listData.trim() !== '' || item.note.trim() !== ''
+        );
+        if (nonEmptyBenefits.length > 0) {
+          filteredData[benefitKey] = nonEmptyBenefits;
+        }
+      } else {
+        filteredData[benefitKey] = data[benefitKey];
+      }
+    });
+  
     try {
       const token = process.env.REACT_APP_AUTH_TOKEN;
-      const response = await addCardBenefitsDetails(data, token);
-
+      const response = await addCardBenefitsDetails(filteredData, token);
+  
       if (response?.success) {
         toast.success('Card benefits details added successfully!');
         navigate(`/addCharges?token=${token}`);
@@ -53,6 +72,7 @@ const AdditionalBenefitsForm = () => {
       setLoading(false);
     }
   };
+  
 
   const renderBenefitFields = (benefitName, fields, append) => (
     <div key={benefitName} className="mb-4">
@@ -75,7 +95,7 @@ const AdditionalBenefitsForm = () => {
           <div key={item.id} className="flex gap-2 mb-2">
             <input
               type="text"
-              {...register(`${benefitName}[${index}].listData`, { required: true })}
+              {...register(`${benefitName}[${index}].listData`)}
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors[`${benefitName}[${index}].listData`] ? 'border-red-500' : ''}`}
               placeholder={`List Data ${index + 1}`}
             />
@@ -91,6 +111,25 @@ const AdditionalBenefitsForm = () => {
       </div>
     </div>
   );
+
+  const welcomeBonus = useFieldArray({ control, name: 'welcomeBonus' });
+  const emiBenefit = useFieldArray({ control, name: 'emiBenefit' });
+  const fuelSurcharge = useFieldArray({ control, name: 'fuelSurcharge' });
+  const rewardPoints = useFieldArray({ control, name: 'rewardPoints' });
+  const loungeAccess = useFieldArray({ control, name: 'loungeAccess' });
+  const zeroLostCardLiability = useFieldArray({ control, name: 'zeroLostCardLiability' });
+  const milestoneBenefit = useFieldArray({ control, name: 'milestoneBenefit' });
+  const otherBenefit = useFieldArray({ control, name: 'otherBenefit' });
+  const travelBenefit = useFieldArray({ control, name: 'travelBenefit' });
+  const diningBenefit = useFieldArray({ control, name: 'diningBenefit' });
+  const conciergeServices = useFieldArray({ control, name: 'conciergeServices' });
+  const shoppingBenefit = useFieldArray({ control, name: 'shoppingBenefit' });
+  const entertainmentBenefit = useFieldArray({ control, name: 'entertainmentBenefit' });
+  const insuranceBenefit = useFieldArray({ control, name: 'insuranceBenefit' });
+  const cashbackBenefit = useFieldArray({ control, name: 'cashbackBenefit' });
+  const revolvingCredit = useFieldArray({ control, name: 'revolvingCredit' });
+  const interestfreePeriod = useFieldArray({ control, name: 'interestfreePeriod' });
+  
 
   return (
     <div className="bg-teal-50 min-h-screen flex items-center justify-center">
@@ -111,20 +150,23 @@ const AdditionalBenefitsForm = () => {
         </div>
 
         {/* Benefit Fields */}
-        {renderBenefitFields('welcomeBonus', useFieldArray({ control, name: 'welcomeBonus' }).fields, useFieldArray({ control, name: 'welcomeBonus' }).append)}
-        {renderBenefitFields('emiBenefit', useFieldArray({ control, name: 'emiBenefit' }).fields, useFieldArray({ control, name: 'emiBenefit' }).append)}
-        {renderBenefitFields('fuelSurcharge', useFieldArray({ control, name: 'fuelSurcharge' }).fields, useFieldArray({ control, name: 'fuelSurcharge' }).append)}
-        {renderBenefitFields('rewardPoints', useFieldArray({ control, name: 'rewardPoints' }).fields, useFieldArray({ control, name: 'rewardPoints' }).append)}
-        {renderBenefitFields('loungeAccess', useFieldArray({ control, name: 'loungeAccess' }).fields, useFieldArray({ control, name: 'loungeAccess' }).append)}
-        {renderBenefitFields('zeroLostCardLiability', useFieldArray({ control, name: 'zeroLostCardLiability' }).fields, useFieldArray({ control, name: 'zeroLostCardLiability' }).append)}
-        {renderBenefitFields('milestoneBenefit', useFieldArray({ control, name: 'milestoneBenefit' }).fields, useFieldArray({ control, name: 'milestoneBenefit' }).append)}
-        {renderBenefitFields('otherBenefit', useFieldArray({ control, name: 'otherBenefit' }).fields, useFieldArray({ control, name: 'otherBenefit' }).append)}
-        {renderBenefitFields('travelBenefit', useFieldArray({ control, name: 'travelBenefit' }).fields, useFieldArray({ control, name: 'travelBenefit' }).append)}
-        {renderBenefitFields('diningBenefit', useFieldArray({ control, name: 'diningBenefit' }).fields, useFieldArray({ control, name: 'diningBenefit' }).append)}
-        {renderBenefitFields('conciergeServices', useFieldArray({ control, name: 'conciergeServices' }).fields, useFieldArray({ control, name: 'conciergeServices' }).append)}
-        {renderBenefitFields('shoppingBenefit', useFieldArray({ control, name: 'shoppingBenefit' }).fields, useFieldArray({ control, name: 'shoppingBenefit' }).append)}
-        {renderBenefitFields('entertainmentBenefit', useFieldArray({ control, name: 'entertainmentBenefit' }).fields, useFieldArray({ control, name: 'entertainmentBenefit' }).append)}
-        {renderBenefitFields('insuranceBenefit', useFieldArray({ control, name: 'insuranceBenefit' }).fields, useFieldArray({ control, name: 'insuranceBenefit' }).append)}
+        {renderBenefitFields('welcomeBonus', welcomeBonus.fields, welcomeBonus.append)}
+        {renderBenefitFields('emiBenefit', emiBenefit.fields, emiBenefit.append)}
+        {renderBenefitFields('fuelSurcharge', fuelSurcharge.fields, fuelSurcharge.append)}
+        {renderBenefitFields('rewardPoints', rewardPoints.fields, rewardPoints.append)}
+        {renderBenefitFields('loungeAccess', loungeAccess.fields, loungeAccess.append)}
+        {renderBenefitFields('zeroLostCardLiability', zeroLostCardLiability.fields, zeroLostCardLiability.append)}
+        {renderBenefitFields('milestoneBenefit', milestoneBenefit.fields, milestoneBenefit.append)}
+        {renderBenefitFields('otherBenefit', otherBenefit.fields, otherBenefit.append)}
+        {renderBenefitFields('travelBenefit', travelBenefit.fields, travelBenefit.append)}
+        {renderBenefitFields('diningBenefit', diningBenefit.fields, diningBenefit.append)}
+        {renderBenefitFields('conciergeServices', conciergeServices.fields, conciergeServices.append)}
+        {renderBenefitFields('shoppingBenefit', shoppingBenefit.fields, shoppingBenefit.append)}
+        {renderBenefitFields('entertainmentBenefit', entertainmentBenefit.fields, entertainmentBenefit.append)}
+        {renderBenefitFields('insuranceBenefit', insuranceBenefit.fields, insuranceBenefit.append)}
+        {renderBenefitFields('cashbackBenefit', cashbackBenefit.fields, cashbackBenefit.append)}
+        {renderBenefitFields('revolvingCredit', revolvingCredit.fields, revolvingCredit.append)}
+        {renderBenefitFields('interestfreePeriod', interestfreePeriod.fields, interestfreePeriod.append)}
 
         <button
           type="submit"

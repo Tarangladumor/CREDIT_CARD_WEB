@@ -225,6 +225,54 @@ const additionalBenefits = new mongoose.Schema({
       },
     },
   ],
+  cashbackBenefit: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+      },
+      listData: [
+        {
+          type: String,
+        },
+      ],
+      note: {
+        type: String,
+      },
+    },
+  ],
+  revolvingCredit: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+      },
+      listData: [
+        {
+          type: String,
+        },
+      ],
+      note: {
+        type: String,
+      },
+    },
+  ],
+  interestfreePeriod: [
+    {
+      _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId(),
+      },
+      listData: [
+        {
+          type: String,
+        },
+      ],
+      note: {
+        type: String,
+      },
+    },
+  ],
 });
 
 export const AdditionalBenefits = mongoose.model(

@@ -82,11 +82,12 @@ const CardForm = () => {
     formData.append("cardName", data.cardName);
     formData.append("description", data.description);
     formData.append("type", data.type);
+    formData.append("bestFor", data.bestFor);
     formData.append("includedBnefits", JSON.stringify(data.cardincludedBnefits));
     formData.append("notIncludedBnefits", JSON.stringify(data.cardNotIncludedBnefits));
     formData.append("provider", data.provider);
     formData.append("network", JSON.stringify(selectedNetworks)); // Convert the array to JSON
-    formData.append("bestFor", data.bestFor);
+    formData.append("privilege", data.privilege);
     formData.append("income", data.income);
     formData.append("applyLink", data.applyLink);
     if (data.cardimage.length > 0) {
@@ -153,6 +154,16 @@ const CardForm = () => {
         </div>
 
         <div className="mb-4">
+          <label className="block text-teal-700 text-sm font-bold mb-2">bestFor</label>
+          <input 
+            type="text" 
+            {...register("bestFor", { required: true })} 
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors.type ? 'border-red-500' : ''}`} 
+          />
+          {errors.type && <p className="text-red-500 text-xs italic">Please enter bestuse for the card.</p>}
+        </div>
+
+        <div className="mb-4">
           <label className="block text-teal-700 text-sm font-bold mb-2">Provider</label>
           <select
             {...register("provider", {
@@ -213,27 +224,27 @@ const CardForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-teal-700 text-sm font-bold mb-2">Best For</label>
+          <label className="block text-teal-700 text-sm font-bold mb-2">Privilege</label>
           <select
-            {...register("bestFor", {
+            {...register("privilege", {
               required: true,
               
             })}
             defaultValue=""
-            id="bestFor"
+            id="privilege"
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors.bestFor ? 'border-red-500' : ''}`} 
           >
             <option value="" disabled>
               Choose a Privilege
             </option>
             {!loading &&
-              cardPrivilege?.map((bestFor, index) => (
-                <option key={index} value={bestFor?._id}>
-                  {bestFor?.name}
+              cardPrivilege?.map((privilege, index) => (
+                <option key={index} value={privilege?._id}>
+                  {privilege?.name}
                 </option>
               ))}
           </select>
-          {errors.bestFor && <p className="text-red-500 text-xs italic">Please select a category.</p>}
+          {errors.privilege && <p className="text-red-500 text-xs italic">Please select a privilege.</p>}
         </div>
 
         <div className="mb-4">
