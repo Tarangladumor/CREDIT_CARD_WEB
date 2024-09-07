@@ -102,13 +102,13 @@ const EligibilityForm = () => {
               <input
                 type="text"
                 placeholder="Key"
-                {...register(`points[${index}].key`, { required: true })}
+                {...register(`points[${index}].key`)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline"
               />
               <input
                 type="text"
                 placeholder="Value"
-                {...register(`points[${index}].value`, { required: true })}
+                {...register(`points[${index}].value`)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>

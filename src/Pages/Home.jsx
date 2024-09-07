@@ -8,9 +8,10 @@ import Footer from '../components/common/Footer'
 import Categorized_Cards from '../components/core/HomePage/Categorized_Cards'
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
-  }, []);
+  window.scrollTo({
+    top: 0,              // Scroll to the top of the page
+    behavior: 'smooth'   // Smooth scroll effect
+});
   return (
     <div>
 

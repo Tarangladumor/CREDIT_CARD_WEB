@@ -144,7 +144,7 @@ export const addAdditionalBenefits = async (req, res) => {
   const transformBenefits = (rawData) => {
     const benefitKeys = [
       'welcomeBonus', 'emiBenefit', 'fuelSurcharge', 'rewardPoints', 'loungeAccess', 
-      'zeroLostCardLiability', 'milestoneBenefit', 'otherBenefit', 'travelBenefit', 
+      'zeroLostCardLiablity', 'milestoneBenefit', 'otherBenefit', 'travelBenefit', 
       'diningBenefit', 'conciergeServices', 'shoppingBenefit', 'entertainmentBenefit', 
       'insuranceBenefit', 'cashbackBenefit', 'revolvingCredit', 'interestfreePeriod'
     ];
