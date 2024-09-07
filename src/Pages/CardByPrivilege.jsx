@@ -4,9 +4,6 @@ import PRIVILEGEIMG from '../assets/Privilege_image.png'
 import CardSection from '../components/core/CardByPrivilege/CardSection'
 
 const CardByPrivilege = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
-  }, []);
   return (
     <div>
 

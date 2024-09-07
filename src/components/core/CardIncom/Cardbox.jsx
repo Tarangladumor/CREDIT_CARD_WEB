@@ -13,6 +13,10 @@ const Cardbox = () => {
         };
 
         fetchCard();
+        window.scrollTo({
+            top: 0,              // Scroll to the top of the page
+            behavior: 'smooth'   // Smooth scroll effect
+        });
     }, []);
 
     console.log("CARDS", cards);

@@ -6,9 +6,6 @@ import CardDetails from "../components/common/CardDetails";
 import { fetchAllCard } from "../services/Operations/cardAPI";
 
 const Page_2 = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when the component mounts
-  }, []);
 
   const [cards, setCards] = useState([]);
 
@@ -19,6 +16,10 @@ const Page_2 = () => {
     };
 
     fetchData();
+    window.scrollTo({
+      top: 0,              // Scroll to the top of the page
+      behavior: 'smooth'   // Smooth scroll effect
+  });
   }, []);
 
   return (
