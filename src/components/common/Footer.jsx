@@ -53,7 +53,7 @@ const Footer = () => {
             <div className="text-3xl md:text-4xl font-extrabold">
               CARD POUCH
             </div>
-            <div className="text-xl md:text-2xl">
+            <div className="text-xl md:text-2xl text-center">
               Follow Us
               <div className="flex gap-x-4 mt-3">
                 <SocialIcon url="https://t.me/finnindeals2" style={{ height: 35, width: 35 }} />

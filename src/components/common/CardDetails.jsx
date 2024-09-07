@@ -82,9 +82,9 @@ const CardDetails = ({ Data }) => {
               APR: {Data?.charges[0]?.annualPercentageRate}
             </p>
           </div>
-          <p className="font-medium text-xl">Annual Fee: ₹{Data?.charges[0]?.annualFee}</p>
+          <p className="font-medium text-xl">Annual Fee: {Data?.charges[0]?.annualFee}</p>
           <p className="text-[#8A8C17] font-medium text-xl">
-            Joining Fee: <span className="text-black">₹{Data?.charges[0]?.joiningFee}</span>
+            Joining Fee: <span className="text-black">{Data?.charges[0]?.joiningFee}</span>
           </p>
         </div>
 
@@ -93,7 +93,7 @@ const CardDetails = ({ Data }) => {
             className={`flex flex-col gap-2 px-12 pb-10 transition-all duration-300 ease-in-out ${isHovered || isClicked ? "max-h-screen" : "max-h-0 overflow-hidden"}`}
           >
             <p className="font-medium text-2xl">
-              Reward Point Value: ₹{Data?.charges[0]?.rewardPointValue}
+              Reward Point Value: {Data?.charges[0]?.rewardPointValue}
             </p>
 
             <div className="font-medium text-xl">

@@ -16,7 +16,7 @@ const BasicDetails = ({ card1, selectedCard }) => {
         </thead>
         <tbody>
           {[
-            { label: 'Card Type', cardKey: 'type', render: (data) => data?.[0] },
+            { label: 'Card Type', cardKey: 'type', render: (data) => data },
             { label: 'Network Type', cardKey: 'network', render: renderNetwork },
             { label: 'Best For', cardKey: 'bestFor', render: (data) => data?.name },
           ].map((detail, index) => (

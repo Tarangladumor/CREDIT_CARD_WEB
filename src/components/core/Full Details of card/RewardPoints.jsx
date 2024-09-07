@@ -21,8 +21,8 @@ const RewardPoints = ({ Data }) => {
                         <table className='my-3 lg:my-5 w-full border-collapse'>
                             <thead>
                                 <tr className="bg-[#159A9C1C] bg-opacity-35">
-                                    <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Categories</th>
-                                    <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Reward Points</th>
+                                    {/* <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Categories</th>
+                                    <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Reward Points</th> */}
                                 </tr>
                             </thead>
                             <tbody>

@@ -66,8 +66,11 @@ export const getCardByPrivilege = async(req,res) => {
   
       const cardByPrivilege = await Privilege.findById(privilegeId).populate({
         path: "card",
-        populate: "network",
-        populate: "charges"
+        populate: [
+      { path: "network" }, 
+      { path: "charges" }, 
+      { path: "ratingAndReviews" }
+    ]
       }).exec();
   
       if(!cardByPrivilege) {

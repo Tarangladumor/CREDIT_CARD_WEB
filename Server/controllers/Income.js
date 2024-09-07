@@ -66,8 +66,11 @@ export const getCardByIncome = async(req,res) => {
   
       const cardByIncome = await Income.findById(incomeId).populate({
         path: "card",
-        populate: "network",
-        populate: "charges"
+        populate: [
+      { path: "network" }, 
+      { path: "charges" }, 
+      { path: "ratingAndReviews" }
+    ]
       }).exec();
   
       if(!cardByIncome) {
