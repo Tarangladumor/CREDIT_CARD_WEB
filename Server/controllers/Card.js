@@ -297,6 +297,7 @@ export const updateCard = async (req, res) => {
       .populate("additionalBenefits")
       .populate("charges")
       .populate("faq")
+      .populate("Comments")
       .exec();
 
     return respond(res, "Card Updated Successfully", 200, true, updatedCard);
@@ -351,6 +352,14 @@ export const getAllCard = async (req, res) => {
       .populate("howToApply")
       .populate("eligibility")
       .populate("ratingAndReviews")
+      .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "replies",  
+          model: "Replies" 
+        }
+      })
       .exec();
 
     return respond(res, "all card fetched successfully", 200, true, AllCard)
@@ -398,6 +407,13 @@ export const getOneCardDetails = async (req, res) => {
       .populate("howToApply")
       .populate("additionalBenefits")
       .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "replies",  
+          model: "Replies" 
+        }
+      })
       .populate("ratingAndReviews")
       .populate("privilege")
       .exec();

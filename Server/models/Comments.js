@@ -9,18 +9,24 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email : {
+    email: {
         type: String,
     },
     createdAt: {
         type: Date,
-        default:Date.now,
+        default: Date.now,
     },
     card: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "Card",
     },
-})
+    replies: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Replies"
+        }
+    ]
+});
 
-export const Comments = mongoose.model("Comments",commentSchema)
+export const Comments = mongoose.model("Comments", commentSchema);

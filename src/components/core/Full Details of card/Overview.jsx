@@ -16,8 +16,8 @@ const Overview = ({ Data }) => {
         </h2>
       </header>
 
-      <div className='px-4 py-6 md:px-5 md:py-8 rounded-3xl bg-[#D2F4E4] flex flex-col md:flex-row justify-around items-start w-11/12 md:w-10/12 lg:w-9/12 mx-auto shadow-[0px_20px_50px_10px_#00000040]'>
-        <div className='flex flex-col gap-2 mb-4 md:mb-0'>
+      <div className='px-4 py-6 md:px-5 md:py-8 rounded-3xl bg-[#D2F4E4] flex flex-col md:flex-row justify-around items-start w-11/12 md:w-[95%] lg:w-9/12 mx-auto shadow-[0px_20px_50px_10px_#00000040]'>
+        <div className='flex flex-col gap-2 mb-4 md:mb-0 min-w-[30%]'>
           <div className='flex gap-2'>
             <p className='font-semibold text-lg md:text-xl'>Best for:</p>
             <p className='font-medium text-lg md:text-xl opacity-60'>
@@ -40,11 +40,14 @@ const Overview = ({ Data }) => {
           </div>
         </div>
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-2 max-w-[75%]'>
           <div className='flex gap-2'>
             <p className='font-semibold text-lg md:text-xl'>Welcome Bonus:</p>
             <p className='font-medium text-lg md:text-xl opacity-60'>
-              Voucher worth $10 & cashback up to $100
+              {Data?.cardData?.additionalBenefits[0]?.welcomeBonus?.[0]?.note
+                ? Data.cardData.additionalBenefits[0].welcomeBonus[0].note
+                : Data?.cardData?.additionalBenefits[0]?.welcomeBonus?.[0]?.listData?.[0]
+                  }
             </p>
           </div>
 

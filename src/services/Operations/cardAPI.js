@@ -4,8 +4,8 @@ import { cardEndpoints } from "../apis"
 import { generateUrl } from "../../utils/url"
 import axios from 'axios';
 
-const { GET_ALL_CARDS, GET_ALL_CARDS_BY_BANK, GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS, GET_ALL_CARD_BY_PRIVILEGE, GET_ALL_CARD_BY_INCOME,GET_ALL_INCOME,
-    GET_ALL_PROVIDER,GET_ALL_PRIVILEGE,CARD_COMPARISON,ADD_COMMENT, CREATE_RATING, ADD_CARD_BASIC_DETAILS, ADD_CARD_REWARD_DETAILS,ADD_CARD_ELIGIBILITY_DETAILS,ADD_CARD_HOWTOAPPLY_DETAILS,ADD_CARD_BENEFITS_DETAILS,ADD_CARD_CHARGES_DETAILS
+const { GET_ALL_CARDS, GET_ALL_CARDS_BY_BANK, GET_ALL_CARDS_BY_NETWORK, GET_ONE_CARD_DETAILS, GET_ALL_CARD_BY_PRIVILEGE, GET_ALL_CARD_BY_INCOME, GET_ALL_INCOME,
+    GET_ALL_PROVIDER, GET_ALL_PRIVILEGE, CARD_COMPARISON, ADD_COMMENT, CREATE_RATING, ADD_CARD_BASIC_DETAILS, ADD_CARD_REWARD_DETAILS, ADD_CARD_ELIGIBILITY_DETAILS, ADD_CARD_HOWTOAPPLY_DETAILS, ADD_CARD_BENEFITS_DETAILS, ADD_CARD_CHARGES_DETAILS, GET_ALL_COMMENTS, ADD_REPLY
 } = cardEndpoints
 
 export const fetchAllCard = async () => {
@@ -58,10 +58,10 @@ export const fetchAllCardByNetwork = async ({ networkId }) => {
     return result;
 };
 
-export const fetchAllCardByIncome = async ({incomeId}) => {
+export const fetchAllCardByIncome = async ({ incomeId }) => {
     let result = []
     try {
-        const response = await apiConnector("GET", GET_ALL_CARD_BY_INCOME, null, null, {incomeId})
+        const response = await apiConnector("GET", GET_ALL_CARD_BY_INCOME, null, null, { incomeId })
         console.log("GET_ALL_CARD_BY_INCOME API RESPONSE............", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by income")
@@ -75,10 +75,10 @@ export const fetchAllCardByIncome = async ({incomeId}) => {
     return result
 }
 
-export const fetchAllCardByPrivilege = async ({privilegeId}) => {
+export const fetchAllCardByPrivilege = async ({ privilegeId }) => {
     let result = []
     try {
-        const response = await apiConnector("GET", GET_ALL_CARD_BY_PRIVILEGE, null, null, {privilegeId})
+        const response = await apiConnector("GET", GET_ALL_CARD_BY_PRIVILEGE, null, null, { privilegeId })
         console.log("GET_ALL_CARD_BY_PRIVILEGE API RESPONSE............", response)
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by privilege")
@@ -148,9 +148,9 @@ export const fetchAllIncome = async () => {
 export const fetchAllPrivilege = async () => {
     let res = [];
     try {
-        const response = await apiConnector("GET",GET_ALL_PRIVILEGE)
+        const response = await apiConnector("GET", GET_ALL_PRIVILEGE)
         console.log("GET_ALL_PRIVILEGE API RESPONSE............", response)
-        if(!response?.data?.success) {
+        if (!response?.data?.success) {
             throw new Error("Could Not Fetch All Privilege")
         }
         res = response?.data?.data
@@ -160,54 +160,69 @@ export const fetchAllPrivilege = async () => {
         toast.error(error.message)
     }
 }
+// export const fetchAllComments = async() => {
+//     let res = [];
+//     try {
 
-export const comparison = async(cardId1,cardId2)=>{
+//     } catch(error) {
+//         const response = await apiConnector("GET",GET_ALL_COMMENTS);
+//     }
+// }
+
+export const comparison = async (cardId1, cardId2) => {
     let res = [];
-    try{
-       const response = await apiConnector("POST",CARD_COMPARISON,{
-        cardId1,cardId2
-       });
-       console.log("CARD_COMPARISON_RESPONSE..........",response)
-       if(!response?.data?.success) {
-        throw new Error("Could Not Fetch All Privilege")
-       }
-       res = response?.data?.data;
+    try {
+        const response = await apiConnector("POST", CARD_COMPARISON, {
+            cardId1, cardId2
+        });
+        console.log("CARD_COMPARISON_RESPONSE..........", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Fetch All Privilege")
+        }
+        res = response?.data?.data;
 
-       return res;
-    }catch(error){
-        console.log("COMPARE_CARDS_ERROR ...........",error);
+        return res;
+    } catch (error) {
+        console.log("COMPARE_CARDS_ERROR ...........", error);
         toast.error(error.message);
     }
 }
 
-export const addComment = async(data)=>{
+export const addComment = async (data) => {
+    const toastId = toast.loading("Loading....")
     let res = [];
-    try{
-       const response = await apiConnector("POST",ADD_COMMENT,data);
-       console.log("ADD_COMMENT_RESPONSE..........",response)
-       if(!response?.data?.success) {
-        throw new Error("Could Not Send Comment")
-       }
-       res = response?.data?.data;
-    }catch(error){
-        console.log("ADD_COMMENT_ERROR ...........",error);
+    try {
+        const response = await apiConnector("POST", ADD_COMMENT, data);
+        console.log("ADD_COMMENT_RESPONSE..........", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Send Comment")
+        }
+        res = response?.data;
+        toast.success("Comment Add successfully");
+    } catch (error) {
+        console.log("ADD_COMMENT_ERROR ...........", error);
         toast.error(error.message);
     }
+    toast.dismiss(toastId);
+    return res;
 }
 
-export const addReview = async(data)=>{
+export const addReview = async (data) => {
+    const toastId = toast.loading("Loading....")
     let res = [];
-    try{
-       const response = await apiConnector("POST",CREATE_RATING,data);
-       console.log("ADD_REVIEW_RESPONSE..........",response)
-       if(!response?.data?.success) {
-        throw new Error("Could Not Send Review")
-       }
-       res = response?.data?.data;
-    }catch(error){
-        console.log("ADD_REVIEW_ERROR ...........",error);
+    try {
+        const response = await apiConnector("POST", CREATE_RATING, data);
+        console.log("ADD_REVIEW_RESPONSE..........", response)
+        if (!response?.data?.success) {
+            throw new Error("Could Not Send Review")
+        }
+        res = response?.data;
+        toast.success("Review Add successfully");
+    } catch (error) {
+        console.log("ADD_REVIEW_ERROR ...........", error);
         toast.error(error.message);
     }
+    toast.dismiss(toastId);
     return res;
 }
 
@@ -392,7 +407,7 @@ export const addCardHowToApplyDetails = async (data, token) => {
 };
 
 export const addCardBenefitsDetails = async (data, token) => {
-    console.log("data.....",data)
+    console.log("data.....", data)
     const url = generateUrl(ADD_CARD_BENEFITS_DETAILS);
     let result = null;
     const toastId = toast.loading("Loading...");
@@ -467,3 +482,41 @@ export const addCardChargesDetails = async (data, token) => {
 
     return result;
 };
+
+export const addReply = async (data) => {
+    console.log("REPLY DATA...........",data);
+    const toastId = toast.loading("Loading...");
+    let result = null;
+    try {
+        // const res = await apiConnector("POST", ADD_REPLY, data);
+        const res = await axios.post(ADD_REPLY, data);
+
+        console.log("ADD REPLY RESPONSE............", res);
+
+        if (!res?.data?.success) {
+            throw new Error("Could not add reply");
+        }
+
+        toast.success("Reply successfully");
+        result = res?.data;
+    } catch (error) {
+        console.log("ADD REPLY ERROR.....",error);
+        toast.error(error.message);
+    }
+    toast.dismiss(toastId);
+    return result;
+}
+
+// export const getReplies = async () => {
+//     let result = null;
+//     try {
+//         const res = await apiConnector("POST", ADD_REPLY, data);
+
+//         console.log("ADD REPLY RESPONSE............", response);
+
+//         if (!response?.data?.success) {
+
+//         }
+//     } catch (error) {
+//     }
+// }
