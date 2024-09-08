@@ -341,6 +341,26 @@ export const deleteCard = async (req, res) => {
 }
 
 
+// export const getAllCard = async (req, res) => {
+//   try {
+//     const AllCard = await Card.find({}).populate("provider")
+//       .populate("network")
+//       .populate("additionalBenefits")
+//       .populate("charges")
+//       .populate("faq")
+//       .populate("rewards")
+//       .populate("howToApply")
+//       .populate("eligibility")
+//       .populate("ratingAndReviews")
+//       .exec();
+
+//     return respond(res, "all card fetched successfully", 200, true, AllCard)
+//   } catch (error) {
+//     console.log(error)
+//     return respond(res, "soemthing went wrong while getting all the card", 500, false)
+//   }
+// }
+
 export const getAllCard = async (req, res) => {
   try {
     const AllCard = await Card.find({}).populate("provider")
@@ -362,30 +382,13 @@ export const getAllCard = async (req, res) => {
       })
       .exec();
 
-    return respond(res, "all card fetched successfully", 200, true, AllCard)
+    return respond(res, "All cards fetched successfully", 200, true, allCards);
   } catch (error) {
-    console.log(error)
-    return respond(res, "soemthing went wrong while getting all the card", 500, false)
+    console.log(error);
+    return respond(res, "Something went wrong while getting all cards", 500, false);
   }
-}
+};
 
-export const getCardByIncome = async (req, res) => {
-  try {
-    return respond(res, "all card fetched successfully by income", 200, true)
-  } catch (error) {
-    console.log(error)
-    return respond(res, "soemthing went wrong while getting all the card by income", 500, false)
-  }
-}
-
-export const getCardByPrivilege = async (req, res) => {
-  try {
-    return respond(res, "all card fetched successfully by privilege", 200, true)
-  } catch (error) {
-    console.log(error)
-    return respond(res, "soemthing went wrong while getting all the card by privilege", 500, false)
-  }
-}
 
 export const getOneCardDetails = async (req, res) => {
   try {
@@ -422,22 +425,42 @@ export const getOneCardDetails = async (req, res) => {
 
       const privilegeIds = cardData.privilege.card.filter(id => id.toString() !== cardId);
 
-      const similarCards = await Card.find({
-        _id: { $in: privilegeIds }
-      }).limit(2)
-      .populate("provider")
-      .populate("network")
-      .populate("charges")
-      .populate("faq")
-      .populate("rewards")
-      .populate("eligibility")
-      .populate("howToApply")
-      .populate("additionalBenefits")
-      .populate("comments")
-      .populate("ratingAndReviews")
-      .populate("privilege")
-      .exec();
+      // const similarCards = await Card.find({
+      //   _id: { $in: privilegeIds }
+      // }).limit(2)
+      // .populate("provider")
+      // .populate("network")
+      // .populate("charges")
+      // .populate("faq")
+      // .populate("rewards")
+      // .populate("eligibility")
+      // .populate("howToApply")
+      // .populate("additionalBenefits")
+      // .populate("comments")
+      // .populate("ratingAndReviews")
+      // .populate("privilege")
+      // .exec();
   
+      const similarCards = await Card.aggregate([
+        { $match: { _id: { $in: privilegeIds } } },
+        { $sample: { size: 2 } },  // Randomly select 2 similar cards
+      ])
+        .exec();
+  
+      // Populate the required fields for similar cards
+      await Card.populate(similarCards, [
+        { path: "provider" },
+        { path: "network" },
+        { path: "charges" },
+        { path: "faq" },
+        { path: "rewards" },
+        { path: "eligibility" },
+        { path: "howToApply" },
+        { path: "additionalBenefits" },
+        { path: "comments" },
+        { path: "ratingAndReviews" },
+        { path: "privilege" }
+      ]);
       // console.log("Similar Cards:", similarCards);
       
     return respond(res, "Card details fetched successfully", 200, true,{cardData,similarCards});

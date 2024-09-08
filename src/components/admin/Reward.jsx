@@ -255,7 +255,7 @@ const RewardForm = () => {
           <label className="block text-teal-700 text-sm font-bold mb-2">Instruction</label>
           <input
             type="text"
-            {...register("instruction", { required: true })}
+            {...register("instruction")}
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-teal-700 leading-tight focus:outline-none focus:shadow-outline ${errors.instruction ? 'border-red-500' : ''}`}
           />
           {errors.instruction && <p className="text-red-500 text-xs italic">Please enter an instruction.</p>}

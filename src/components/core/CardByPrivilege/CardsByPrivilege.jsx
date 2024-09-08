@@ -17,13 +17,26 @@ const CardsByPrivilege = () => {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        const fetchData = async() => {
-            const cardData = await fetchAllCardByPrivilege({privilegeId});
-            setCards(cardData);
-        }
+      const fetchData = async() => {
+          try {
+              const cardData = await fetchAllCardByPrivilege({ privilegeId });
+              console.log("cardData", cardData)
+              setCards(cardData || []);  // Ensure it's always an array, even if null or undefined
+          } catch (error) {
+              console.error("Error fetching cards:", error);
+              setCards([]); // Fallback to an empty array in case of an error
+          }
+      }
 
-        fetchData();
-    },[])
+      fetchData();
+      window.scrollTo({
+        top: 0,              // Scroll to the top of the page
+        behavior: 'smooth'   // Smooth scroll effect
+    });
+    
+  }, [privilegeId]); 
+
+  console.log("card",cards)
 
     return (
         <div>

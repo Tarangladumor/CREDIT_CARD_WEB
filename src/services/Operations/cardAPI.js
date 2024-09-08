@@ -50,7 +50,7 @@ export const fetchAllCardByNetwork = async ({ networkId }) => {
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch All Cards By Network");
         }
-        result = response?.data?.data?.card;
+        result = response?.data?.data
     } catch (error) {
         console.log("GET_ALL_CARDS_BY_NETWORK API ERROR............", error);
         toast.error(error.message);
@@ -66,7 +66,7 @@ export const fetchAllCardByIncome = async ({ incomeId }) => {
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by income")
         }
-        result = response?.data?.data?.card
+        result = response?.data?.data
     }
     catch (error) {
         console.log("GET_ALL_CARD_BY_INCOME API ERROR............", error)
@@ -83,7 +83,7 @@ export const fetchAllCardByPrivilege = async ({ privilegeId }) => {
         if (!response?.data?.success) {
             throw new Error("Could Not Fetch all Card by privilege")
         }
-        result = response?.data?.data?.card
+        result = response?.data?.data
     }
     catch (error) {
         console.log("GET_ALL_CARD_BY_PRIVILEGE API ERROR............", error)

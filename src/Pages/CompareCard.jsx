@@ -20,9 +20,12 @@ const CompareCard = () => {
   const [card1, setCard1] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
-  }, []);
+ 
+  window.scrollTo({
+    top: 0,              // Scroll to the top of the page
+    behavior: 'smooth'   // Smooth scroll effect
+});
+
   return (
     <div>
       <FindGreatDeal img={img} heading={"Compare the Cards!"} desc={"Compare your cards to get better understanding and deals."} />

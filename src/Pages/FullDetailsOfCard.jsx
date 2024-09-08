@@ -5,9 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { fetchOneCardDetails } from '../services/Operations/cardAPI';
 
 const FullDetailsOfCard = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
-  }, []);
 
   let location = useLocation();
 
@@ -24,6 +21,10 @@ const FullDetailsOfCard = () => {
     };
 
     fetchDetails();
+    window.scrollTo({
+      top: 0,              // Scroll to the top of the page
+      behavior: 'smooth'   // Smooth scroll effect
+  });
   }, [location.pathname]);
 
   console.log(details);
