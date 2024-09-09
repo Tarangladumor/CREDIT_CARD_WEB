@@ -29,12 +29,24 @@ app.use(
   })
 );
 
-// CORS configuration
+// List of allowed origins for CORS
+const allowedOrigins = [
+  "https://credit-card-k00m31733-tarangladumors-projects.vercel.app",
+  "https://credit-card-web.vercel.app"
+];
+
+// CORS configuration to handle multiple origins
 app.use(
   cors({
-    origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app", // Remove trailing slash here
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
+    allowedHeaders: ["Content-Type", "Authorization", "headers"],
   })
 );
 
@@ -42,12 +54,12 @@ app.use(
 cloudinaryConnect();
 
 // Routes
-app.use('/api/v1/admin', authMiddleware, adminRouter);
+app.use("/api/v1/admin", authMiddleware, adminRouter);
 app.use("/api/v1/card", cardRouter);
 
 // Basic route to check server status
-app.get('/admin', (req, res) => {
-  res.send('Welcome to the admin area');
+app.get("/admin", (req, res) => {
+  res.send("Welcome to the admin area");
 });
 
 app.get("/", (req, res) => {
