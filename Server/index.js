@@ -9,7 +9,6 @@ import { authMiddleware } from "./middleware/auth.js";
 import cardRouter from "./routes/Card.js";
 import adminRouter from "./routes/Admin.js";
 import cors from "cors";
-// import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config();
@@ -21,7 +20,6 @@ connectDB();
 
 // Middleware configuration
 app.use(express.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   fileUpload({
@@ -32,39 +30,13 @@ app.use(
 );
 
 // CORS configuration
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       const allowedOrigins = [
-//         "https://credit-card-web.vercel.app",
-//       ];
-//       if (allowedOrigins.includes(origin) || !origin) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//   })
-// );
-
 app.use(
   cors({
-    origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app/",
+    origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app", // Remove trailing slash here
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
   })
 );
-
-
-// Optional: Manually adding CORS headers
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "https://credit-card-j2akttu7g-tarangladumors-projects.vercel.app");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-//   next();
-// });
 
 // Cloudinary configuration
 cloudinaryConnect();
