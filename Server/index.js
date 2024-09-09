@@ -50,7 +50,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app/",
+    origin: "https://credit-card-web.vercel.app/",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
   })
