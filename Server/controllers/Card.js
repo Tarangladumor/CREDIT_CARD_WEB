@@ -382,7 +382,7 @@ export const getAllCard = async (req, res) => {
       })
       .exec();
 
-    return respond(res, "All cards fetched successfully", 200, true, allCards);
+    return respond(res, "All cards fetched successfully", 200, true, AllCard);
   } catch (error) {
     console.log(error);
     return respond(res, "Something went wrong while getting all cards", 500, false);

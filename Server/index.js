@@ -50,7 +50,7 @@ app.use(
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://credit-card-web.vercel.app/",
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
   })
