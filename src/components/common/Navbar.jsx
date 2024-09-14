@@ -13,7 +13,7 @@ const Navbar = () => {
 
     return (
         <div className={`${location.pathname === '/' ? "bg-[#056E67]" : "bg-white"} text-white pt-3`} >
-            <div className='w-10/12 mx-auto flex justify-between items-center py-3 h-10vh rounded-full px-5 bg-[#056E67]'>
+            <div className='w-10/12 mx-auto flex justify-between gap-6 items-center py-3 h-10vh rounded-full md:px-5 bg-[#056E67]'>
 
                 <div className='font-black text-4xl'>
                     <Link to='/'>CARD POUCH</Link>
@@ -44,9 +44,9 @@ const Navbar = () => {
             {isOpen && (
                 <div className='md:hidden'>
                     <ul className='flex flex-col gap-4 items-center font-normal text-xl bg-[#056E67] text-white p-4'>
-                        <li><Link to='/' onClick={toggleMenu}>Home</Link></li>
-                        <li><Link to='/more-cards' onClick={toggleMenu}>Credit Cards</Link></li>
-                        <li><Link to='/about-us' onClick={toggleMenu}>About Us</Link></li>
+                        <li><Link to='/' onClick={toggleMenu} >Home</Link></li>
+                        <li ><Link to='/more-cards' onClick={toggleMenu}  >Credit Cards</Link></li>
+                        <li ><Link to='/about-us' onClick={toggleMenu} >About Us</Link></li>
                     </ul>
                 </div>
             )}

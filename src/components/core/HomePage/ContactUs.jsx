@@ -57,7 +57,7 @@ const ContactUs = () => {
           <div className="block md:hidden w-full lg:w-1/2 mt-8 lg:mt-0">
             <img src={contactus} alt="Contact Us" className="w-full max-w-xs md:max-w-md lg:max-w-lg mx-auto" />
           </div>
-          <div className="lg:ml-24 mt-8 lg:mt-20 flex flex-col gap-2">
+          <div className="lg:ml-24 mt-8 lg:mt-20 flex flex-col text-center md:text-left       gap-2">
             <p className="text-4xl md:text-5xl lg:text-6xl font-extrabold">Got Questions?</p>
             <p className="text-2xl md:text-3xl lg:text-4xl font-bold">We got Answers!</p>
             <p className="text-base md:text-lg lg:text-[18px] text-[#0000008a] mt-4 md:mt-5">

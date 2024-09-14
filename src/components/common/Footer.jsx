@@ -49,13 +49,13 @@ const Footer = () => {
       <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around">
         <div className="w-full md:w-11/12 flex flex-col md:flex-row justify-around p-4">
           {/* Logo and Social Icons */}
-          <div className="flex flex-col items-center gap-4 mt-4">
-            <div className="text-3xl md:text-4xl font-extrabold">
+          <div className="flex flex-col  gap-4 mt-4">
+            <div className="text-3xl md:text-4xl font-extrabold text-center md:text-left">
               CARD POUCH
             </div>
-            <div className="text-xl md:text-2xl text-center">
+            <div className="text-xl md:text-2xl text-center md:text-left">
               Follow Us
-              <div className="flex gap-x-4 mt-3">
+              <div className="flex gap-x-4 mt-3 justify-center md:justify-start">
                 <SocialIcon url="https://t.me/finnindeals2" style={{ height: 35, width: 35 }} />
                 <SocialIcon url="https://x.com/Dealspouch27" style={{ height: 35, width: 35 }} />
                 <SocialIcon url="https://chat.whatsapp.com/DjSHeQmtKILGlhFDL6TN4n" style={{ height: 35, width: 35 }} />
@@ -64,33 +64,33 @@ const Footer = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="flex flex-col gap-3 mt-4">
-            <div>
-              <p className="text-lg font-medium">Contact Us:</p>
+          <div className="flex flex-col  gap-3 mt-4">
+            <div className='flex flex-col text-center md:text-left'>
+              <p className="text-lg font-medium text-center md:text-left">Contact Us:</p>
               <p className="text-[#374ab1] text-lg font-medium">
                 dealspouch@gmail.com <br /> +91-8200440146
               </p>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col text-center md:text-left">
               <p className="text-lg font-medium">Credit Card</p>
-              <Link to="/more-cards" className="text-[#374ab1] text-lg font-medium">
+              <Link to="/more-cards" className="text-[#374ab1] text-lg font-medium hover:underline">
                 All Credit Cards
               </Link>
-              <Link to="/cardByNetwork" className="text-[#374ab1] text-lg font-medium">
+              <Link to="/cardByNetwork" className="text-[#374ab1] text-lg font-medium hover:underline">
                 All Cards Network
               </Link>
             </div>
           </div>
 
           {/* Newsletter Signup */}
-          <div className="flex flex-col gap-4 mt-4 w-full md:w-[300px]">
-            <p className="text-xl md:text-2xl font-semibold">Newsletter Signup</p>
-            <p className="text-base md:text-lg text-[#00000087]">
+          <div className="flex flex-col  gap-4 mt-4 w-full md:w-[300px]">
+            <p className="text-xl md:text-2xl text-center md:text-left font-semibold">Newsletter Signup</p>
+            <p className="text-base md:text-lg text-center md:text-left text-[#00000087]">
               Get the latest offers and tips—subscribe to our newsletter today.
             </p>
 
-            <div className="relative flex w-full">
+            <div className="relative flex items-center justify-center w-full">
               <input
                 type="email"
                 name="email"
