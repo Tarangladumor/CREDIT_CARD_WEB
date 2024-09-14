@@ -106,9 +106,9 @@ const Section1 = () => {
       </div>
 
       {/* Buttons moved to the bottom for small screens */}
-      <div className="w-screen flex justify-end items-center sm:hidden -mt-10 px-5">
+      <div className="w-screen flex justify-center md:justify-end items-center sm:hidden -mt-10 px-5">
         <Link to="/more-cards">
-          <div className="flex items-center gap-x-5 mb-10 lg:mb-0">
+          <div className="flex  items-center gap-x-5 mb-10 lg:mb-0">
             <button className="bg-[#DEEFE7] px-10 py-5 rounded-full shadow-[0px_30px_30px_0px_#00000060]">
               <p className="font-semibold text-xl text-black">Get Started</p>
             </button>

@@ -12,11 +12,11 @@ const Choose_your_preference = () => {
   return (
     <div>
       <div className="w-10/12 mx-auto">
-        <div className="flex justify-center items-center font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-10">
+        <div className="flex justify-center items-center font-extrabold text-5xl  mt-10 text-center">
           <h1>Choose your preference</h1>
         </div>
 
-        <div className="w-[60%] sm:w-[40%] md:w-[30%] lg:w-[20%] mx-auto">
+        <div className="w-[20%] mx-auto">
           <div className="border-[#159A9C] border-b border-[5px] my-8 sm:my-10 md:my-12"></div>
         </div>
 

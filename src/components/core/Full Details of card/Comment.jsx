@@ -59,8 +59,12 @@ const Comment = ({ Data }) => {
   };
 
   return (
+
+    <div className="mt-10 md:mt-16 lg:mt-20 mb-10">
+
     <div className="mt-10 md:mt-16 lg:mt-20">
       {/* Comment Header and Form */}
+
       <header className="flex flex-col md:flex-row justify-start items-center gap-2 w-11/12 md:w-10/12 mx-auto mb-4 md:mb-5">
         <img
           src={FEECHARGES}

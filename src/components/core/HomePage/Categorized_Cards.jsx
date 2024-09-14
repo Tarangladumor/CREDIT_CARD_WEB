@@ -76,7 +76,7 @@ const Categorized_Cards = () => {
       <div className=' w-10/12 mx-auto'>
 
         <div>
-          <h1 className='flex justify-center items-center font-extrabold text-5xl mt-10'>Categorized Cards</h1>
+          <h1 className='flex justify-center items-center font-extrabold text-5xl mt-10 text-center'>Categorized Cards</h1>
         </div>
 
         <div className=' w-[20%] mx-auto' >
