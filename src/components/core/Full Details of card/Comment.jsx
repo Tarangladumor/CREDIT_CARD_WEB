@@ -280,6 +280,7 @@ const Comment = ({ Data }) => {
         </div>
       )}
     </div>
+    </div>
   );
 };
 
