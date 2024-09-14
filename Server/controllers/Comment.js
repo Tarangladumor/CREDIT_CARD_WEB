@@ -4,7 +4,6 @@ import { Card } from "../models/Card.js";
 export const createComment = async(req, res) => {
     try {
         const { author, description, cardId, email } = req.body; 
-        
 
         if (!author || !description || !cardId) {
             return res.status(403).send({

@@ -297,6 +297,7 @@ export const updateCard = async (req, res) => {
       .populate("additionalBenefits")
       .populate("charges")
       .populate("faq")
+      .populate("Comments")
       .exec();
 
     return respond(res, "Card Updated Successfully", 200, true, updatedCard);
@@ -362,21 +363,26 @@ export const deleteCard = async (req, res) => {
 
 export const getAllCard = async (req, res) => {
   try {
-    const allCards = await Card.aggregate([{ $sample: { size: 100 } }]); // 10 is just an example, you can set it higher
-    // Populate necessary fields after sampling
-    await Card.populate(allCards, [
-      { path: "provider" },
-      { path: "network" },
-      { path: "additionalBenefits" },
-      { path: "charges" },
-      { path: "faq" },
-      { path: "rewards" },
-      { path: "howToApply" },
-      { path: "eligibility" },
-      { path: "ratingAndReviews" }
-    ]);
+    const AllCard = await Card.find({}).populate("provider")
+      .populate("network")
+      .populate("additionalBenefits")
+      .populate("charges")
+      .populate("faq")
+      .populate("rewards")
+      .populate("howToApply")
+      .populate("eligibility")
+      .populate("ratingAndReviews")
+      .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "replies",  
+          model: "Replies" 
+        }
+      })
+      .exec();
 
-    return respond(res, "All cards fetched successfully", 200, true, allCards);
+    return respond(res, "All cards fetched successfully", 200, true, AllCard);
   } catch (error) {
     console.log(error);
     return respond(res, "Something went wrong while getting all cards", 500, false);
@@ -404,6 +410,13 @@ export const getOneCardDetails = async (req, res) => {
       .populate("howToApply")
       .populate("additionalBenefits")
       .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "replies",  
+          model: "Replies" 
+        }
+      })
       .populate("ratingAndReviews")
       .populate("privilege")
       .exec();

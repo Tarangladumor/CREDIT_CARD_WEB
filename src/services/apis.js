@@ -14,11 +14,15 @@ export const cardEndpoints = {
     GET_ALL_INCOME : BASE_URL + '/card/showAllIncome',
     GET_ALL_PRIVILEGE : BASE_URL + '/card/showAllPrivilege',
     ADD_COMMENT : BASE_URL + '/card/create-comment',
+    GET_ALL_COMMENTS : BASE_URL + '/card/comments',
     CREATE_RATING : BASE_URL + '/card/create-rating',
     ADD_CARD_BASIC_DETAILS : '/admin/addCard',
     ADD_CARD_REWARD_DETAILS : '/admin/addReward',
     ADD_CARD_ELIGIBILITY_DETAILS : '/admin/addEligibility',
     ADD_CARD_HOWTOAPPLY_DETAILS : '/admin/addHowToApply',
     ADD_CARD_BENEFITS_DETAILS : '/admin/add-additional-benefit',
-    ADD_CARD_CHARGES_DETAILS : '/admin/addCharges'
+    ADD_CARD_CHARGES_DETAILS : '/admin/addCharges',
+    UPDATE_REPLY : BASE_URL + '/card/updatereply',
+    GET_REPLIES : BASE_URL + '/card/getreplies',
+    ADD_REPLY : BASE_URL + '/card/addreply',
 }

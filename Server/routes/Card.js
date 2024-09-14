@@ -8,6 +8,7 @@ import { signupNewsletter } from '../controllers/Sunscriber.js';
 import {showAllNetwork } from "../controllers/Network.js"
 import { getCardByIncome, showAllIncome } from '../controllers/Income.js';
 import { getCardByPrivilege, showAllPrivilege } from '../controllers/Privilege.js';
+import { addReplyToComment,updateReply,getRepliesForComment} from '../controllers/reply.js'
 
 import { compareCards } from "../controllers/Comparison.js"
 
@@ -23,6 +24,11 @@ router.post("/create-comment",createComment);
 router.put("/edit-comment",editComment);
 router.delete("/delete-comment",deleteComment);
 router.get('/comments', getAllComments);
+
+//reply for the comment
+router.post('/addreply',addReplyToComment);
+router.put('/updatereply',updateReply);
+router.get('/getreplies',getRepliesForComment);
 
 router.get("/getAllCard",getAllCard)
 router.get("/getCardByBank",getCardByBank)

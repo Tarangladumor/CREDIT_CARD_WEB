@@ -71,7 +71,7 @@ const IncludeSection = ({ Data }) => {
                             <RatingStars Review_Count={avgReviewCount} />
                         </div>
                         <h2 className='font-medium text-base md:text-lg lg:text-2xl mt-2 md:mt-0 md:ml-4'>Overall ratings</h2>
-                        <p className='font-medium text-xs md:text-sm lg:text-base opacity-45 mt-1 md:mt-0'>Avg rating by 200+ verified customers</p>
+                        <p className='font-medium text-[10px] md:text-sm lg:text-base opacity-45 mt-1 md:mt-0'>Avg rating by 200+ verified customers</p>
                     </div>
                 </div>
 
