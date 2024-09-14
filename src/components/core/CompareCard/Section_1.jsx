@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import img from '../../../assets/phoneUser.png';
 import { fetchAllCard, fetchOneCardDetails } from '../../../services/Operations/cardAPI';
+import { RxCross2 } from "react-icons/rx";
 
 const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
   const [allCards, setAllCards] = useState([]);
@@ -20,7 +21,7 @@ const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
     const fetchCard1 = async () => {
       const card1Data = await fetchOneCardDetails(card1Id);
       setCard1(card1Data);
-      setCard1Data(card1Data); // Update parent component
+      setCard1Data(card1Data); 
     };
 
     if (card1Id) {
@@ -33,11 +34,16 @@ const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
     if (cardId) {
       const selectedCardData = await fetchOneCardDetails(cardId);
       setSelectedCard(selectedCardData);
-      setSelectedCardData(selectedCardData); // Update parent component
+      setSelectedCardData(selectedCardData); 
     } else {
       setSelectedCard(null);
-      setSelectedCardData(null); // Update parent component
+      setSelectedCardData(null);
     }
+  };
+
+  const handleRemoveSelectedCard = () => {
+    setSelectedCard(null);
+    setSelectedCardData(null);
   };
 
   return (
@@ -55,7 +61,7 @@ const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
           <p className="font-medium text-xs md:text-sm">More Details</p>
         </button>
       </div>
-      <div className="flex-1 flex flex-col items-center">
+      <div className="flex-1 flex flex-col items-center relative"> 
         <div>
           {!selectedCard ? (
             <>
@@ -70,7 +76,13 @@ const Section_1 = ({ card1Id, setCard1Data, setSelectedCardData }) => {
               </select>
             </>
           ) : (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center relative">
+              <button
+                onClick={handleRemoveSelectedCard}
+                className="absolute -top-3 -right-3 bg-white rounded-full text-lg font-bold p-2 cursor-pointer border-[2px] border-black"
+              >
+                <RxCross2 />
+              </button>
               <img src={selectedCard?.cardData?.image} alt="Card" className="w-[150px] h-[100px] md:w-[300px] md:h-[225px]" />
               <p className="text-[#000000ab] font-medium text-lg md:text-1xl mt-4 md:mt-6">
                 {selectedCard?.cardData?.cardName}
