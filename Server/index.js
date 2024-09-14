@@ -30,13 +30,20 @@ app.use(
 );
 
 // CORS configuration
+// app.use(
+//   cors({
+//     origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app", // Remove trailing slash here
+//     credentials: true,
+//     allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
+//   })
+// );
+
 app.use(
   cors({
-    origin: "https://credit-card-k00m31733-tarangladumors-projects.vercel.app", // Remove trailing slash here
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'headers'],
+      origin:"http://localhost:3000",
+      credentials:true,
   })
-);
+)
 
 // Cloudinary configuration
 cloudinaryConnect();

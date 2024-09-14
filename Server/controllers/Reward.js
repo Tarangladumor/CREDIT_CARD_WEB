@@ -84,39 +84,81 @@ import mongoose from "mongoose";
 // };
 
 // Add Rewards
+// export const addRewards = async (req, res) => {
+//     try {
+//         const { instruction, note, cardId } = req.body;
+
+//         // Manually build the points array
+//         const points = [];
+//         if (req.body["points[0][key]"]) {
+//             let i = 0;
+//             while (req.body[`points[${i}][key]`]) {
+//                 points.push({
+//                     _id: new mongoose.Types.ObjectId(), // Generate unique ID for each point
+//                     key: req.body[`points[${i}][key]`],
+//                     value: req.body[`points[${i}][value]`],
+//                 });
+//                 i++;
+//             }
+//         }
+
+//         // Manually build the listData array
+//         const listData = [];
+//         if (req.body["listData[0]"]) {
+//             let i = 0;
+//             while (req.body[`listData[${i}]`]) {
+//                 listData.push(req.body[`listData[${i}]`]);
+//                 i++;
+//             }
+//         }
+
+//         // Create a new Reward document
+//         const reward = new Reward({
+//             instruction,
+//             points,
+//             listData,
+//             note,
+//         });
+
+//         // Save the Reward document
+//         const savedReward = await reward.save();
+
+//         // Update the corresponding card with the new reward ID
+//         const updatedCard = await Card.findByIdAndUpdate(
+//             cardId,
+//             { $push: { rewards: savedReward._id } },
+//             { new: true }
+//         ).populate("rewards");
+
+//         return respond(res, "Rewards added successfully", 200, true, updatedCard);
+//     } catch (error) {
+//         console.log(error);
+//         return respond(res, "Something went wrong while adding the rewards", 500, false);
+//     }
+// };
+
 export const addRewards = async (req, res) => {
     try {
-        const { instruction, note, cardId } = req.body;
+        const { instruction, note, cardId, points, listData } = req.body;
 
-        // Manually build the points array
-        const points = [];
-        if (req.body["points[0][key]"]) {
-            let i = 0;
-            while (req.body[`points[${i}][key]`]) {
-                points.push({
-                    _id: new mongoose.Types.ObjectId(), // Generate unique ID for each point
-                    key: req.body[`points[${i}][key]`],
-                    value: req.body[`points[${i}][value]`],
-                });
-                i++;
-            }
+        // Validate points and listData
+        if (!Array.isArray(points)) {
+            return respond(res, "Points should be an array", 400, false);
         }
 
-        // Manually build the listData array
-        const listData = [];
-        if (req.body["listData[0]"]) {
-            let i = 0;
-            while (req.body[`listData[${i}]`]) {
-                listData.push(req.body[`listData[${i}]`]);
-                i++;
-            }
-        }
+        const validPoints = points.map(point => ({
+            _id: new mongoose.Types.ObjectId(),
+            key: point.key,
+            value: Array.isArray(point.value) ? point.value : [point.value],
+        }));
+
+        const validListData = Array.isArray(listData) ? listData : [];
 
         // Create a new Reward document
         const reward = new Reward({
             instruction,
-            points,
-            listData,
+            points: validPoints,
+            listData: validListData,
             note,
         });
 
@@ -132,10 +174,12 @@ export const addRewards = async (req, res) => {
 
         return respond(res, "Rewards added successfully", 200, true, updatedCard);
     } catch (error) {
-        console.log(error);
-        return respond(res, "Something went wrong while adding the rewards", 500, false);
+        console.error(error);
+        return respond(res, "Error while adding rewards", 500, false);
     }
 };
+
+
 
 // Update Rewards
 export const updateRewards = async (req, res) => {
