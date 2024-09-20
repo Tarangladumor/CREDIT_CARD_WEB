@@ -29,6 +29,7 @@ app.use(
   })
 );
 
+
 // List of allowed origins for CORS
 const allowedOrigins = [
   "https://credit-card-k00m31733-tarangladumors-projects.vercel.app",
@@ -49,7 +50,7 @@ app.use(
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization", "headers"],
   })
-);
+)
 
 // Cloudinary configuration
 cloudinaryConnect();
