@@ -30,7 +30,7 @@ const CardSection = () => {
   }
 
   return (
-    <div className='bg-[#f7f5fd] p-5 md:p-10'>
+    <div className='bg-[#ffffff] p-5 md:p-10'>
       <div className=''>
         <div className='text-[#159a9c] text-lg md:text-xl w-full md:w-10/12 lg:w-9/12 mx-auto'>
           <p>Most opted card network</p>

@@ -47,7 +47,7 @@ const CardDetails = ({ Data }) => {
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-10"></div>
       )}
       <div
-        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered || isClicked ? "h-auto z-20 scale-105 shadow-2xl" : "h-[530px]"}`}
+        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered || isClicked ? "h-auto z-20 scale-105 shadow-2xl" : "h-[540px]"}`}
         onMouseEnter={() => window.innerWidth >= 1024 && setIsHovered(true)}
         onMouseLeave={() => window.innerWidth >= 1024 && setIsHovered(false)}
         onClick={handleClick}
@@ -76,8 +76,8 @@ const CardDetails = ({ Data }) => {
         </div>
 
         <div className="flex flex-col gap-2 px-12">
-          <div className="flex justify-between">
-            <p className="font-medium text-xl">{Data?.cardName}</p>
+          <div className="flex justify-evenly">
+            <p className="font-medium text-xl sm:max-w-[100%] md:w-auto">{Data?.cardName}</p>
             <p className="font-medium text-xl">
               APR: {Data?.charges[0]?.annualPercentageRate}
             </p>

@@ -46,7 +46,7 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around">
+      <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around bt-">
         <div className="w-full md:w-11/12 flex flex-col md:flex-row justify-around p-4">
           {/* Logo and Social Icons */}
           <div className="flex flex-col  gap-4 mt-4">

@@ -24,7 +24,7 @@ const Cardbox = () => {
     const card = [cards[0], cards[1]];
 
     return (
-        <div className='bg-[#f7f5fd] p-5 md:p-10'>
+        <div className='bg-[#fff] p-5 md:p-10'>
             <div className='w-11/12 md:w-10/12 mx-auto'>
                 <div className='text-[#159a9c] text-lg md:text-xl w-full md:w-11/12 mx-auto'>
                     <p>Most opted Card based on Income</p>
