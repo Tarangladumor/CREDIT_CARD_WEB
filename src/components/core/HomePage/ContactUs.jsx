@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import contactus from "../../../assets/contactus.png";
 import { apiConnector } from "../../../services/apiconnector";
-import { cardEndpoints } from '../../../services/apis';
+// import { cardEndpoints } from '../../../services/apis';
 import toast from 'react-hot-toast';
+import { cardEndpoints } from '../../../services/apis';
+
+const {ADD_NEWSLETTER_SIGN_UP} = cardEndpoints
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +29,7 @@ const ContactUs = () => {
       setLoading(true);
       const response = await apiConnector(
         "POST",
-        cardEndpoints.ADD_NEWSLETTER_SIGN_UP,
+        ADD_NEWSLETTER_SIGN_UP,
         formData
       );
       console.log("Logging response", response);

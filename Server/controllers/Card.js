@@ -471,5 +471,3 @@ export const getOneCardDetails = async (req, res) => {
   }
 };
 
-
-

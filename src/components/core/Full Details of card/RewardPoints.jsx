@@ -2,7 +2,7 @@ import React from 'react';
 import FEECHARGES from '../../../assets/FeeCharges_img.png';
 
 const RewardPoints = ({ Data }) => {
-    console.log(Data?.cardData?.rewards[0]?.points);
+    const rewardsData = Data?.cardData?.rewards[0];
 
     return (
         <div className='mt-10 px-4 lg:px-0'>
@@ -12,24 +12,28 @@ const RewardPoints = ({ Data }) => {
             </header>
 
             <section className='w-full lg:w-10/12 mx-auto border-[3px] lg:border-[5px] border-[#056E67] rounded-2xl px-4 lg:px-16 py-4 lg:py-5 shadow-lg lg:shadow-[0px_20px_50px_10px_#00000040]'>
-                {Data?.cardData?.rewards[0]?.instruction && (
-                    <p className='text-sm lg:text-base'>{Data?.cardData?.rewards[0]?.instruction}</p>
+                {rewardsData?.instruction && (
+                    <p className='text-sm lg:text-base'>{rewardsData?.instruction}</p>
                 )}
 
-                {Data?.cardData?.rewards[0]?.points.length > 0 ? (
+                {rewardsData?.points.length > 0 ? (
                     <div className="overflow-x-auto">
                         <table className='my-3 lg:my-5 w-full border-collapse'>
                             <thead>
                                 <tr className="bg-[#159A9C1C] bg-opacity-35">
-                                    {/* <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Categories</th>
-                                    <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Reward Points</th> */}
+                                    <th className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Categories</th>
+                                    {rewardsData?.points[0]?.value.map((_, idx) => (
+                                        <th key={idx} className='py-2 lg:py-3 text-left px-2 lg:px-3 border-2 border-black'>Reward {idx + 1}</th>
+                                    ))}
                                 </tr>
                             </thead>
                             <tbody>
-                                {Data?.cardData?.rewards[0]?.points.map((item, i) => (
+                                {rewardsData?.points.map((item, i) => (
                                     <tr key={i} className="bg-[#159A9C1C] bg-opacity-35">
                                         <td className='py-2 lg:py-3 px-2 lg:px-3 border-2 border-black'>{item?.key}</td>
-                                        <td className='py-2 lg:py-3 px-2 lg:px-3 border-2 border-black'>{item?.value}</td>
+                                        {item?.value.map((val, idx) => (
+                                            <td key={idx} className='py-2 lg:py-3 px-2 lg:px-3 border-2 border-black'>{val}</td>
+                                        ))}
                                     </tr>
                                 ))}
                             </tbody>
@@ -39,10 +43,10 @@ const RewardPoints = ({ Data }) => {
                     <div className='my-4'></div>
                 )}
 
-                {Data?.cardData?.rewards[0]?.listData.length > 0 ? (
+                {rewardsData?.listData.length > 0 ? (
                     <div className='my-4'>
                         <ul className="list-disc ml-5 lg:ml-10 text-sm lg:text-base">
-                            {Data?.cardData?.rewards[0]?.listData.map((item, i) => (
+                            {rewardsData?.listData.map((item, i) => (
                                 <li key={i}>{item}</li>
                             ))}
                         </ul>
@@ -51,8 +55,8 @@ const RewardPoints = ({ Data }) => {
                     <div className='my-4'></div>
                 )}
 
-                {Data?.cardData?.rewards[0]?.note && (
-                    <p className='text-sm lg:text-base'>{Data?.cardData?.rewards[0]?.note}</p>
+                {rewardsData?.note && (
+                    <p className='text-sm lg:text-base'>{rewardsData?.note}</p>
                 )}
             </section>
         </div>

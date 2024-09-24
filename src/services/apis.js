@@ -25,4 +25,5 @@ export const cardEndpoints = {
     UPDATE_REPLY : BASE_URL + '/card/updatereply',
     GET_REPLIES : BASE_URL + '/card/getreplies',
     ADD_REPLY : BASE_URL + '/card/addreply',
+    ADD_NEWSLETTER_SIGN_UP : BASE_URL + '/card/newsletter/signup'
 }
