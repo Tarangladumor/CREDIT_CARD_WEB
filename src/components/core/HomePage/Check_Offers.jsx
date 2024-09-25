@@ -40,9 +40,10 @@ const Check_Offers = () => {
                     </div>
                 </div>
 
-                <div className='opacity-70 text-center md:text-left font-medium text-lg md:text-xl lg:text-2xl mt-6 md:mt-8 lg:mt-10 ml-4 md:ml-6 lg:ml-10 max-w-[90%] md:max-w-[70%] lg:max-w-[50%]'>
-                    Explore exclusive partner deals, available for a limited time only.
-                </div>
+                <div className='opacity-70 text-center font-medium text-lg md:text-xl lg:text-2xl mt-6 md:mt-8 lg:mt-10 mx-auto max-w-[90%] md:max-w-[70%] lg:max-w-[50%]'>
+    Explore exclusive partner deals, available for a limited time only.
+</div>
+
             </div>
 
             {/* For medium screens */}
