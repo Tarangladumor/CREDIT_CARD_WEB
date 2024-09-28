@@ -22,14 +22,14 @@ const Section1 = () => {
             <div className="flex relative">
               <img
                 src={IMG1}
-                className="rounded-full aspect-square h-[50px] w-[50px] lg:h-[50px] lg:w-[50px]"
+                className="rounded-full aspect-square h-[50px] w-[50px] sm:w-[40px] sm:h-[40px] lg:h-[50px] lg:w-[50px]"
               />
               <img
                 src={IMG2}
-                className="rounded-full aspect-square relative z-10 -left-8 h-[50px] w-[50px] lg:h-[50px] lg:w-[50px]"
+                className="rounded-full aspect-square relative z-10 -left-8 h-[50px] w-[50px] sm:w-[40px] sm:h-[40px] lg:h-[50px] lg:w-[50px]"
               />
             </div>
-            <p className="font-semibold text-xl">
+            <p className="font-semibold text-xl sm:text-sm">
               Enjoy rewards, global access, low fees, and premium perks.
             </p>
           </div>

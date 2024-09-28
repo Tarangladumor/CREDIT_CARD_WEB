@@ -46,10 +46,10 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around bt-">
+      <div className="w-full bg-[#f7f5fd] flex flex-col md:flex-row md:justify-around">
         <div className="w-full md:w-11/12 flex flex-col md:flex-row justify-around p-4">
           {/* Logo and Social Icons */}
-          <div className="flex flex-col  gap-4 mt-4">
+          <div className="flex flex-col gap-4 mt-4 md:mt-0 md:w-1/3">
             <div className="text-3xl md:text-4xl font-extrabold text-center md:text-left">
               CARD POUCH
             </div>
@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="flex flex-col  gap-3 mt-4">
+          <div className="flex flex-col gap-3 mt-4 md:mt-0 md:w-1/3">
             <div className='flex flex-col text-center md:text-left'>
               <p className="text-lg font-medium text-center md:text-left">Contact Us:</p>
               <p className="text-[#374ab1] text-lg font-medium">
@@ -84,7 +84,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Signup */}
-          <div className="flex flex-col  gap-4 mt-4 w-full md:w-[300px]">
+          <div className="flex flex-col gap-4 mt-4 md:mt-0 md:w-1/3">
             <p className="text-xl md:text-2xl text-center md:text-left font-semibold">Newsletter Signup</p>
             <p className="text-base md:text-lg text-center md:text-left text-[#00000087]">
               Get the latest offers and tips—subscribe to our newsletter today.
