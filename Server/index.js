@@ -31,9 +31,7 @@ app.use(
 
 // List of allowed origins for CORS
 const allowedOrigins = [
-  "https://credit-card-k00m31733-tarangladumors-projects.vercel.app",
-  "https://credit-card-web.vercel.app",
-  "http://localhost:3000"
+  "*"
 ];
 
 // CORS configuration to handle multiple origins
