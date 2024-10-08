@@ -361,33 +361,60 @@ export const deleteCard = async (req, res) => {
 //   }
 // }
 
+// export const getAllCard = async (req, res) => {
+//   try {
+//     const AllCard = await Card.aggregate([
+//       { $sample: { size: 100 } } // Replace 10 with the number of random cards you want to fetch
+//     ]).populate("provider")
+//       .populate("network")
+//       .populate("additionalBenefits")
+//       .populate("charges")
+//       .populate("faq")
+//       .populate("rewards")
+//       .populate("howToApply")
+//       .populate("eligibility")
+//       .populate("ratingAndReviews")
+//       .populate("comments")
+//       .populate({
+//         path: "comments",
+//         populate: {
+//           path: "replies",  
+//           model: "Replies" 
+//         }
+//       })
+//       .exec();
+
+//     return respond(res, "All cards fetched successfully", 200, true, AllCard);
+//   } catch (error) {
+//     console.log(error);
+//     return respond(res, "Something went wrong while getting all cards", 500, false);
+//   }
+// };
+
 export const getAllCard = async (req, res) => {
   try {
-    const AllCard = await Card.find({}).populate("provider")
-      .populate("network")
-      .populate("additionalBenefits")
-      .populate("charges")
-      .populate("faq")
-      .populate("rewards")
-      .populate("howToApply")
-      .populate("eligibility")
-      .populate("ratingAndReviews")
-      .populate("comments")
-      .populate({
-        path: "comments",
-        populate: {
-          path: "replies",  
-          model: "Replies" 
-        }
-      })
-      .exec();
+    const AllCard = await Card.aggregate([
+      { $sample: { size: 100 } } // Replace 10 with the number of random cards you want to fetch
+    ])
+    .lookup({ from: "providers", localField: "provider", foreignField: "_id", as: "provider" })
+    .lookup({ from: "networks", localField: "network", foreignField: "_id", as: "network" })
+    .lookup({ from: "additionalBenefits", localField: "additionalBenefits", foreignField: "_id", as: "additionalBenefits" })
+    .lookup({ from: "charges", localField: "charges", foreignField: "_id", as: "charges" })
+    .lookup({ from: "faqs", localField: "faq", foreignField: "_id", as: "faq" })
+    .lookup({ from: "rewards", localField: "rewards", foreignField: "_id", as: "rewards" })
+    .lookup({ from: "howToApplies", localField: "howToApply", foreignField: "_id", as: "howToApply" })
+    .lookup({ from: "eligibilities", localField: "eligibility", foreignField: "_id", as: "eligibility" })
+    .lookup({ from: "ratingAndReviews", localField: "ratingAndReviews", foreignField: "_id", as: "ratingAndReviews" })
+    .lookup({ from: "comments", localField: "comments", foreignField: "_id", as: "comments" })
+    .lookup({ from: "replies", localField: "comments.replies", foreignField: "_id", as: "comments.replies" });
 
-    return respond(res, "All cards fetched successfully", 200, true, AllCard);
+    return respond(res, "Random cards fetched successfully", 200, true, AllCard);
   } catch (error) {
     console.log(error);
-    return respond(res, "Something went wrong while getting all cards", 500, false);
+    return respond(res, "Something went wrong while getting random cards", 500, false);
   }
 };
+
 
 
 export const getOneCardDetails = async (req, res) => {

@@ -71,6 +71,13 @@ const Navbar = () => {
         setInput("");
     };
 
+    const scrollToContactUs = () => {
+        const contactSection = document.getElementById('contact-us');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
     return (
         <div className={`${location.pathname === '/' ? "bg-[#056E67]" : "bg-white"} text-white pt-3 transition duration-500 ease-in-out`}>
             <div className='w-10/12 mx-auto flex justify-between items-center py-3 h-10vh rounded-full px-5 bg-[#056E67] '>
@@ -90,7 +97,7 @@ const Navbar = () => {
                             value={input}
                             onChange={handleChange}
                         />
-                        <RiSearch2Line className='absolute top-2 right-3 text-black' />
+                        <RiSearch2Line className='absolute top-1 right-4 text-black' />
 
                         {filteredCards.length > 0 && (
                             <div className='absolute top-12 left-0 w-full bg-white border border-gray-300 rounded-lg shadow-lg max-h-48 overflow-y-auto z-10000'>
@@ -112,7 +119,7 @@ const Navbar = () => {
                     <ul className='flex gap-8 lg:gap-16 items-center font-normal text-lg'>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/more-cards'>Credit Cards</Link></li>
-                        <li><Link to='/about-us'>About Us</Link></li>
+                        <li><a href="#contact-us" onClick={scrollToContactUs}>Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -130,7 +137,7 @@ const Navbar = () => {
                     <ul className='flex flex-col gap-4 items-center font-normal text-xl bg-[#056E67] text-white p-4 border-b border-gray-300'>
                         <li><Link to='/' onClick={toggleMenu}>Home</Link></li>
                         <li><Link to='/more-cards' onClick={toggleMenu}>Credit Cards</Link></li>
-                        <li><Link to='/about-us' onClick={toggleMenu}>About Us</Link></li>
+                        <li><a href="#contact-us" onClick={scrollToContactUs}>Contact Us</a></li>
 
                         {/* Search Input for Mobile */}
                         <div className='relative w-2/3' ref={searchRef}>

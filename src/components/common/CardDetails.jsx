@@ -76,7 +76,7 @@ const CardDetails = ({ Data }) => {
         </div>
 
         <div className="flex flex-col gap-2 px-12">
-          <div className="flex justify-evenly flex-col gap-y-2 lg:flex-row md:gap-y-2"> 
+          <div className="flex justify-evenly flex-col gap-y-2"> 
             <p className="font-medium text-xl md:w-auto">{Data?.cardName}</p>
             <p className="font-medium text-xl">
               APR: {Data?.charges[0]?.annualPercentageRate}
