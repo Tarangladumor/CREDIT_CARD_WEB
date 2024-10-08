@@ -19,6 +19,10 @@ import EligibilityForm from './components/admin/Eligibility';
 import HowToApplyForm from './components/admin/Apply';
 import BenefitsForm from './components/admin/Benefits';
 import CardFeesForm from './components/admin/Charges';
+import AffilaitedDisclosure from './components/common/Disclosure';
+import DisclaimerPage from './components/common/Disclaimer';
+import PrivacyPolicy from './components/common/PrivacyPolicy';
+import TermOfService from './components/common/TermsOfService';
 
 function App() {
   return (
@@ -49,6 +53,14 @@ function App() {
         <Route path='/cardByIncome/:name/:id' element={<CardsByIncome/>}/>
 
         <Route path='/:name/:id' element={<CardsByPrivilege/>}/>
+
+        <Route path='/disclouser' element={<AffilaitedDisclosure/>}/>
+
+        <Route path='/disclaimer' element={<DisclaimerPage/>}/>
+
+        <Route path='/privacypolicy' element={<PrivacyPolicy/>}/>
+
+        <Route path='/termsofservice' element={<TermOfService/>}/>
 
         <Route path='/addCard' element={<ProtectedRoute element={CardForm} />} />
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import contactus from "../../../assets/contactus.png";
 import { apiConnector } from "../../../services/apiconnector";
 // import { cardEndpoints } from '../../../services/apis';
@@ -8,6 +8,8 @@ import { cardEndpoints } from '../../../services/apis';
 const {ADD_NEWSLETTER_SIGN_UP} = cardEndpoints
 
 const ContactUs = () => {
+  const contactUsRef = useRef(null);
+
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -54,7 +56,7 @@ const ContactUs = () => {
   }, [isSubmitSuccessful]);
 
   return (
-    <div className="bg-[#deefe7] py-10">
+    <div className="bg-[#deefe7] py-10 scroll-smooth" ref={contactUsRef} id="contact-us">
       <div className="w-11/12 mx-auto flex flex-col lg:flex-row items-center">
         <div className="w-full md:w-1/2">
           <div className="block md:hidden w-full lg:w-1/2 mt-8 lg:mt-0">
