@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Footer from '../common/Footer'
 
 const DisclaimerPage = () => {
+    useEffect(() => {
+        window.scrollTo({
+          top: 0,              // Scroll to the top of the page
+          behavior: 'smooth'   // Smooth scroll effect
+        });
+      }, []);
     return (
         <div >
 
