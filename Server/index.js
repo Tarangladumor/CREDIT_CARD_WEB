@@ -30,7 +30,29 @@ app.use(
 );
 
 // List of allowed origins for CORS
+// const allowedOrigins = [
+//   "*"
+// ];
+
+// // CORS configuration to handle multiple origins
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       if (allowedOrigins.includes(origin) || !origin) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//     credentials: true,
+//     allowedHeaders: ["Content-Type", "Authorization", "headers"],
+//   })
+// );
+
+// List of allowed origins for CORS
 const allowedOrigins = [
+  "http://localhost:3000", // Local development
+  "https://credit-card-web.vercel.app",
   "*"
 ];
 
@@ -38,16 +60,18 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
+      // Allow requests from allowed origins or requests with no origin (non-browser clients)
       if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization", "headers"],
+    credentials: true, // Enable credentials
+    allowedHeaders: ["Content-Type", "Authorization", "headers"], // Allowed headers
   })
 );
+
 
 // Cloudinary configuration
 cloudinaryConnect();
