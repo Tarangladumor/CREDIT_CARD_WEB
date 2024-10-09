@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        "edu-sa": ["Edu SA Beginner", "cursive"],
+        mono: ["Roboto Mono", "monospace"],
+        dm: ["DM Sans", "sans-serif"],
+      },
       rotate: {
         '150': '-30deg',
         '15' : '-15deg'

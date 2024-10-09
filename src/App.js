@@ -26,7 +26,7 @@ import TermOfService from './components/common/TermsOfService';
 
 function App() {
   return (
-    <div>
+    <div className='font-dm'>
   
       <Navbar />
 

@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Section1 = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#056E67] text-white overflow-hidden h-auto xl:h-[calc(100vh-75px)]">
+    <div className="bg-[#056E67] text-white overflow-hidden h-auto xl:h-[calc(100vh-75px)] font-inter">
       <div className="flex flex-col md:flex-row justify-evenly lg:mt-10">
         <div className="w-full lg:max-w-[45%] flex flex-col mt-8 gap-3 ml-5 lg:ml-10">
           <p className="font-extrabold text-7xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl max-w-[80%] sm:w-full">
