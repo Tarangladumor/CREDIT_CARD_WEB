@@ -53,6 +53,7 @@ app.use(
 const allowedOrigins = [
   "http://localhost:3000", // Local development
   "https://credit-card-web.vercel.app",
+  "http://localhost:3000",
   "*"
 ];
 

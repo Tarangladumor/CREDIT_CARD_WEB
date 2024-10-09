@@ -47,7 +47,7 @@ const CardDetails = ({ Data }) => {
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-10"></div>
       )}
       <div
-        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered || isClicked ? "h-auto z-20 scale-105 shadow-2xl" : "h-[550px]"}`}
+        className={`bg-[#D2F4E4] flex flex-col gap-5 rounded-tr-3xl rounded-bl-3xl transition-all duration-300 ease-in-out relative ${isHovered || isClicked ? "h-auto z-20 scale-105 shadow-2xl" : "sm:h-auto md:h-[550px]"}`}
         onMouseEnter={() => window.innerWidth >= 1024 && setIsHovered(true)}
         onMouseLeave={() => window.innerWidth >= 1024 && setIsHovered(false)}
         onClick={handleClick}

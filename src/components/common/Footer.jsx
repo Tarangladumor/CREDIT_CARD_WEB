@@ -28,6 +28,7 @@ const Footer = () => {
         formData
       );
       setIsSubmitSuccessful(true);
+      
       toast.success("Subscription successful!");
     } catch (error) {
       setIsSubmitSuccessful(false);
@@ -39,7 +40,8 @@ const Footer = () => {
 
   useEffect(() => {
     if (isSubmitSuccessful) {
-      setFormData({ email: formData.email });
+      // Clear the email field after successful submission
+      setFormData({ email: "" });
       setIsSubmitSuccessful(false);
     }
   }, [isSubmitSuccessful]);

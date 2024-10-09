@@ -27,11 +27,11 @@ import TermOfService from './components/common/TermsOfService';
 function App() {
   return (
     <div className='font-dm'>
-  
+
       <Navbar />
 
       <Routes>
-
+        
         <Route path='/' element={<Home />} />
 
         <Route path='/more-cards' element={<Page_2 />} />
