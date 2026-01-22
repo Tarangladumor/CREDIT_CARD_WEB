@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 💳 Card Pouch – Credit Card Comparison Web Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Card Pouch is a full-stack web application designed to simplify the process of selecting the right credit card by providing **comprehensive card details, comparison tools, filtering options, and financial education content**. The platform empowers users to make informed financial decisions through a clean, intuitive, and data-driven interface.
 
-## Available Scripts
+🔗 Live Demo: https://credit-card-web.vercel.app  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔍 **Comprehensive Credit Card Information**
+  - APR, annual fees, rewards, welcome bonuses
+  - Travel, dining, shopping benefits, lounge access, and privileges
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ⚖️ **Side-by-Side Credit Card Comparison**
+  - Compare multiple credit cards based on fees, rewards, and perks
 
-### `npm test`
+- 🎯 **Advanced Filtering**
+  - Filter cards by income range, providers, and privileges
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 📝 **User Reviews & Comments**
+  - Users can submit reviews and comments for credit cards
 
-### `npm run build`
+- 📚 **Educational Articles**
+  - Financial literacy content explaining credit card usage, rewards, and best practices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 🔗 **Seamless Application Flow**
+  - Direct redirection to official card issuer websites for applying
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧱 System Architecture
 
-### `npm run eject`
+### User Side
+- Browse and view all available credit cards
+- Filter and compare cards based on multiple criteria
+- Read financial articles
+- Submit reviews and comments
+- Apply for selected credit cards
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Admin Side
+- Add, edit, and delete credit card information
+- Manage educational articles
+- Track revenue status generated through card applications
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🛠 Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Frontend
+- **React.js**
+- **Tailwind CSS**
 
-## Learn More
+### Backend
+- **Node.js**
+- **Express.js**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Database
+- **MongoDB**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Tools
+- **Postman** – API testing and validation
+- **Vercel** – Frontend deployment
