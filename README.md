@@ -61,3 +61,18 @@ Card Pouch is a full-stack web application designed to simplify the process of s
 ### Tools
 - **Postman** – API testing and validation
 - **Vercel** – Frontend deployment
+
+---
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Node.js (v14+)
+- npm or yarn
+
+### Steps
+```bash
+git clone https://github.com/Tarangladumor/CREDIT_CARD_WEB.git
+cd CREDIT_CARD_WEB
+npm install
+npm start
