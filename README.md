@@ -1,4 +1,4 @@
-# 💳 Card Pouch – Credit Card Comparison Web Platform
+# 💳 Card Pouch – Credit Card Web Platform
 
 Card Pouch is a full-stack web application designed to simplify the process of selecting the right credit card by providing **comprehensive card details, comparison tools, filtering options, and financial education content**. The platform empowers users to make informed financial decisions through a clean, intuitive, and data-driven interface.
 
